@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import { checkBudget, translateWord } from '../lib/claude';
+import ImagePicker from './ImagePicker';
+import { looksPhotographable } from '../lib/imageSearch';
 import { buildIndex, lookup, normalize } from '../lib/lookup';
 import { tokenize } from '../lib/tts';
 import { ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
@@ -19,11 +21,14 @@ export default function Reading({
   state,
   update,
   today,
+  imageKey,
+  imageSource,
 }) {
   const [sel, setSel] = useState(null); // { token, entry, sentence }
   const [manual, setManual] = useState('');
   const [ai, setAi] = useState(null); // { data } | { error }
   const [asking, setAsking] = useState(false);
+  const [picking, setPicking] = useState(null); // { fr, en } once a word is saved
   const aiReady = state ? checkBudget(state, today).ok : false;
 
   const index = useMemo(
@@ -75,11 +80,19 @@ export default function Reading({
   const alreadyKnown =
     sel && (known.has(normalize(sel.token)) || (sel.entry && known.has(normalize(sel.entry.fr))));
 
-  const addIt = (fr, en) => {
+  // Whether to offer the picker at all. The model's opinion wins when there is
+  // one; otherwise a conservative local heuristic decides, because "no opinion"
+  // used to mean "offer it" and that put a photo picker in front of every "le"
+  // and "de" you tapped.
+  const worthPicturing = (fr, en, photogenic) =>
+    photogenic === true || (photogenic === undefined && looksPhotographable(fr, en));
+
+  const addIt = (fr, en, photogenic) => {
     if (!onAdd || !fr || !en) return;
     onAdd({ fr, en });
-    setSel(null);
     setManual('');
+    if (imageKey && worthPicturing(fr, en, photogenic)) setPicking({ fr, en });
+    else setSel(null);
   };
 
   return (
@@ -95,7 +108,32 @@ export default function Reading({
         <span className="known-swatch" /> sont déjà dans ton paquet.
       </p>
 
-      {sel && (
+      {picking && (
+        <>
+          <button
+            className="sheet-scrim"
+            onClick={() => {
+              setPicking(null);
+              setSel(null);
+            }}
+            aria-label="Fermer"
+          />
+          <div className="word-sheet" role="dialog">
+            <ImagePicker
+              fr={picking.fr}
+              en={picking.en}
+              source={imageSource}
+              apiKey={imageKey}
+              onDone={() => {
+                setPicking(null);
+                setSel(null);
+              }}
+            />
+          </div>
+        </>
+      )}
+
+      {sel && !picking && (
         <>
           <button className="sheet-scrim" onClick={() => setSel(null)} aria-label="Fermer" />
           <div className="word-sheet" role="dialog">
@@ -149,7 +187,7 @@ export default function Reading({
                 )}
                 {ai.data.note && <p className="sheet-note">{ai.data.note}</p>}
                 <div className="sheet-meta">traduit par un modèle</div>
-                <button className="btn primary" onClick={() => addIt(ai.data.fr, ai.data.en)}>
+                <button className="btn primary" onClick={() => addIt(ai.data.fr, ai.data.en, ai.data.photogenic)}>
                   + Ajouter au paquet
                 </button>
               </>

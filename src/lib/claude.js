@@ -62,6 +62,10 @@ export const DEFAULT_AI = {
   spend: {}, // { '2026-07': 0.0431 }
   calls: {}, // { '2026-07-30': 3 }
   enabled: true,
+  // Image search is a separate provider with its own free key, so it's usable
+  // with or without the Claude key — the two features don't depend on each other.
+  imageKey: '',
+  imageSource: 'pexels',
 };
 
 const MAX_TOKENS = 700; // brake 3
@@ -303,8 +307,13 @@ const WORD_SCHEMA = {
       type: 'boolean',
       description: 'False if this is not a real French word (a typo, or a proper noun).',
     },
+    photogenic: {
+      type: 'boolean',
+      description:
+        'True only if a single photograph could distinguish this word from related words a learner might confuse it with. A chair or a fan: true. An adjective of degree, an abstract noun, a connector, or a verb whose meaning is a direction or intention (to lend vs to borrow): false. When unsure, false.',
+    },
   },
-  required: ['fr', 'en', 'note', 'known'],
+  required: ['fr', 'en', 'note', 'known', 'photogenic'],
   additionalProperties: false,
 };
 

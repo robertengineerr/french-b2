@@ -226,6 +226,36 @@ export default function Settings({ state, update, setState }) {
       </div>
 
       <div className="card">
+        <h2>Images des cartes (facultatif)</h2>
+        <p className="muted small">
+          Avec une clé Pexels (gratuite, <code>pexels.com/api</code>), l’app propose six images
+          quand tu ajoutes un mot, et tu en choisis une — ou aucune. L’image choisie est
+          téléchargée sur l’appareil, donc elle marche hors ligne.
+        </p>
+        <label className="field">
+          <span>Clé API Pexels</span>
+          <input
+            type="password"
+            value={ai.imageKey || ''}
+            onChange={(e) => setAI('imageKey', e.target.value.trim())}
+            placeholder="laisser vide pour désactiver"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+          />
+        </label>
+        <p className="muted small">
+          Beaucoup de mots ne se photographient pas — «&nbsp;abordable&nbsp;» et
+          «&nbsp;bon marché&nbsp;» ne se distinguent pas en image. Si ta clé Claude est
+          configurée, le choix n’est proposé que pour les mots où une photo aide vraiment.
+        </p>
+        <p className="tiny-note muted">
+          Ces images vivent dans une base séparée du navigateur, pas dans l’export JSON&nbsp;:
+          changer de téléphone garde tout ton vocabulaire mais pas les images.
+        </p>
+      </div>
+
+      <div className="card">
         <h2>Rappel quotidien</h2>
         <p className="muted small">
           iOS ne laisse pas une app web programmer une notification à heure fixe. Le moyen

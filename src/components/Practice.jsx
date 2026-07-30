@@ -288,7 +288,7 @@ export default function Practice({ state, update, today, challenges, sentenceBan
             question.image ? (
               <figure className="photo">
                 <img
-                  src={`./photos/${question.image.slug}.webp`}
+                  src={question.image.url || `./photos/${question.image.slug}.webp`}
                   alt="indice visuel"
                   width="512"
                   height="512"
@@ -297,7 +297,7 @@ export default function Practice({ state, update, today, challenges, sentenceBan
                 {/* The licence asks for attribution, so it ships with the photo
                     rather than being buried on a credits page. Shown after you
                     answer — before that it's a distraction from the question. */}
-                {answered && question.image.credit && (
+                {answered && question.image.credit && !question.image.picked && (
                   <figcaption className="tiny-note muted">
                     {question.image.credit.author} · {question.image.credit.licence} · Wikimedia
                     Commons

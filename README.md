@@ -250,6 +250,8 @@ src/
   lib/forms.js      shared "word without its article" helper
   lib/ics.js        calendar reminder generation
   lib/claude.js     optional model calls, with the spend brakes
+  lib/imageSearch.js  image search adapters + the "is this photographable" check
+  lib/imageStore.js   picked images in IndexedDB, kept out of localStorage
   components/       Today, Reading, Player, Practice, Stats, Settings
 scripts/
   check-content.mjs    content validation
@@ -280,6 +282,34 @@ nothing to maintain:
   Three cards use a photograph instead, where the emoji pointed at the wrong idea: ❄️ for
   *le climatiseur* reads as cold rather than the appliance, 🍽️ for *le plat* is empty
   cutlery, 🍎 for *la nourriture* is *a* food rather than food. See below for why only three.
+
+## Picking an image when you add a word
+
+The three bundled photographs don't grow with your deck. With a free
+[Pexels](https://www.pexels.com/api/) key in Réglages, adding a word offers six
+candidates and you pick one — or **passer**, which is a first-class choice rather than a
+fallback. The chosen photo is downloaded to the device, so the card still works offline.
+
+Three things about the shape of it:
+
+- **It's an offer, never a step.** The word is already saved by the time the picker appears,
+  so dismissing it costs nothing and it can never stand between you and your vocabulary.
+- **Six candidates, not three.** Measured on the bundled set, roughly a quarter of automated
+  image results are usable. Three would often be three duds.
+- **It doesn't appear for words a photo can't teach.** With a Claude key set, the lookup that
+  already runs returns one extra field saying whether a photograph could distinguish this word
+  from ones it's confused with — *prêter* vs *emprunter* is a direction of transfer, so no.
+  Without a key, a local heuristic filters function words, which is coarser: it catches *le*
+  and *très*, but it will still offer a picker for *abordable*, where no photo separates it
+  from *cher*.
+
+Sources are adapters behind one `search()` function, because this choice has already been
+wrong once — swapping in Unsplash or Google is a new adapter, not a rewrite.
+
+**These images live in IndexedDB, not in the exported JSON.** Everything else is a single blob
+in `localStorage` under a ~5 MB cap, and a dozen photos there would fail the next save and take
+the deck and streak with it. The trade: switching phones keeps every card and loses their
+pictures. A card's content is what matters; the picture is decoration.
 
 ## Why there are only three photographs
 

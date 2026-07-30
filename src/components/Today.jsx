@@ -483,6 +483,8 @@ export default function Today({
             state={state}
             update={update}
             today={today}
+            imageKey={(state.ai || {}).imageKey || ''}
+            imageSource={(state.ai || {}).imageSource || 'pexels'}
           />
 
           <Player
