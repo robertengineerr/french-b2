@@ -8,10 +8,14 @@ Every day it serves one challenge:
 
 1. **2–5 new words** that are actually useful, plus up to 3 words pulled back out of your
    own deck because they're due or they fit the topic.
-2. **A short read** — three paragraphs, 140–320 words. Never a whole story. Glossary terms
-   in the text are tappable.
+2. **A short read** — three paragraphs, 140–320 words. Never a whole story. **Every word is
+   tappable**: a sheet slides up with the translation, the base form if you tapped an
+   inflection, and a one-tap *add to deck*. Words already in your deck are underlined so you
+   can see your own vocabulary turning up in real text.
 3. **A 1–2 minute listen** — a dialogue or podcast extract, spoken on-device, with speed
-   control from 0.7× to 1.15×, a hideable transcript, and per-line replay.
+   control from 0.7× to 1.15× and three caption modes: nothing at all (listen blind),
+   **word-by-word** karaoke captions that light up each word as it's spoken, or the full
+   transcript with the current word marked in place and per-line replay.
 4. **A grammar point** drawn from the day's text.
 5. **A 4–5 question quiz** — comprehension, a gap-fill on the day's grammar, and one open
    written answer you compare against a model and grade yourself.
@@ -32,9 +36,15 @@ Adaptation is real, it just comes from selection rather than generation:
   The engine takes the closest unseen match, then prefers a topic you haven't seen in the
   last three days. The target is **75–85% accuracy** — consistently above that and it
   climbs, below and it drops back.
-- **Vocabulary is SM-2-style.** Four buttons (Encore / Difficile / Correct / Facile). A
-  success multiplies the interval by the card's ease factor; a lapse resets it and knocks
-  the ease down. "Encore" re-queues the card five minutes later, inside the same session.
+- **Vocabulary is SM-2-style.** A success multiplies the interval by the card's ease
+  factor; a lapse resets it and knocks the ease down. "Encore" re-queues the card five
+  minutes later, inside the same session.
+- **Reviews come in seven shapes**, not one — pick the meaning, pick the French, pick from a
+  pictogram, fill the gap in a sentence, hear it and pick the meaning, type it from the
+  English, or the classic two-sided card you rate yourself. Which shape you get depends on
+  how well you know the card: recognition while it's new, production (typing, gap-fill) only
+  after you've recalled it a few times. Cards carrying a correction always show both sides —
+  the point is to read the correction, not to guess between four options.
 - **Recycling is targeted, not random.** The words folded back into each day are ranked by
   whether they're due, whether their tags match the day's topic, and whether they're
   leeches you keep forgetting.
@@ -58,6 +68,7 @@ npm run dev            # http://localhost:5173
 npm run build          # -> dist/
 npm run check:content  # validate the content packs
 npm run simulate       # 60-day simulation of the adaptive loop
+npm run check:lookup   # tap-to-translate coverage over the reading content
 npm run icons          # regenerate the app icons
 ```
 
@@ -125,14 +136,38 @@ public/
   sw.js             offline cache (network-first for content, cache-first for assets)
 src/
   engine.js         level model, challenge selection, SM-2, streaks, stats
-  seedVocab.js      your vocabulary, with corrections flagged
-  lib/tts.js        Web Speech API wrapper, with the Safari workarounds
+  seedVocab.js      your vocabulary, with corrections flagged and emoji on concrete cards
+  data/lexicon.js   high-frequency FR→EN glosses for tap-to-translate
+  lib/tts.js        Web Speech API wrapper, Safari workarounds, word-boundary tracking
+  lib/lookup.js     word lookup: normalise, guess base forms, search four sources
+  lib/exercises.js  the seven review shapes, cloze mining, forgiving typed answers
+  lib/forms.js      shared "word without its article" helper
   lib/ics.js        calendar reminder generation
-  components/       Today, Player, Flashcards, Stats, Settings
+  components/       Today, Reading, Player, Flashcards, Stats, Settings
 scripts/
   check-content.mjs content validation
+  check-lookup.mjs  tap-to-translate coverage + which words to add next
+  simulate.mjs      60-day adaptive-loop simulation
   make-icons.py     PNG icon generation, no dependencies
 ```
+
+## How the derived features work
+
+Three things are generated from the content rather than authored, which is why they cost
+nothing to maintain:
+
+- **Gap-fill sentences** are mined from the reading passages you've already worked through —
+  a real sentence with the word blanked, not an invented one. Matching tolerates inflection
+  (the card says *dépenser*, the passage says *dépense*), so 33 of the single-word cards
+  currently have a sentence. Cards without one simply get a different exercise shape.
+- **Tap-to-translate** searches, in order: today's new words → the passage's own glossary →
+  your deck → a 727-entry built-in lexicon of high-frequency French. That resolves **~85% of
+  the words** in the shipped passages (`npm run check:lookup` measures it). It is not a
+  general dictionary — a real one is several MB and needs licensing. Words it can't resolve
+  offer a manual add with your own translation instead.
+- **Pictogram cards** use emoji, on the 38 concrete cards where a picture actually
+  disambiguates. Abstract entries (*du coup*, *quelque chose de + adjectif*) deliberately
+  have none — Duolingo doesn't picture those either, and a picture for them is noise.
 
 ## Known limits
 
@@ -145,3 +180,10 @@ scripts/
   It is not a DELF result.
 - **iOS suspends speech when the app is backgrounded**, so playback stops if you switch
   away. Restart from the play button.
+- **Karaoke word timing depends on the voice.** It's driven by the speech engine's real
+  `boundary` events, which iOS fires for local voices but not always reliably. When they
+  don't arrive the caption falls back to timing estimated from word length and says so
+  under the word, so you know not to trust the sync precisely.
+- **Written answers are still self-graded.** Hooks are in place for a model to review them
+  (grammar, flow, whether the argument lands), but nothing is wired up — that needs an API
+  key, and it's deliberately not in here yet.

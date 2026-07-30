@@ -1319,3 +1319,296 @@ code {
   padding: 1px 5px;
   border-radius: 5px;
 }
+
+/* ===================================================================
+   Karaoke captions — one word at a time, in sync with the voice
+   =================================================================== */
+
+.modes {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.karaoke {
+  margin-top: 12px;
+  padding: 18px 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.karaoke-speaker {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+}
+
+/* Sized down a little as words get long so a 14-character word still fits on
+   the narrowest iPhone without wrapping mid-word. */
+.karaoke-word {
+  font-size: clamp(26px, 9vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-dim);
+  overflow-wrap: anywhere;
+  transition: color 0.06s linear;
+}
+
+.karaoke-word.on {
+  color: var(--text);
+}
+
+.karaoke-progress {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 260px;
+}
+
+.kp {
+  width: 6px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.kp.done {
+  background: var(--teal);
+}
+
+.karaoke-note {
+  font-size: 11px;
+  color: var(--amber);
+}
+
+mark.spoken {
+  background: var(--teal);
+  color: #06121d;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+/* ===================================================================
+   Reading — every word tappable, translation in a bottom sheet
+   =================================================================== */
+
+/* Word spans are buttons, so they must be stripped back to inline text or the
+   paragraph stops flowing as prose. */
+.reading-para .w {
+  display: inline;
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.reading-para .w.gloss {
+  border-bottom: 1px dashed var(--teal-dim);
+}
+
+/* Your own vocabulary, showing up in real text. A filled box at this density
+   turns the paragraph into a ransom note — a weighted underline reads as an
+   annotation on prose instead. */
+.reading-para .w.known {
+  box-shadow: inset 0 -2px 0 0 color-mix(in srgb, var(--teal) 55%, transparent);
+}
+
+.reading-para .w.active {
+  background: var(--teal);
+  color: #06121d;
+}
+
+.tap-note {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.known-swatch {
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+  box-shadow: inset 0 -2px 0 0 color-mix(in srgb, var(--teal) 55%, transparent);
+}
+
+.sheet-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  border: 0;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.word-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  border-radius: 16px 16px 0 0;
+  padding: 16px 16px calc(env(safe-area-inset-bottom) + 76px);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.28);
+  max-height: 70vh;
+  overflow-y: auto;
+  animation: sheet-up 0.16s ease-out;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(14px);
+    opacity: 0.6;
+  }
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sheet-word {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.sheet-close {
+  border: 0;
+  background: var(--card-2);
+  color: var(--text-dim);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.sheet-en {
+  font-size: 18px;
+  color: var(--teal);
+  margin: 0 0 6px;
+}
+
+.sheet-note {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-dim);
+  margin: 8px 0;
+}
+
+.sheet-meta {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-dim);
+  margin: 10px 0 12px;
+}
+
+.word-sheet .btn {
+  width: 100%;
+}
+
+.word-sheet .type-input {
+  margin-bottom: 10px;
+}
+
+/* ===================================================================
+   Flashcard exercise variants
+   =================================================================== */
+
+.ex-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.card.exercise {
+  min-height: 220px;
+}
+
+.card.exercise .fc-front {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.pictogram {
+  font-size: 72px;
+  line-height: 1;
+  text-align: center;
+  margin: 8px 0 18px;
+}
+
+.fc-emoji {
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.listen-again {
+  display: block;
+  margin: 4px auto 18px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--teal);
+  color: #06121d;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.cloze-sentence {
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 4px 0 14px;
+}
+
+.type-input {
+  width: 100%;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--text);
+  font: inherit;
+  font-size: 19px;
+  padding: 13px;
+  margin-bottom: 12px;
+}
+
+.type-input:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: -1px;
+}
+
+.card.exercise .btn.primary,
+.card.exercise .feedback + .btn {
+  width: 100%;
+}

@@ -10,7 +10,8 @@
     "preview": "vite preview --host",
     "check:content": "node scripts/check-content.mjs",
     "simulate": "node scripts/simulate.mjs",
-    "icons": "python3 scripts/make-icons.py"
+    "icons": "python3 scripts/make-icons.py",
+    "check:lookup": "node scripts/check-lookup.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

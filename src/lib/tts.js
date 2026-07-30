@@ -11,6 +11,7 @@
 //   - speech must start inside a user gesture (our play button qualifies)
 //   - you must cancel() before a new speak() or utterances queue up silently
 //   - onend occasionally never fires, so a watchdog advances the queue
+//   - `boundary` events are unreliable, so word timing falls back to estimates
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -52,25 +53,50 @@ export function estimateSeconds(lines, rate = 1) {
   return Math.round((words / 180) * 60 / Math.max(0.5, rate));
 }
 
-// Plays an array of { speaker, text } lines in order, reporting the active index
-// so the transcript can follow along.
-export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
+// Splits a line into words with their character offsets, so a `boundary` event's
+// charIndex can be mapped back to which word is being spoken. Keeps apostrophes
+// and hyphens inside the word — «quelques-uns» and «l'école» are one word each.
+export function tokenize(text) {
+  const out = [];
+  const re = /[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    out.push({ text: m[0], start: m.index, end: m.index + m[0].length });
+  }
+  return out;
+}
+
+// Plays an array of { speaker, text } lines in order, reporting the active line
+// and — for karaoke captions — the active word within it.
+export function useLineSpeaker({ voices, voiceURI, rate = 0.9, trackWords = false }) {
   const [index, setIndex] = useState(-1);
+  const [wordIndex, setWordIndex] = useState(-1);
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  // Whether the browser actually delivered boundary events. Drives the UI's
+  // decision to trust real timing vs. the estimated fallback.
+  const [boundarySupported, setBoundarySupported] = useState(null);
 
   const linesRef = useRef([]);
   const cursorRef = useRef(0);
   const watchdogRef = useRef(null);
   const tickRef = useRef(null);
+  const fallbackRef = useRef([]);
   const stoppedRef = useRef(true);
   const doneRef = useRef(null);
+  const gotBoundaryRef = useRef(false);
+
+  const clearFallback = () => {
+    fallbackRef.current.forEach((id) => clearTimeout(id));
+    fallbackRef.current = [];
+  };
 
   const clearTimers = () => {
     if (watchdogRef.current) clearTimeout(watchdogRef.current);
     if (tickRef.current) clearInterval(tickRef.current);
     watchdogRef.current = null;
     tickRef.current = null;
+    clearFallback();
   };
 
   const stop = useCallback(() => {
@@ -79,6 +105,7 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
     if (synth) synth.cancel();
     setPlaying(false);
     setIndex(-1);
+    setWordIndex(-1);
     cursorRef.current = 0;
   }, []);
 
@@ -98,6 +125,27 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
     [voices, voiceURI]
   );
 
+  // When `boundary` never fires — Safari does this intermittently — reveal words
+  // on a schedule weighted by length, so the caption still tracks roughly.
+  const scheduleEstimatedWords = useCallback(
+    (words, seconds) => {
+      clearFallback();
+      const chars = words.reduce((n, w) => n + w.text.length, 0) || 1;
+      let acc = 0;
+      words.forEach((w, i) => {
+        const at = (acc / chars) * seconds * 1000;
+        acc += w.text.length;
+        fallbackRef.current.push(
+          setTimeout(() => {
+            // A real boundary event always wins over the estimate.
+            if (!gotBoundaryRef.current) setWordIndex(i);
+          }, at)
+        );
+      });
+    },
+    []
+  );
+
   const speakFrom = useCallback(
     (i) => {
       if (!synth || stoppedRef.current) return;
@@ -106,6 +154,7 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
         clearTimers();
         setPlaying(false);
         setIndex(-1);
+        setWordIndex(-1);
         cursorRef.current = 0;
         stoppedRef.current = true;
         if (doneRef.current) doneRef.current();
@@ -114,6 +163,7 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
 
       cursorRef.current = i;
       setIndex(i);
+      setWordIndex(-1);
 
       const line = lines[i];
       const u = new window.SpeechSynthesisUtterance(line.text);
@@ -126,11 +176,40 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
       const speakers = [...new Set(lines.map((l) => l.speaker).filter(Boolean))];
       u.pitch = speakers.indexOf(line.speaker) % 2 === 1 ? 1.08 : 0.96;
 
+      if (trackWords) {
+        const words = tokenize(line.text);
+        u.onboundary = (e) => {
+          if (e.name && e.name !== 'word') return;
+          gotBoundaryRef.current = true;
+          if (boundarySupported !== true) setBoundarySupported(true);
+          clearFallback();
+          const ci = e.charIndex || 0;
+          // Last word whose start is at or before the reported index.
+          let hit = -1;
+          for (let k = 0; k < words.length; k++) {
+            if (words[k].start <= ci) hit = k;
+            else break;
+          }
+          if (hit >= 0) setWordIndex(hit);
+        };
+        // Give boundary events a moment; if none arrive, fall back to estimates.
+        const secs = estimateSeconds([line], rate);
+        fallbackRef.current.push(
+          setTimeout(() => {
+            if (!gotBoundaryRef.current) {
+              setBoundarySupported(false);
+              scheduleEstimatedWords(words, secs);
+            }
+          }, 350)
+        );
+      }
+
       let advanced = false;
       const advance = () => {
         if (advanced) return;
         advanced = true;
         if (watchdogRef.current) clearTimeout(watchdogRef.current);
+        clearFallback();
         speakFrom(i + 1);
       };
 
@@ -144,7 +223,7 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
       synth.cancel(); // required before speak() on Safari
       synth.speak(u);
     },
-    [rate, voiceFor]
+    [rate, voiceFor, trackWords, boundarySupported, scheduleEstimatedWords]
   );
 
   const play = useCallback(
@@ -154,6 +233,7 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
       linesRef.current = lines.map((l) => (typeof l === 'string' ? { text: l } : l));
       doneRef.current = onDone || null;
       stoppedRef.current = false;
+      gotBoundaryRef.current = false;
       setPlaying(true);
       tickRef.current = setInterval(() => setElapsed((s) => s + 1), 1000);
       speakFrom(0);
@@ -166,18 +246,14 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
     (lines, i) => {
       if (!synth) return;
       stop();
-      linesRef.current = lines.map((l) => (typeof l === 'string' ? { text: l } : l));
+      const all = lines.map((l) => (typeof l === 'string' ? { text: l } : l));
+      linesRef.current = [all[i]];
       doneRef.current = null;
       stoppedRef.current = false;
+      gotBoundaryRef.current = false;
       setPlaying(true);
       tickRef.current = setInterval(() => setElapsed((s) => s + 1), 1000);
-      // Speak this one line, then stop rather than continuing the dialogue.
-      const single = [linesRef.current[i]];
-      const rest = linesRef.current;
-      linesRef.current = single;
-      setIndex(0);
       speakFrom(0);
-      linesRef.current = rest;
     },
     [speakFrom, stop]
   );
@@ -196,5 +272,15 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9 }) {
     return () => document.removeEventListener('visibilitychange', onHide);
   }, [stop]);
 
-  return { play, playLine, stop, playing, index, elapsed, resetElapsed };
+  return {
+    play,
+    playLine,
+    stop,
+    playing,
+    index,
+    wordIndex,
+    boundarySupported,
+    elapsed,
+    resetElapsed,
+  };
 }

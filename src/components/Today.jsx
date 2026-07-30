@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { completeDay, nextScore, recycleWords } from '../engine';
+import { addWords, completeDay, nextScore, recycleWords } from '../engine';
 import Player from './Player';
+import Reading from './Reading';
 
 const STEPS = ['Mots', 'Lecture', 'Écoute', 'Grammaire', 'Quiz'];
 
@@ -11,59 +12,6 @@ function toSentences(text) {
     .split(/(?<=[.!?…])\s+/)
     .map((s) => s.trim())
     .filter(Boolean);
-}
-
-function escapeRegExp(s) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-// Highlights glossary terms inside the reading text so a tap reveals the meaning
-// without leaving the paragraph. Matching is loose on apostrophe style, since
-// content uses ’ and a regex source may not.
-function GlossedText({ text, glossary }) {
-  const [open, setOpen] = useState(null);
-
-  const parts = useMemo(() => {
-    if (!glossary || !glossary.length) return [{ t: text }];
-    const terms = glossary
-      .map((g) => ({ ...g, key: g.fr.replace(/^(le |la |les |l’|un |une |des )/i, '') }))
-      .sort((a, b) => b.key.length - a.key.length)
-      .filter((g) => g.key.length > 3);
-    if (!terms.length) return [{ t: text }];
-
-    const pattern = terms.map((g) => escapeRegExp(g.key).replace(/['’]/g, "['’]")).join('|');
-    const re = new RegExp(`(${pattern})`, 'gi');
-    const out = [];
-    let last = 0;
-    let m;
-    while ((m = re.exec(text)) !== null) {
-      if (m.index > last) out.push({ t: text.slice(last, m.index) });
-      const hit = terms.find((g) => g.key.toLowerCase().replace(/[’']/g, "'") === m[0].toLowerCase().replace(/[’']/g, "'"));
-      out.push({ t: m[0], g: hit });
-      last = m.index + m[0].length;
-    }
-    if (last < text.length) out.push({ t: text.slice(last) });
-    return out;
-  }, [text, glossary]);
-
-  return (
-    <p className="reading-para">
-      {parts.map((p, i) =>
-        p.g ? (
-          <button
-            key={i}
-            className={`gloss${open === i ? ' open' : ''}`}
-            onClick={() => setOpen(open === i ? null : i)}
-          >
-            {p.t}
-            {open === i && <span className="gloss-pop">{p.g.en}</span>}
-          </button>
-        ) : (
-          <span key={i}>{p.t}</span>
-        )
-      )}
-    </p>
-  );
 }
 
 function WordCard({ word, revealed, onToggle }) {
@@ -458,11 +406,13 @@ export default function Today({
         <div className="card">
           <h2>{challenge.title}</h2>
           <span className="kind-tag">{challenge.reading.kind}</span>
-          <div className="reading">
-            {challenge.reading.paragraphs.map((p, i) => (
-              <GlossedText key={i} text={p} glossary={challenge.reading.glossary} />
-            ))}
-          </div>
+          <Reading
+            paragraphs={challenge.reading.paragraphs}
+            glossary={challenge.reading.glossary || []}
+            newWords={challenge.newWords}
+            cards={state.cards}
+            onAdd={(w) => update((s) => addWords(s, [w], today, 'reading'))}
+          />
 
           <Player
             title="Écouter le texte"

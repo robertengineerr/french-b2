@@ -128,7 +128,7 @@ export default function App() {
           />
         )}
         {challenges && tab === 'cards' && (
-          <Flashcards state={state} update={update} today={today} />
+          <Flashcards state={state} update={update} today={today} challenges={challenges} />
         )}
         {challenges && tab === 'stats' && (
           <Stats state={state} stats={stats} challenges={challenges} today={today} />

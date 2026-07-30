@@ -1,11 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
-import { estimateSeconds, ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { estimateSeconds, tokenize, ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
 
 const RATES = [
   { v: 0.7, label: '0,7×', hint: 'très lent' },
   { v: 0.85, label: '0,85×', hint: 'lent' },
   { v: 1, label: '1×', hint: 'normal' },
   { v: 1.15, label: '1,15×', hint: 'rapide' },
+];
+
+// off  — listen blind, nothing on screen
+// word — one word at a time, in sync with the voice (the TikTok-style caption)
+// full — the whole transcript, with the spoken word highlighted in place
+const MODES = [
+  { id: 'off', label: 'Rien' },
+  { id: 'word', label: 'Mot à mot' },
+  { id: 'full', label: 'Texte' },
 ];
 
 export default function Player({
@@ -18,14 +27,16 @@ export default function Player({
 }) {
   const voices = useFrenchVoices();
   const [rate, setRate] = useState(settings.rate || 0.9);
-  const [showText, setShowText] = useState(!showTranscriptToggle);
+  const [mode, setMode] = useState(showTranscriptToggle ? 'off' : 'full');
   const [played, setPlayed] = useState(false);
 
-  const { play, playLine, stop, playing, index, elapsed, resetElapsed } = useLineSpeaker({
-    voices,
-    voiceURI: settings.voiceURI,
-    rate,
-  });
+  const { play, playLine, stop, playing, index, wordIndex, boundarySupported, elapsed, resetElapsed } =
+    useLineSpeaker({
+      voices,
+      voiceURI: settings.voiceURI,
+      rate,
+      trackWords: mode === 'word' || mode === 'full',
+    });
 
   // Report listening time once per stretch of playback rather than every tick.
   const reported = useRef(0);
@@ -40,6 +51,7 @@ export default function Player({
   const supported = ttsSupported();
   const noVoice = supported && voices.length === 0;
   const seconds = estimateSeconds(lines, rate);
+  const activeLine = index >= 0 ? lines[index] : null;
 
   if (!supported) {
     return (
@@ -48,7 +60,7 @@ export default function Player({
           Ce navigateur ne gère pas la synthèse vocale. Sur iPhone, ouvre l’app dans Safari.
           La transcription reste disponible ci-dessous.
         </p>
-        <Transcript lines={lines} index={-1} onReplay={null} visible />
+        <Transcript lines={lines} index={-1} wordIndex={-1} onReplay={null} visible />
       </div>
     );
   }
@@ -98,33 +110,82 @@ export default function Player({
       )}
 
       {showTranscriptToggle && (
-        <button className="btn subtle" onClick={() => setShowText((s) => !s)}>
-          {showText ? 'Masquer la transcription' : 'Afficher la transcription'}
-        </button>
+        <>
+          <div className="modes">
+            {MODES.map((m) => (
+              <button
+                key={m.id}
+                className={`rate${mode === m.id ? ' active' : ''}`}
+                onClick={() => setMode(m.id)}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+          {mode === 'off' && !played && (
+            <p className="muted small">Essaie une première écoute sans rien lire.</p>
+          )}
+        </>
       )}
 
-      {showTranscriptToggle && !showText && !played && (
-        <p className="muted small">Essaie une première écoute sans lire.</p>
+      {mode === 'word' && (
+        <Karaoke
+          line={activeLine}
+          wordIndex={wordIndex}
+          playing={playing}
+          estimated={boundarySupported === false}
+        />
       )}
 
       <Transcript
         lines={lines}
         index={index}
-        visible={showText}
+        wordIndex={wordIndex}
+        visible={mode === 'full'}
         onReplay={(i) => playLine(lines, i)}
       />
     </div>
   );
 }
 
-function Transcript({ lines, index, visible, onReplay }) {
+// One word at a time, big and centred, revealed as it's spoken. Fixed height so
+// the page doesn't jump around while the words change.
+function Karaoke({ line, wordIndex, playing, estimated }) {
+  const words = useMemo(() => (line ? tokenize(line.text) : []), [line]);
+  const current = wordIndex >= 0 && wordIndex < words.length ? words[wordIndex] : null;
+
+  return (
+    <div className="karaoke" aria-live="off">
+      {line && line.speaker && <span className="karaoke-speaker">{line.speaker}</span>}
+      <span className={`karaoke-word${current ? ' on' : ''}`}>
+        {current ? current.text : playing ? '·' : '▶'}
+      </span>
+      {line && (
+        <span className="karaoke-progress" aria-hidden="true">
+          {words.map((_, i) => (
+            <span key={i} className={`kp${i <= wordIndex ? ' done' : ''}`} />
+          ))}
+        </span>
+      )}
+      {estimated && playing && (
+        <span className="karaoke-note">
+          synchronisation estimée — cette voix ne signale pas les mots
+        </span>
+      )}
+    </div>
+  );
+}
+
+function Transcript({ lines, index, wordIndex, visible, onReplay }) {
   if (!visible) return null;
   return (
     <ol className="transcript">
       {lines.map((l, i) => (
         <li key={i} className={i === index ? 'active' : ''}>
           {l.speaker && <span className="speaker">{l.speaker}</span>}
-          <span className="line-text">{l.text}</span>
+          <span className="line-text">
+            {i === index ? <SpokenLine text={l.text} wordIndex={wordIndex} /> : l.text}
+          </span>
           {onReplay && (
             <button className="replay" onClick={() => onReplay(i)} aria-label="Réécouter cette ligne">
               ↺
@@ -133,5 +194,20 @@ function Transcript({ lines, index, visible, onReplay }) {
         </li>
       ))}
     </ol>
+  );
+}
+
+// The active line with the spoken word marked in place, so "Texte" mode still
+// tells you where the voice is.
+function SpokenLine({ text, wordIndex }) {
+  const words = useMemo(() => tokenize(text), [text]);
+  if (wordIndex < 0 || wordIndex >= words.length) return text;
+  const w = words[wordIndex];
+  return (
+    <>
+      {text.slice(0, w.start)}
+      <mark className="spoken">{text.slice(w.start, w.end)}</mark>
+      {text.slice(w.end)}
+    </>
   );
 }
