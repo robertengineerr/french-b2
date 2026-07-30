@@ -1836,3 +1836,22 @@ mark.spoken {
 .picker-cell:disabled {
   cursor: default;
 }
+
+/* Checkbox rows read as a single tap target with the label, not a stray box. */
+.field.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.field.checkbox input {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  accent-color: var(--teal);
+}
+
+.field.checkbox span {
+  margin: 0;
+}

@@ -93,9 +93,11 @@ export default function Practice({ state, update, today, challenges, sentenceBan
     [card && card.id, card && card.reps, phase === 'free' && freeDone, pool.length, canSpeak, photos]
   );
 
-  // Auto-play the audio when a listening card comes up.
+  // Auto-play the audio when a listening card comes up — unless you've turned
+  // that off, in which case the 🔈 button is the only thing that makes noise.
+  const autoPlay = state.settings.autoPlay !== false;
   useEffect(() => {
-    if (question && question.type === TYPES.listen && card && canSpeak) {
+    if (autoPlay && question && question.type === TYPES.listen && card && canSpeak) {
       playLine([{ text: card.fr }], 0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -316,13 +318,18 @@ export default function Practice({ state, update, today, challenges, sentenceBan
               </div>
             )
           ) : question.type === TYPES.listen ? (
-            <button
-              className="listen-again"
-              onClick={() => playLine([{ text: card.fr }], 0)}
-              aria-label="Réécouter"
-            >
-              🔈
-            </button>
+            <>
+              <button
+                className="listen-again"
+                onClick={() => playLine([{ text: card.fr }], 0)}
+                aria-label={autoPlay ? 'Réécouter' : 'Écouter'}
+              >
+                🔈
+              </button>
+              {!autoPlay && (
+                <p className="tiny-note muted">Touche pour écouter — lecture auto désactivée.</p>
+              )}
+            </>
           ) : question.type === TYPES.cloze ? (
             <p className="cloze-sentence">{question.prompt}</p>
           ) : (

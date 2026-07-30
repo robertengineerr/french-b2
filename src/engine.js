@@ -122,6 +122,10 @@ export function freshState(now = new Date()) {
       voiceURI: null,
       reminderTime: '19:00',
       reviewsPerSession: 20,
+      // Whether a listening card starts speaking by itself. On by default,
+      // because that's the point of a listening card — but it's the wrong
+      // default anywhere you can't make noise on demand.
+      autoPlay: true,
     },
     score: START_SCORE,
     scoreHistory: [{ date: today, score: START_SCORE }],

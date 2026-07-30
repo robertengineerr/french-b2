@@ -72,6 +72,7 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9, trackWords = fals
   const [index, setIndex] = useState(-1);
   const [wordIndex, setWordIndex] = useState(-1);
   const [playing, setPlaying] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   // Whether the browser actually delivered boundary events. Drives the UI's
   // decision to trust real timing vs. the estimated fallback.
@@ -85,6 +86,8 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9, trackWords = fals
   const stoppedRef = useRef(true);
   const doneRef = useRef(null);
   const gotBoundaryRef = useRef(false);
+  // Which line to pick up from. Null means nothing is paused.
+  const pausedAtRef = useRef(null);
 
   const clearFallback = () => {
     fallbackRef.current.forEach((id) => clearTimeout(id));
@@ -101,12 +104,35 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9, trackWords = fals
 
   const stop = useCallback(() => {
     stoppedRef.current = true;
+    pausedAtRef.current = null;
     clearTimers();
     if (synth) synth.cancel();
     setPlaying(false);
+    setPaused(false);
     setIndex(-1);
     setWordIndex(-1);
     cursorRef.current = 0;
+  }, []);
+
+  // Pause is implemented as "cancel, and remember which sentence we were on",
+  // not as speechSynthesis.pause().
+  //
+  // The native pause/resume pair is unreliable on iOS — it can leave speech in a
+  // state that never resumes, which is why this hook already stops playback when
+  // the tab is hidden. Cancelling is the one thing that always works, and the
+  // cost of rebuilding from a remembered cursor is that resuming replays the
+  // current sentence from its start rather than mid-word. For listening practice
+  // that's arguably the better behaviour: you hear the whole sentence again,
+  // which is what you wanted anyway if something interrupted you.
+  const pause = useCallback(() => {
+    if (!synth || stoppedRef.current) return;
+    pausedAtRef.current = cursorRef.current;
+    stoppedRef.current = true; // stops speakFrom's onend chain from advancing
+    clearTimers(); // also stops the elapsed tick, so paused time isn't counted
+    synth.cancel();
+    setPlaying(false);
+    setPaused(true);
+    setWordIndex(-1);
   }, []);
 
   // Two voices so a dialogue doesn't sound like one person talking to themselves.
@@ -258,25 +284,43 @@ export function useLineSpeaker({ voices, voiceURI, rate = 0.9, trackWords = fals
     [speakFrom, stop]
   );
 
+  const resume = useCallback(() => {
+    if (!synth || pausedAtRef.current === null) return;
+    const from = pausedAtRef.current;
+    pausedAtRef.current = null;
+    stoppedRef.current = false;
+    gotBoundaryRef.current = false;
+    setPaused(false);
+    setPlaying(true);
+    tickRef.current = setInterval(() => setElapsed((s) => s + 1), 1000);
+    speakFrom(from);
+  }, [speakFrom]);
+
   const resetElapsed = useCallback(() => setElapsed(0), []);
 
   useEffect(() => stop, [stop]);
 
   // If the tab goes away mid-playback, iOS suspends speech in a state it can't
-  // resume from. Cleaner to stop and let the user press play again.
+  // resume from — so playback has to end. But *pause* rather than stop, so the
+  // place is kept: switching apps for ten seconds shouldn't cost you the whole
+  // listen, which is exactly what happens if you're doing this between other
+  // things.
   useEffect(() => {
     const onHide = () => {
-      if (document.visibilityState === 'hidden') stop();
+      if (document.visibilityState === 'hidden') pause();
     };
     document.addEventListener('visibilitychange', onHide);
     return () => document.removeEventListener('visibilitychange', onHide);
-  }, [stop]);
+  }, [pause]);
 
   return {
     play,
     playLine,
     stop,
+    pause,
+    resume,
     playing,
+    paused,
     index,
     wordIndex,
     boundarySupported,

@@ -13,8 +13,8 @@ Every day it serves one challenge:
    tappable**: a sheet slides up with the translation, the base form if you tapped an
    inflection, and a one-tap *add to deck*. Words already in your deck are underlined so you
    can see your own vocabulary turning up in real text.
-3. **A 1–2 minute listen** — a dialogue or podcast extract, spoken on-device, with speed
-   control from 0.7× to 1.15× and three caption modes: nothing at all (listen blind),
+3. **A 1–2 minute listen** — a dialogue or podcast extract, spoken on-device, with pause and
+   resume, speed control from 0.7× to 1.15×, and three caption modes: nothing at all (listen blind),
    **word-by-word** karaoke captions that light up each word as it's spoken, or the full
    transcript with the current word marked in place and per-line replay.
 4. **A grammar point** drawn from the day's text.
@@ -50,6 +50,19 @@ comes from selection rather than generation:
 - **Recycling is targeted, not random.** The words folded back into each day are ranked by
   whether they're due, whether their tags match the day's topic, and whether they're
   leeches you keep forgetting.
+
+## Doing it somewhere you can't make noise
+
+Two things made this awkward in public. Both are fixed:
+
+- **The player pauses.** ❚❚ stops immediately and keeps the place; ▶ resumes at the start of
+  the sentence it was on. Backgrounding the app pauses rather than stops, so switching away
+  for ten seconds no longer costs the whole listen. A separate ■ appears when there's
+  something to stop.
+- **Listening cards can stay quiet.** By default a listening card speaks the moment it
+  appears — which is the point of a listening card, and exactly wrong at a desk. Réglages →
+  Audio → *Lancer l'audio automatiquement* turns that off; the card then waits for you to
+  touch 🔈.
 
 ## Practice runs as long as you want it to
 
@@ -360,8 +373,13 @@ someone looking at the image**, and a bad result is not evidence that a better q
   loop with no ground truth in it.
 - **The level score is an instrument, not an exam.** It tracks your trend on this content.
   It is not a DELF result.
-- **iOS suspends speech when the app is backgrounded**, so playback stops if you switch
-  away. Restart from the play button.
+- **iOS suspends speech when the app is backgrounded**, so playback can't literally continue
+  if you switch away — but it now pauses and keeps its place instead of stopping, so coming
+  back and hitting ▶ picks up where you were rather than at the top.
+- **Pause resumes at the start of the current sentence**, not mid-word. `speechSynthesis`
+  has native pause/resume, but it is unreliable on iOS and can leave speech in a state that
+  never resumes — so pause cancels and remembers which line it was on. For listening practice
+  re-hearing the whole sentence is arguably what you wanted anyway.
 - **Karaoke word timing depends on the voice.** It's driven by the speech engine's real
   `boundary` events, which iOS fires for local voices but not always reliably. When they
   don't arrive the caption falls back to timing estimated from word length and says so

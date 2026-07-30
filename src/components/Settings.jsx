@@ -86,6 +86,20 @@ export default function Settings({ state, update, setState }) {
           </p>
         )}
 
+        <label className="field checkbox">
+          <input
+            type="checkbox"
+            checked={state.settings.autoPlay !== false}
+            onChange={(e) => set('autoPlay', e.target.checked)}
+          />
+          <span>Lancer l’audio automatiquement</span>
+        </label>
+        <p className="muted small">
+          Décoche pour que les cartes d’écoute ne parlent que si tu touches 🔈 — utile au
+          bureau, où une carte qui se met à parler toute seule est le problème. Le lecteur du
+          défi se met en pause avec ❚❚ et reprend au début de la réplique en cours.
+        </p>
+
         <label className="field">
           <span>Vitesse par défaut · {state.settings.rate.toFixed(2)}×</span>
           <input

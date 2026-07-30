@@ -30,8 +30,20 @@ export default function Player({
   const [mode, setMode] = useState(showTranscriptToggle ? 'off' : 'full');
   const [played, setPlayed] = useState(false);
 
-  const { play, playLine, stop, playing, index, wordIndex, boundarySupported, elapsed, resetElapsed } =
-    useLineSpeaker({
+  const {
+    play,
+    playLine,
+    stop,
+    pause,
+    resume,
+    playing,
+    paused,
+    index,
+    wordIndex,
+    boundarySupported,
+    elapsed,
+    resetElapsed,
+  } = useLineSpeaker({
       voices,
       voiceURI: settings.voiceURI,
       rate,
@@ -75,18 +87,37 @@ export default function Player({
   return (
     <div className={`player${compact ? ' compact' : ''}`}>
       <div className="player-row">
-        <button className="play-btn" onClick={playing ? stop : start} disabled={noVoice}>
-          {playing ? '■' : '▶'}
+        <button
+          className="play-btn"
+          onClick={playing ? pause : paused ? resume : start}
+          disabled={noVoice}
+          aria-label={playing ? 'Pause' : paused ? 'Reprendre' : 'Écouter'}
+        >
+          {playing ? '❚❚' : '▶'}
         </button>
         <div className="player-info">
           <span className="player-title">{title || 'Écouter'}</span>
           <span className="player-sub">
             {playing
               ? `${index + 1} / ${lines.length} · ${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}`
-              : `~${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} · ${lines.length} répliques`}
+              : paused
+                ? `en pause · réplique ${index + 1} / ${lines.length}`
+                : `~${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} · ${lines.length} répliques`}
           </span>
         </div>
+        {/* Stop is a separate control now that the big button pauses. Only shown
+            when there's something to stop, so the idle player stays one button. */}
+        {(playing || paused) && (
+          <button className="btn subtle tiny" onClick={stop} aria-label="Arrêter">
+            ■
+          </button>
+        )}
       </div>
+      {paused && (
+        <p className="tiny-note muted">
+          Reprend au début de la réplique en cours — iOS ne sait pas repartir en plein mot.
+        </p>
+      )}
 
       <div className="rates">
         {RATES.map((r) => (
