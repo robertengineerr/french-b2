@@ -27,6 +27,10 @@ self.addEventListener('install', (event) => {
       } catch {
         // First load offline — nothing to precache yet.
       }
+      // The sentence bank gets its own tolerant call. It's optional, and a 404
+      // inside the addAll above would reject the whole batch and lose the packs
+      // with it.
+      await cache.add(new URL('content/sentences.json', scope).pathname).catch(() => {});
       self.skipWaiting();
     })()
   );

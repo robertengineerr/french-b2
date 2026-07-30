@@ -108,32 +108,44 @@ const STOP = new Set(
 // The surface forms a lemma plausibly takes in running text. Enumerating them
 // lets the scan be a set lookup per token instead of ~600 regexes per sentence —
 // the difference between seconds and an afternoon.
+//
+// Returns { safe, risky }. The split matters: for an -er verb, the bare -e and
+// -es endings are exactly where homographs live. "porter" generates "porte",
+// which is overwhelmingly the door; "prêter" generates "prête", which is almost
+// always the adjective "ready". Those forms are still worth having when nothing
+// else turns up, but they must never outrank an unambiguous "-é" or "-ez".
 function expandForms(lemma) {
-  const out = new Set([lemma, lemma + 's']);
+  const safe = new Set([lemma]);
+  const risky = new Set([lemma + 's']);
   if (lemma.length > 3) {
     if (lemma.endsWith('er')) {
       const s = lemma.slice(0, -2);
-      ['er', 'ez', 'ons', 'ent', 'es', 'e', 'ées', 'ée', 'és', 'é', 'aient', 'ait', 'ais'].forEach(
-        (suf) => out.add(s + suf)
+      ['er', 'ez', 'ons', 'ent', 'ées', 'ée', 'és', 'é', 'aient', 'ait', 'ais'].forEach((suf) =>
+        safe.add(s + suf)
       );
+      risky.add(s + 'e');
+      risky.add(s + 'es');
     } else if (lemma.endsWith('ir')) {
       const s = lemma.slice(0, -2);
-      ['ir', 'issent', 'issait', 'it', 'is', 'i', 'ent', 's', 'e'].forEach((suf) => out.add(s + suf));
+      ['ir', 'issent', 'issait', 'it', 'is', 'i'].forEach((suf) => safe.add(s + suf));
+      ['ent', 's', 'e'].forEach((suf) => risky.add(s + suf));
     } else if (lemma.endsWith('re')) {
       const s = lemma.slice(0, -2);
-      ['re', 'ent', 'es', 'e', 'ait', 'aient', 'u', 'us'].forEach((suf) => out.add(s + suf));
+      ['re', 'ent', 'ait', 'aient', 'u', 'us'].forEach((suf) => safe.add(s + suf));
+      risky.add(s + 'e');
+      risky.add(s + 'es');
     } else if (lemma.endsWith('eux')) {
-      out.add(lemma.slice(0, -3) + 'euse');
-      out.add(lemma.slice(0, -3) + 'euses');
+      safe.add(lemma.slice(0, -3) + 'euse');
+      safe.add(lemma.slice(0, -3) + 'euses');
     } else if (lemma.endsWith('f')) {
-      out.add(lemma.slice(0, -1) + 've');
-      out.add(lemma.slice(0, -1) + 'ves');
+      safe.add(lemma.slice(0, -1) + 've');
+      safe.add(lemma.slice(0, -1) + 'ves');
     } else if (!lemma.endsWith('e')) {
-      out.add(lemma + 'e');
-      out.add(lemma + 'es');
+      risky.add(lemma + 'e');
+      risky.add(lemma + 'es');
     }
   }
-  return [...out];
+  return { safe: [...safe], risky: [...risky] };
 }
 
 // ------------------------------------------------------------------- fetching
@@ -195,20 +207,48 @@ function score(fr, en) {
   return s;
 }
 
+// Unambiguous matches always outrank risky ones — that's what makes the bare
+// "-e" forms a genuine last resort rather than just a lower-priority claim.
+// "prêter" matching "prête" (the adjective, "ready") is the case this catches:
+// the sentence stays available, but any real "prêté" sentence wins first.
+function bySafeThenScore(a, b) {
+  if (a.safe !== b.safe) return a.safe ? -1 : 1;
+  return b.sc - a.sc;
+}
+
 // ----------------------------------------------------------------------- main
 
 async function main() {
   const words = candidateWords();
+  const isHeadword = new Set(words);
   const formToLemma = new Map();
-  words.forEach((lemma) => {
-    expandForms(lemma).forEach((f) => {
-      // A form claimed by two lemmas goes to the shorter one — that's the more
-      // likely lemma and the less likely accident of the expansion rules.
-      const prev = formToLemma.get(f);
-      if (!prev || lemma.length < prev.length) formToLemma.set(f, lemma);
-    });
-  });
-  process.stderr.write(`${words.length} target words, ${formToLemma.size} surface forms\n`);
+  const risk = new Set();
+
+  const claim = (form, lemma, risky) => {
+    // A generated form that is itself one of our target words is a homograph,
+    // not an inflection: "porter" generates "porte", and "porte" is its own
+    // entry meaning door. Mapping it to the verb would blank the wrong word in
+    // a real sentence, which reads as a bug rather than an exercise.
+    if (isHeadword.has(form) && form !== lemma) return;
+    const prev = formToLemma.get(form);
+    // Prefer an unambiguous claim over a risky one; otherwise the shorter lemma,
+    // which is the likelier root and the less likely accident of the rules.
+    if (prev && !(risk.has(form) && !risky) && !(lemma.length < prev.length)) return;
+    formToLemma.set(form, lemma);
+    if (risky) risk.add(form);
+    else risk.delete(form);
+  };
+
+  // Two passes so every unambiguous form is claimed before any risky one gets
+  // a look in — within a single pass the iteration order would decide it.
+  const expanded = words.map((w) => [w, expandForms(w)]);
+  expanded.forEach(([lemma, f]) => f.safe.forEach((x) => claim(x, lemma, false)));
+  expanded.forEach(([lemma, f]) => f.risky.forEach((x) => claim(x, lemma, true)));
+
+  process.stderr.write(
+    `${words.length} target words, ${formToLemma.size} surface forms ` +
+      `(${risk.size} ambiguous, kept as last resort)\n`
+  );
 
   const tsv = LOCAL || (await downloadPairs());
   const lines = readFileSync(tsv, 'utf8').split('\n');
@@ -227,22 +267,27 @@ async function main() {
     scanned++;
 
     const sc = score(fr, en);
-    const hit = new Set();
+    // lemma → was this match via an unambiguous form? A sentence that only
+    // matched through a risky form is kept, but ranked below every safe one.
+    const hit = new Map();
     const re = /[\p{L}][\p{L}’'-]*/gu;
     let m;
     while ((m = re.exec(fr)) !== null) {
-      const lemma = formToLemma.get(m[0].toLowerCase());
-      if (lemma) hit.add(lemma);
+      const form = m[0].toLowerCase();
+      const lemma = formToLemma.get(form);
+      if (!lemma) continue;
+      const safe = !risk.has(form);
+      if (safe || !hit.has(lemma)) hit.set(lemma, safe || hit.get(lemma) === true);
     }
     // A sentence carrying five target words is a vocabulary quiz, not a gap-fill;
     // it also means the gap is guessable from the rest. Keep it focused.
     if (hit.size === 0 || hit.size > 4) continue;
 
-    for (const lemma of hit) {
+    for (const [lemma, safe] of hit) {
       const arr = best.get(lemma) || [];
-      arr.push({ fr, en, sc });
+      arr.push({ fr, en, sc, safe });
       if (arr.length > KEEP * 2) {
-        arr.sort((a, b) => b.sc - a.sc);
+        arr.sort(bySafeThenScore);
         arr.length = KEEP;
       }
       best.set(lemma, arr);
@@ -257,14 +302,18 @@ async function main() {
   let covered = 0;
 
   [...best.keys()].sort().forEach((lemma) => {
-    const arr = best.get(lemma).sort((a, b) => b.sc - a.sc);
+    const arr = best.get(lemma).sort(bySafeThenScore);
     const picked = [];
     for (const s of arr) {
-      // Near-duplicates ("Il a dépensé tout." / "Il a dépensé tout !") are the
-      // same question twice.
+      // Two dedup keys, because Tatoeba's duplicates come in two shapes.
+      // Punctuation variants ("Il a dépensé tout." / "…tout !") differ only in
+      // symbols. Politeness variants ("Grâce à toi, …" / "Grâce à vous, …") are
+      // different French but the *same exercise* — and they give themselves away
+      // by sharing an identical English translation.
       const key = s.fr.toLowerCase().replace(/[^\p{L} ]/gu, '');
-      if (picked.some((p) => p.key === key)) continue;
-      picked.push({ ...s, key });
+      const enKey = s.en.toLowerCase().replace(/[^\p{L} ]/gu, '');
+      if (picked.some((p) => p.key === key || p.enKey === enKey)) continue;
+      picked.push({ ...s, key, enKey });
       if (picked.length === PER_WORD) break;
     }
     if (!picked.length) return;

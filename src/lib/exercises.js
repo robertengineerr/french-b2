@@ -76,6 +76,20 @@ export function buildClozeIndex(challenges, cards, bank) {
   return index;
 }
 
+// Renders the sentence with the target word replaced by a blank. The blank is
+// padded with em spaces so it reads as a gap rather than an underscore glued to
+// its neighbours — but French puts a space before some punctuation and not
+// others, and a padded gap sitting in front of a full stop renders as "un _____ ."
+// So the padding is dropped on whichever side meets punctuation, and the
+// sentence's own spaces around the removed word come off either way.
+function gap(c) {
+  const before = c.sentence.slice(0, c.start).replace(/\s+$/, '');
+  const after = c.sentence.slice(c.end).replace(/^\s+/, '');
+  const lead = before ? ' ' : '';
+  const trail = after && !/^[,.;:!?…»)\]]/.test(after) ? ' ' : '';
+  return `${before}${lead}_____${trail}${after}`;
+}
+
 function cut(sentence, m, source) {
   return { sentence, start: m.index, end: m.index + m[0].length, form: m[0], source };
 }
@@ -241,13 +255,7 @@ export function buildQuestion(card, ctx) {
     const { options, answer } = place(c.form, others);
     return {
       type,
-      // The gap is padded with em spaces so it reads as a blank rather than an
-      // underscore glued to the next word; the sentence's own spaces around the
-      // removed word have to come off, or the padding doubles up.
-      prompt:
-        c.sentence.slice(0, c.start).replace(/\s+$/, '') +
-        ' _____ ' +
-        c.sentence.slice(c.end).replace(/^\s+/, ''),
+      prompt: gap(c),
       options,
       answer,
       hint: card.en,
