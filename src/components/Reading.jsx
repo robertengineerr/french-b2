@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { checkBudget, translateWord } from '../lib/claude';
 import { buildIndex, lookup, normalize } from '../lib/lookup';
 import { tokenize } from '../lib/tts';
 import { ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
@@ -9,9 +10,21 @@ import { ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
 //
 // Words already in your deck are marked so you can see your own vocabulary
 // showing up in real text — which is the whole point of the recycling.
-export default function Reading({ paragraphs, glossary = [], newWords = [], cards = [], onAdd }) {
-  const [sel, setSel] = useState(null); // { token, entry }
+export default function Reading({
+  paragraphs,
+  glossary = [],
+  newWords = [],
+  cards = [],
+  onAdd,
+  state,
+  update,
+  today,
+}) {
+  const [sel, setSel] = useState(null); // { token, entry, sentence }
   const [manual, setManual] = useState('');
+  const [ai, setAi] = useState(null); // { data } | { error }
+  const [asking, setAsking] = useState(false);
+  const aiReady = state ? checkBudget(state, today).ok : false;
 
   const index = useMemo(
     () => buildIndex({ newWords, glossary, cards: Object.values(cards) }),
@@ -33,10 +46,29 @@ export default function Reading({ paragraphs, glossary = [], newWords = [], card
   const { playLine } = useLineSpeaker({ voices, voiceURI: null, rate: 0.8 });
   const canSpeak = ttsSupported() && voices.length > 0;
 
-  const tap = (token) => {
+  // The surrounding sentence goes along with the tap: "car" and "or" mean
+  // completely different things depending on it, so a lookup that can consult
+  // context should get the context.
+  const tap = (token, paragraph) => {
     const entry = lookup(token, index);
+    const sentence =
+      (paragraph || '')
+        .split(/(?<=[.!?…])\s+/)
+        .find((s) => s.includes(token)) || paragraph || '';
     setManual('');
-    setSel({ token, entry });
+    setAi(null);
+    setSel({ token, entry, sentence });
+  };
+
+  const askAI = async () => {
+    setAsking(true);
+    setAi(null);
+    const res = await translateWord(state, update, today, {
+      word: sel.token,
+      sentence: sel.sentence,
+    });
+    setAi(res);
+    setAsking(false);
   };
 
   const inDeck = sel && sel.entry && sel.entry.source === 'deck';
@@ -107,12 +139,34 @@ export default function Reading({ paragraphs, glossary = [], newWords = [], card
                   </button>
                 )}
               </>
+            ) : ai && ai.data && ai.data.known ? (
+              <>
+                <p className="sheet-en">{ai.data.en}</p>
+                {ai.data.fr.toLowerCase() !== sel.token.toLowerCase() && (
+                  <p className="muted small">
+                    forme de base&nbsp;: <b>{ai.data.fr}</b>
+                  </p>
+                )}
+                {ai.data.note && <p className="sheet-note">{ai.data.note}</p>}
+                <div className="sheet-meta">traduit par un modèle</div>
+                <button className="btn primary" onClick={() => addIt(ai.data.fr, ai.data.en)}>
+                  + Ajouter au paquet
+                </button>
+              </>
             ) : (
               <>
                 <p className="muted small">
-                  Pas dans le dictionnaire intégré — il ne couvre que le vocabulaire courant
-                  et celui des textes. Écris la traduction si tu veux garder ce mot.
+                  {ai && ai.data && !ai.data.known
+                    ? 'Le modèle ne reconnaît pas ce mot — un nom propre, ou une coquille dans le texte.'
+                    : 'Pas dans le dictionnaire intégré — il ne couvre que le vocabulaire courant et celui des textes.'}
                 </p>
+                {aiReady && !ai && (
+                  <button className="btn" disabled={asking} onClick={askAI}>
+                    {asking ? 'Recherche…' : '✎ Demander au modèle'}
+                  </button>
+                )}
+                {ai && ai.error && <p className="warn small">{ai.error}</p>}
+                <p className="muted small">Ou écris la traduction toi-même.</p>
                 <input
                   className="type-input"
                   value={manual}
@@ -179,11 +233,11 @@ function Paragraph({ text, index, known, onTap, selected }) {
               (isGloss ? ' gloss' : '') +
               (active ? ' active' : '')
             }
-            onClick={() => onTap(p.t)}
+            onClick={() => onTap(p.t, text)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                onTap(p.t);
+                onTap(p.t, text);
               }
             }}
           >

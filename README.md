@@ -1,8 +1,9 @@
 # Parcours B2
 
 An adaptive daily French trainer, built for one specific job: getting from **B1 to B2**.
-It runs as an installable web app on the iPhone home screen — no App Store, no account,
-no server, no API keys. Everything works offline once loaded.
+It runs as an installable web app on the iPhone home screen — no App Store, no account, no
+server. Everything works offline once loaded. There is one optional exception, described
+below: paste an Anthropic API key and a model will mark your written French.
 
 Every day it serves one challenge:
 
@@ -18,15 +19,16 @@ Every day it serves one challenge:
    transcript with the current word marked in place and per-line replay.
 4. **A grammar point** drawn from the day's text.
 5. **A 4–5 question quiz** — comprehension, a gap-fill on the day's grammar, and one open
-   written answer you compare against a model and grade yourself.
+   written answer. You compare it against a model answer and grade yourself; with a key set,
+   a model also marks it for grammar *and* flow.
 
 Finishing it adds the new words to your spaced-repetition deck, updates your level
 estimate, and extends your streak.
 
 ## What "adaptive" means here concretely
 
-There is no LLM call at runtime — that would need a server and a key on your phone.
-Adaptation is real, it just comes from selection rather than generation:
+The daily loop involves no LLM call — content is authored ahead of time, and adaptation
+comes from selection rather than generation:
 
 - **A level score, 0–100.** Starts at 38 (B1.2). After each quiz it moves by
   `10 × (accuracy − 0.75)`, scaled by how hard that challenge was relative to your current
@@ -105,6 +107,50 @@ sentences without anyone having to remember.
 
 Sentences from the bank are labelled as such in the app, with the attribution the licence
 asks for.
+
+## The optional model correction, and why the spend controls are the interesting part
+
+Self-grading has one real hole: you cannot mark grammar you don't know is wrong. So Réglages
+takes an Anthropic API key, and with one set, two things become available — a correction on
+the open written answer (errors quoted from your own text, plus a note on **flow**: linking
+words, sentence variety, whether the argument holds together), and a translation for words the
+built-in lexicon can't resolve.
+
+Everything else works identically without a key. The feature is additive, never load-bearing.
+
+**Model choice.** Sonnet 5 is the default. Worth knowing if you were thinking of picking an
+older model to save money: **Sonnet 5 is currently on introductory pricing at $2/$10 per
+million tokens through 2026-08-31, which makes it cheaper than Sonnet 4.6 at $3/$15** — and
+more capable. Haiku 4.5 ($1/$5) is in the list too and is plenty for word lookups. Picking
+Sonnet 4.6 "to be safe" would cost more for worse corrections, so there is no version of
+"use an older model" that helps here.
+
+**What actually prevents runaway billing** is not the model choice, it's the brakes — five of
+them, all checked *before* the request goes out:
+
+| Brake | Default | What it stops |
+|---|---|---|
+| Monthly USD cap | $2 | The bill, absolutely. Over it, calls are refused. |
+| Daily call cap | 20 | A stuck loop, within the month. |
+| `max_tokens` per call | 700, clamped | One response running long. |
+| Input truncation | 1400 chars | A pasted essay becoming a huge request. |
+| One request in flight | — | A double-tap fanning out. |
+
+The spend meter uses the **token counts the API actually returns**, not an estimate, and it
+prices cache reads at 0.1× and writes at 1.25× so a cached prefix isn't under-reported. A
+typical correction costs well under a cent, which means the $2 default is roughly 200 of them.
+
+The caps live in `localStorage`, so they are only as durable as this browser's data. **Also set
+a spend limit on the key in the [Anthropic console](https://platform.claude.com/).** That one
+cannot be cleared by clearing Safari's data, and it's the one that actually binds. Use a key
+created for this app, not your main one — with no server to hide it behind, the key is
+readable by anything running in this browser.
+
+The correction is deliberately **advisory**: it does not touch your level score. A model
+marking your writing and then moving your level estimate on the strength of its own marking is
+a loop with no ground truth in it, so you still grade yourself. Reading the correction first
+just means you are grading with better information.
+
 
 ## Your starting deck
 
@@ -203,6 +249,7 @@ src/
   lib/exercises.js  the seven review shapes, cloze mining, forgiving typed answers
   lib/forms.js      shared "word without its article" helper
   lib/ics.js        calendar reminder generation
+  lib/claude.js     optional model calls, with the spend brakes
   components/       Today, Reading, Player, Practice, Stats, Settings
 scripts/
   check-content.mjs    content validation
@@ -235,8 +282,11 @@ nothing to maintain:
 - **Speech is read, not performed.** On-device TTS has correct pronunciation and no
   regional accent variety. It's good for comprehension drilling; it won't prepare you for
   someone mumbling on a train platform. Real audio is the eventual upgrade.
-- **Open answers are self-graded.** Nothing checks your French. The model answer is the
-  reference, and honest self-grading is what keeps the level estimate meaningful.
+- **Open answers are self-graded by default.** Without a key, nothing checks your French —
+  the model answer is the reference, and honest self-grading is what keeps the level estimate
+  meaningful. With a key, the correction is advisory: it does not feed the level score, because
+  a model marking your work and then moving your level on the strength of its own marking is a
+  loop with no ground truth in it.
 - **The level score is an instrument, not an exam.** It tracks your trend on this content.
   It is not a DELF result.
 - **iOS suspends speech when the app is backgrounded**, so playback stops if you switch
@@ -245,6 +295,6 @@ nothing to maintain:
   `boundary` events, which iOS fires for local voices but not always reliably. When they
   don't arrive the caption falls back to timing estimated from word length and says so
   under the word, so you know not to trust the sync precisely.
-- **Written answers are still self-graded.** Hooks are in place for a model to review them
-  (grammar, flow, whether the argument lands), but nothing is wired up — that needs an API
-  key, and it's deliberately not in here yet.
+- **The API key is visible to this browser.** There is no server to hide it behind — that's
+  the whole point of the architecture, and it's the cost of it. Use a key created for this app
+  with its own spend limit, not your main one.

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { addWords, completeDay, nextScore, recycleWords } from '../engine';
+import { checkBudget, reviewWriting } from '../lib/claude';
 import Player from './Player';
 import Reading from './Reading';
 
@@ -30,15 +31,26 @@ function WordCard({ word, revealed, onToggle }) {
   );
 }
 
-function Quiz({ items, onFinish }) {
+function Quiz({ items, onFinish, state, update, today }) {
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [draft, setDraft] = useState('');
   const [showModel, setShowModel] = useState(false);
+  const [review, setReview] = useState(null); // { data } | { error }
+  const [reviewing, setReviewing] = useState(false);
 
   const q = items[i];
   const isLast = i === items.length - 1;
+  const aiReady = checkBudget(state, today).ok;
+
+  const askReview = async () => {
+    setReviewing(true);
+    setReview(null);
+    const res = await reviewWriting(state, update, today, { question: q.q, answer: draft });
+    setReview(res);
+    setReviewing(false);
+  };
 
   const record = (points) => {
     const next = [...answers, points];
@@ -50,6 +62,7 @@ function Quiz({ items, onFinish }) {
       setPicked(null);
       setDraft('');
       setShowModel(false);
+      setReview(null);
     }
   };
 
@@ -77,6 +90,17 @@ function Quiz({ items, onFinish }) {
               <h4>Réponse modèle</h4>
               <p>{q.model}</p>
             </div>
+
+            {/* The model answer is a reference, not a target. If a key is set, the
+                real question — does your own French work? — can actually be answered. */}
+            {aiReady && !review && (
+              <button className="btn" disabled={reviewing} onClick={askReview}>
+                {reviewing ? 'Relecture…' : '✎ Faire relire ma réponse'}
+              </button>
+            )}
+            {review && review.error && <p className="warn small">{review.error}</p>}
+            {review && review.data && <WritingFeedback f={review.data} />}
+
             <p className="self-grade-label">Ta réponse s’en approche&nbsp;?</p>
             <div className="row">
               <button className="btn good" onClick={() => record(1)}>
@@ -129,6 +153,50 @@ function Quiz({ items, onFinish }) {
           </button>
         </>
       )}
+    </div>
+  );
+}
+
+// The written-feedback panel. Corrections first because they're actionable, then
+// the flow note, which is the part self-grading can't give you at all.
+function WritingFeedback({ f }) {
+  return (
+    <div className={`wf wf-${f.verdict.replace(/\s+/g, '-')}`}>
+      <div className="wf-head">
+        <span className="wf-verdict">{f.verdict}</span>
+        <span className="muted small">relu par un modèle</span>
+      </div>
+
+      {f.corrections.length === 0 ? (
+        <p className="small">Rien à corriger dans la langue.</p>
+      ) : (
+        <ul className="wf-corr">
+          {f.corrections.map((c, k) => (
+            <li key={k}>
+              <span className="wf-wrong">{c.wrong}</span>
+              <span className="wf-arrow" aria-hidden="true">
+                →
+              </span>
+              <span className="wf-right">{c.right}</span>
+              <span className="wf-why">{c.why}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <p className="wf-flow">
+        <b>Fluidité.</b> {f.flow}
+      </p>
+      <p className="wf-strength">
+        <b>Ce qui marche.</b> {f.strength}
+      </p>
+      <p className="wf-b2">
+        <b>Pour viser le B2.</b> {f.b2}
+      </p>
+      <p className="tiny-note muted">
+        Une relecture automatique, pas un correcteur d’examen. Note-toi honnêtement quand même
+        — c’est ce qui garde ton niveau estimé utile.
+      </p>
     </div>
   );
 }
@@ -412,6 +480,9 @@ export default function Today({
             newWords={challenge.newWords}
             cards={state.cards}
             onAdd={(w) => update((s) => addWords(s, [w], today, 'reading'))}
+            state={state}
+            update={update}
+            today={today}
           />
 
           <Player
@@ -473,7 +544,13 @@ export default function Today({
 
       {step === 4 && (
         <div className="card">
-          <Quiz items={challenge.quiz} onFinish={finishQuiz} />
+          <Quiz
+            items={challenge.quiz}
+            onFinish={finishQuiz}
+            state={state}
+            update={update}
+            today={today}
+          />
         </div>
       )}
     </div>

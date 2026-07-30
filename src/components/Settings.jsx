@@ -1,16 +1,25 @@
 import { useRef, useState } from 'react';
-import { freshState, STORAGE_KEY } from '../engine';
+import { dayKey, freshState, STORAGE_KEY } from '../engine';
 import { downloadReminder } from '../lib/ics';
 import { useFrenchVoices } from '../lib/tts';
+import { aiState, callsToday, fmt, MODELS, monthKey, spentThisMonth } from '../lib/claude';
 
 export default function Settings({ state, update, setState }) {
   const voices = useFrenchVoices();
   const [confirmReset, setConfirmReset] = useState(false);
   const [msg, setMsg] = useState(null);
+  const [showKey, setShowKey] = useState(false);
   const fileRef = useRef(null);
+  const today = dayKey();
 
   const set = (key, value) =>
     update((s) => ({ ...s, settings: { ...s.settings, [key]: value } }));
+
+  const ai = aiState(state);
+  const setAI = (key, value) =>
+    update((s) => ({ ...s, ai: { ...aiState(s), [key]: value } }));
+  const spent = spentThisMonth(state, today);
+  const pctSpent = Math.min(100, (spent / ai.capUSD) * 100);
 
   const exportJSON = () => {
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
@@ -107,6 +116,113 @@ export default function Settings({ state, update, setState }) {
           20 cartes prennent environ quatre minutes. Au-delà de 40, la qualité des réponses
           baisse plus vite que le nombre de cartes n’augmente.
         </p>
+      </div>
+
+      <div className="card">
+        <h2>Correction IA (facultatif)</h2>
+        <p className="muted small">
+          Avec une clé API Anthropic, un modèle relit tes réponses écrites — grammaire{' '}
+          <i>et</i> fluidité — et traduit les mots que le dictionnaire intégré ne connaît pas.
+          Sans clé, rien ne change : l’auto-évaluation et l’ajout manuel continuent de marcher.
+        </p>
+
+        <label className="field">
+          <span>Clé API</span>
+          <div className="key-row">
+            <input
+              type={showKey ? 'text' : 'password'}
+              value={ai.key}
+              onChange={(e) => setAI('key', e.target.value.trim())}
+              placeholder="sk-ant-…"
+              autoCapitalize="off"
+              autoCorrect="off"
+              spellCheck={false}
+            />
+            <button className="btn subtle tiny" onClick={() => setShowKey(!showKey)}>
+              {showKey ? 'cacher' : 'voir'}
+            </button>
+          </div>
+        </label>
+        <p className="muted small">
+          Elle est stockée dans ce navigateur, comme le reste, et envoyée directement à
+          l’API — il n’y a pas de serveur intermédiaire. Ce qui veut dire qu’elle est lisible
+          par ce navigateur&nbsp;: utilise une clé dédiée à cette app, avec sa propre limite de
+          dépenses côté Anthropic, et pas ta clé principale.
+        </p>
+
+        <label className="field">
+          <span>Modèle</span>
+          <select value={ai.model} onChange={(e) => setAI('model', e.target.value)}>
+            {MODELS.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.label} — {m.blurb}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="field">
+          <span>Plafond mensuel · ${ai.capUSD.toFixed(2)}</span>
+          <input
+            type="range"
+            min="0.5"
+            max="20"
+            step="0.5"
+            value={ai.capUSD}
+            onChange={(e) => setAI('capUSD', Number(e.target.value))}
+          />
+        </label>
+        <label className="field">
+          <span>Appels maximum par jour · {ai.dailyCalls}</span>
+          <input
+            type="range"
+            min="5"
+            max="100"
+            step="5"
+            value={ai.dailyCalls}
+            onChange={(e) => setAI('dailyCalls', Number(e.target.value))}
+          />
+        </label>
+
+        <div className="spend">
+          <p className="small">
+            <b>{fmt(spent)}</b> dépensés en {monthKey(today)} sur {fmt(ai.capUSD)} ·{' '}
+            {callsToday(state, today)} appel{callsToday(state, today) > 1 ? 's' : ''} aujourd’hui
+          </p>
+          <div className="spend-bar">
+            {/* A hair of width even at zero, so an empty meter still reads as a
+                meter rather than as another slider with a missing thumb. */}
+            <span
+              style={{ width: `${Math.max(pctSpent, 1.5)}%` }}
+              className={pctSpent > 80 ? 'hot' : ''}
+            />
+          </div>
+        </div>
+        <p className="muted small">
+          Le compteur utilise les jetons réellement facturés, pas une estimation. Au plafond,
+          les appels sont refusés — l’app continue de fonctionner sans eux. Une correction
+          coûte typiquement moins d’un centime, donc {fmt(ai.capUSD)} par mois est déjà
+          beaucoup. Mets aussi une limite sur la clé dans la console Anthropic&nbsp;: celle-là,
+          vider le navigateur ne l’efface pas.
+        </p>
+
+        <div className="row">
+          <button
+            className={ai.enabled ? 'btn' : 'btn primary'}
+            onClick={() => setAI('enabled', !ai.enabled)}
+          >
+            {ai.enabled ? 'Désactiver l’IA' : 'Réactiver l’IA'}
+          </button>
+          <button
+            className="btn subtle"
+            onClick={() => {
+              setAI('spend', {});
+              setMsg('Compteur de dépenses remis à zéro (ça n’annule pas la facture).');
+            }}
+          >
+            Remettre le compteur à zéro
+          </button>
+        </div>
       </div>
 
       <div className="card">

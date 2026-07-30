@@ -1021,6 +1021,123 @@ body {
   margin: 8px 0 0;
 }
 
+/* ------------------------------------------------- AI writing feedback */
+
+.wf {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--teal);
+  border-radius: var(--radius);
+  background: var(--card-2);
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+
+.wf-à-retravailler {
+  border-left-color: var(--amber);
+}
+
+.wf-solide {
+  border-left-color: var(--green);
+}
+
+.wf-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.wf-verdict {
+  font-weight: 700;
+  text-transform: lowercase;
+  font-size: 15px;
+}
+
+.wf-corr {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.wf-corr li {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: baseline;
+  gap: 4px 6px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.wf-wrong {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  color: var(--text-dim);
+}
+
+.wf-arrow {
+  color: var(--text-dim);
+}
+
+.wf-right {
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.wf-why {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+.wf p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+/* ------------------------------------------------------ spend metering */
+
+.key-row {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.key-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.spend {
+  margin: 14px 0 6px;
+}
+
+.spend-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.spend-bar span {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+  transition: width 0.3s;
+}
+
+.spend-bar span.hot {
+  background: var(--amber);
+}
+
+.spend p {
+  margin: 0 0 6px;
+}
+
 /* --------------------------------------------------------------- stats */
 
 .level-row {
