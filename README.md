@@ -59,11 +59,19 @@ The **Pratique** tab has two phases, and the difference is deliberate.
 and they move the schedule.
 
 **Free practice** is everything else, and it doesn't run out. When the due queue empties, the
-tab offers *Pratique libre — sans limite*: cards drawn weakest-first from the whole deck,
-refilling before the queue empties so there's never a "come back tomorrow" wall.
-Weakest-first means ranked by lapses, current streak, interval, whether the card has ever
-actually been tested, and how overdue it is — so extra drilling lands on the words you keep
-dropping rather than the ones you already own.
+tab offers *Pratique libre — sans limite*: cards drawn from the whole deck, refilling before
+the queue empties so there's never a "come back tomorrow" wall.
+
+Both phases **draw** rather than sort. Each card gets a weight from how much work it needs —
+lapses, current streak, interval, whether it's ever actually been tested, how overdue it is —
+and the queue is a weighted random sample. That matters because sorting by that score, even
+with jitter, produces the same run every session; a draw doesn't. Measured on a deck that's
+a third leeches and a third solid cards, the draw comes out **83% leeches and 1% solid**, and
+eight consecutive sessions opened on eight different cards. In the review phase, corrections
+are 5% of the deck and land in the top five in 44 runs out of 50.
+
+So it's prioritised without being fixed: the words you keep dropping dominate, but which of
+them you see, and in what order, changes each time.
 
 Free practice grades on two buttons — *je savais* / *je ne savais pas* — because **a correct
 answer there deliberately does not extend the interval.** Getting a card right on your fifth

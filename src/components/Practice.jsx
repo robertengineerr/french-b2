@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { dueCards, gradeCard, isMastered, practiceCards, practiceGrade } from '../engine';
+import { dueCards, gradeCard, isMastered, practiceCards, practiceGrade, reviewQueue } from '../engine';
 import { buildClozeIndex, buildQuestion, checkTyped, TYPES } from '../lib/exercises';
 import { usePhotos } from '../lib/photos';
 import { ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
@@ -70,7 +70,7 @@ export default function Practice({ state, update, today, challenges, sentenceBan
     builtFor.current = today;
     servedRef.current = [];
     setPhase('review');
-    setQueue(allDue.slice(0, limit).map((c) => c.id));
+    setQueue(reviewQueue(state, today, limit).map((c) => c.id));
     setDone(0);
     setAgain(0);
     setFreeDone(0);
@@ -168,8 +168,14 @@ export default function Practice({ state, update, today, challenges, sentenceBan
   };
 
   const startMore = () => {
-    const remaining = allDue.filter((c) => !queue || !queue.includes(c.id));
-    setQueue(remaining.slice(0, limit).map((c) => c.id));
+    // Draw from what's still due rather than taking the next slice, so a second
+    // batch isn't just the tail of the same fixed list.
+    const seen = new Set(queue || []);
+    const remaining = { ...state, cards: {} };
+    allDue.forEach((c) => {
+      if (!seen.has(c.id)) remaining.cards[c.id] = c;
+    });
+    setQueue(reviewQueue(remaining, today, limit).map((c) => c.id));
     clear();
   };
 

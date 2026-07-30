@@ -429,24 +429,69 @@ export function lockServed(state, challengeId, today = dayKey()) {
 // keep dropping rather than the ones you already own.
 //
 // `exclude` lets the caller skip what it has already served this session.
-export function practiceCards(state, today = dayKey(), limit = 20, exclude = []) {
+// How badly a card needs work. Positive means "drill this", negative means
+// "it's settled". Used as the weight for the draw below, not as a sort key.
+function weakness(c, today) {
+  let w = 0;
+  w += c.lapses * 3; // forgotten often → drill it
+  w -= Math.min(c.streak, 6) * 2; // already solid → leave it alone
+  w -= Math.min(c.interval, 60) / 12; // long interval means it's settled
+  if (c.reps === 0) w += 4; // never actually tested
+  if (c.fix) w += 2; // a correction is worth re-reading
+  const overdue = daysBetween(c.due, today);
+  if (overdue > 0) w += Math.min(overdue, 10) * 0.5;
+  return w;
+}
+
+// Weighted sampling without replacement (Efraimidis–Spirakis): give each item a
+// key of rand^(1/weight) and take the largest. An item with ten times the weight
+// is ten times as likely to come out on top, but nothing is guaranteed a place —
+// which is exactly the difference between "prioritised" and "in a fixed order".
+function weightedSample(items, weightOf, k, rand) {
+  return items
+    .map((item) => ({ item, key: Math.pow(rand(), 1 / Math.max(weightOf(item), 1e-6)) }))
+    .sort((a, b) => b.key - a.key)
+    .slice(0, k)
+    .map((x) => x.item);
+}
+
+// Converts weakness into a positive weight. Exponential rather than linear so
+// the ordering is scale-free: TEMP sets how sharply the draw favours weak cards.
+// At 6, the weakest card in a typical deck is a few hundred times likelier than
+// the most settled one — strongly prioritised, while still leaving room for a
+// solid card to turn up occasionally, which is good interleaving rather than a
+// bug.
+const TEMP = 6;
+
+// Draws the next batch of practice cards, weakest-first *in expectation*.
+//
+// This used to sort by weakness with a small random jitter, seeded on the date —
+// which meant re-entering the tab produced the identical order every time, since
+// the seed never changed within a day. Sorting can't shuffle; a draw can. `seed`
+// is exposed so the simulation stays reproducible, and defaults to random so the
+// app doesn't.
+export function practiceCards(state, today = dayKey(), limit = 20, exclude = [], seed = null) {
   const skip = new Set(exclude);
-  const rand = mulberry32(hashString('practice' + today + exclude.length));
-  const weakness = (c) => {
-    let w = 0;
-    w += c.lapses * 3; // forgotten often → drill it
-    w -= Math.min(c.streak, 6) * 2; // already solid → leave it alone
-    w -= Math.min(c.interval, 60) / 12; // long interval means it's settled
-    if (c.reps === 0) w += 4; // never actually tested
-    if (c.fix) w += 2; // a correction is worth re-reading
-    const overdue = daysBetween(c.due, today);
-    if (overdue > 0) w += Math.min(overdue, 10) * 0.5;
-    return w + rand() * 2.5; // keep the order from feeling fixed
+  const rand = seed === null ? Math.random : mulberry32(hashString(String(seed)));
+  const pool = Object.values(state.cards).filter((c) => !skip.has(c.id));
+  return weightedSample(pool, (c) => Math.exp(weakness(c, today) / TEMP), limit, rand);
+}
+
+// The review queue: the cards spaced repetition says are due, in an order that
+// varies between sessions. Everything due gets worked eventually, so the order
+// is about not seeing the same run every day — but corrections and badly overdue
+// cards still come up first far more often than not.
+export function reviewQueue(state, today = dayKey(), limit = 20, seed = null) {
+  const rand = seed === null ? Math.random : mulberry32(hashString(String(seed)));
+  const due = dueCards(state, today);
+  const urgency = (c) => {
+    let u = 1;
+    if (c.fix) u += 6; // a correction is the most valuable thing in the deck
+    u += Math.min(Math.max(daysBetween(c.due, today), 0), 14) * 0.6;
+    if (c.reps === 0) u += 1.5;
+    return Math.exp(u / 3);
   };
-  return Object.values(state.cards)
-    .filter((c) => !skip.has(c.id))
-    .sort((a, b) => weakness(b) - weakness(a))
-    .slice(0, limit);
+  return weightedSample(due, urgency, limit, rand);
 }
 
 // Grading in free practice deliberately does NOT extend intervals. Getting a card
