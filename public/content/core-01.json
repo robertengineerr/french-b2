@@ -1,0 +1,921 @@
+{
+  "pack": "core-01",
+  "label": "Everyday footing (B1.1–B1.2)",
+  "challenges": [
+    {
+      "id": "coloc",
+      "title": "La colocation",
+      "subtitle": "Two roommates work out who does what.",
+      "difficulty": 1,
+      "topics": ["logement", "relations"],
+      "newWords": [
+        { "fr": "la vaisselle", "en": "the dishes / washing-up", "note": "faire la vaisselle = to do the dishes." },
+        { "fr": "en avoir marre (de)", "en": "to be fed up (with)", "note": "Familiar and everywhere: j’en ai marre." },
+        { "fr": "à tour de rôle", "en": "taking turns, in turns" }
+      ],
+      "reading": {
+        "kind": "conversation",
+        "paragraphs": [
+          "Depuis trois mois, Karim vit en colocation avec Elsa. Au début, tout allait bien : ils faisaient les courses ensemble et ils partageaient le loyer sans discuter. Petit à petit, un problème est apparu. La vaisselle restait dans l’évier toute la journée, et personne ne voulait la faire.",
+          "« Franchement, j’en ai marre », dit Elsa un soir. « Je rentre du travail, je suis fatiguée, et il y a encore tes assiettes partout. » Karim n’était pas d’accord : « Attends, hier c’était moi qui ai tout nettoyé. Tu ne te souviens pas ? »",
+          "Au lieu de se disputer, ils ont pris une feuille de papier et ils ont écrit un planning. Chacun s’occupe de la cuisine à tour de rôle, un jour sur deux. Ce n’est pas parfait, mais ça a du sens. Depuis, l’appartement est propre — ou au moins, plus propre qu’avant."
+        ],
+        "glossary": [
+          { "fr": "l’évier", "en": "the kitchen sink" },
+          { "fr": "un jour sur deux", "en": "every other day" },
+          { "fr": "se disputer", "en": "to argue" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Elsa", "text": "Karim, tu as vu la cuisine ? Il y a des assiettes partout." },
+          { "speaker": "Karim", "text": "Oui, je sais, je m’en occupe ce soir. Promis." },
+          { "speaker": "Elsa", "text": "Tu dis ça toutes les semaines, et après tu oublies." },
+          { "speaker": "Karim", "text": "Bon, d’accord. Tu as raison. On fait un planning ?" },
+          { "speaker": "Elsa", "text": "Oui. Un jour toi, un jour moi. À tour de rôle, c’est plus juste." },
+          { "speaker": "Karim", "text": "Et pour les courses ? On continue comme avant, ensemble le samedi ?" },
+          { "speaker": "Elsa", "text": "Ça me va. Franchement, ce n’est pas la vaisselle qui me dérange." },
+          { "speaker": "Karim", "text": "Ah bon ? C’est quoi alors ?" },
+          { "speaker": "Elsa", "text": "C’est de devoir le demander dix fois. Du coup, je perds patience." },
+          { "speaker": "Karim", "text": "Ça, je comprends. Je vais faire un effort, vraiment." }
+        ]
+      },
+      "grammar": {
+        "point": "ne pas + verbe + DE",
+        "explain": "In the negative, the articles un / une / du / de la / des all collapse into de (or d’). This is one of the fastest ways to stop sounding like a beginner.",
+        "examples": [
+          "J’ai un problème → Je n’ai pas DE problème.",
+          "Il boit du café → Il ne boit pas DE café.",
+          "Elle achète des assiettes → Elle n’achète pas D’assiettes.",
+          "Careful — with être, nothing changes: ce n’est pas UN problème."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi Elsa est-elle énervée ?",
+          "options": [
+            "Karim ne paie pas sa part du loyer.",
+            "Karim laisse la vaisselle sale dans la cuisine.",
+            "Karim invite trop d’amis à la maison.",
+            "Karim ne veut pas faire les courses."
+          ],
+          "answer": 1,
+          "why": "« La vaisselle restait dans l’évier toute la journée » — le loyer, lui, était partagé sans discuter."
+        },
+        {
+          "type": "tf",
+          "q": "Elsa dit que le vrai problème, c’est de devoir répéter sa demande plusieurs fois.",
+          "answer": true,
+          "why": "« C’est de devoir le demander dix fois. » Ce n’est pas la vaisselle en elle-même."
+        },
+        {
+          "type": "gap",
+          "q": "Je suis fatigué de cette situation. J’en ___ vraiment.",
+          "options": ["ai marre", "ai envie", "ai besoin", "ai peur"],
+          "answer": 0,
+          "why": "en avoir marre de = to be fed up with. « En avoir envie » veut dire le contraire."
+        },
+        {
+          "type": "gap",
+          "q": "Mets la phrase au négatif : « J’ai une solution. » → « Je n’ai pas ___ solution. »",
+          "options": ["de", "une", "la", "d’une"],
+          "answer": 0,
+          "why": "Le point de grammaire du jour : une → DE après une négation."
+        },
+        {
+          "type": "open",
+          "q": "En trois ou quatre phrases : décris un désaccord que tu as eu avec un colocataire, un frère ou un collègue. Utilise « au lieu de » et « du coup ».",
+          "model": "Il y a deux ans, je partageais un appartement avec un ami. Il laissait toujours ses affaires dans le salon, et du coup je ne pouvais pas travailler. Au lieu de me disputer avec lui, je lui ai proposé de ranger un peu chaque soir. Petit à petit, ça a marché."
+        }
+      ]
+    },
+    {
+      "id": "pause-travail",
+      "title": "Le droit à la pause",
+      "subtitle": "Why French workplaces take breaks seriously.",
+      "difficulty": 1,
+      "topics": ["travail", "culture"],
+      "newWords": [
+        { "fr": "le salarié / la salariée", "en": "the employee (someone on a salary)" },
+        { "fr": "avoir droit à", "en": "to be entitled to", "note": "avoir droit à une pause; avoir le droit DE faire quelque chose." },
+        { "fr": "souffler", "en": "to catch your breath, to take a breather", "note": "Literally 'to blow'. Très courant : j’ai besoin de souffler." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "En France, un salarié qui travaille plus de six heures d’affilée a droit à une pause d’au moins vingt minutes. Ce n’est pas un cadeau de l’entreprise : c’est la loi. Beaucoup d’équipes prennent aussi une pause-café le matin, souvent vers dix heures, et ce moment est presque un rituel.",
+          "Pour un Américain, cela peut sembler étrange. Aux États-Unis, on mange souvent devant son ordinateur, en vingt minutes, sans quitter son bureau. En France, le déjeuner est un vrai repas : on sort, on discute, on parle de tout sauf du travail. Un collègue qui reste seul à son bureau inquiète un peu les autres.",
+          "Est-ce que cela fait perdre du temps ? Les études disent le contraire. Après une pause, on est plus concentré, on fait moins d’erreurs, et l’ambiance de l’équipe est meilleure. Franchement, il vaut mieux souffler vingt minutes que rester assis huit heures sans lever la tête."
+        ],
+        "glossary": [
+          { "fr": "d’affilée", "en": "in a row, straight" },
+          { "fr": "un cadeau", "en": "a gift" },
+          { "fr": "l’ambiance", "en": "the atmosphere, the mood" },
+          { "fr": "il vaut mieux", "en": "it's better to" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Thomas", "text": "Tu viens ? On descend prendre un café." },
+          { "speaker": "Robert", "text": "Non merci, je dois finir ce rapport avant midi." },
+          { "speaker": "Thomas", "text": "Il est dix heures. Tu es là depuis sept heures et demie." },
+          { "speaker": "Robert", "text": "Je sais, mais si je m’arrête, je perds le fil." },
+          { "speaker": "Thomas", "text": "Écoute, quinze minutes, ça ne va pas tout changer." },
+          { "speaker": "Robert", "text": "Bon, tu as peut-être raison. J’ai mal à la tête, en fait." },
+          { "speaker": "Thomas", "text": "Voilà. C’est exactement pour ça qu’on fait une pause." },
+          { "speaker": "Robert", "text": "Chez moi, aux États-Unis, on mangeait devant l’écran." },
+          { "speaker": "Thomas", "text": "Ah oui ? Ici, ça inquiéterait tout le monde." },
+          { "speaker": "Robert", "text": "Du coup, je vais m’adapter. Allez, on y va." }
+        ]
+      },
+      "grammar": {
+        "point": "avoir droit À vs avoir le droit DE",
+        "explain": "Two different structures, one letter apart in meaning. Before a noun you use à; before a verb you use de.",
+        "examples": [
+          "Il a droit À une pause. (noun)",
+          "Il a le droit DE partir plus tôt. (verb)",
+          "Tu n’as pas le droit DE fumer ici."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Après combien d’heures de travail un salarié français a-t-il droit à une pause ?",
+          "options": ["Après quatre heures", "Après six heures", "Après huit heures", "La loi ne dit rien"],
+          "answer": 1,
+          "why": "« Un salarié qui travaille plus de six heures d’affilée a droit à une pause d’au moins vingt minutes. »"
+        },
+        {
+          "type": "tf",
+          "q": "Selon le texte, les pauses font perdre du temps à l’entreprise.",
+          "answer": false,
+          "why": "« Les études disent le contraire » — on est plus concentré et on fait moins d’erreurs."
+        },
+        {
+          "type": "gap",
+          "q": "Je suis épuisé. J’ai besoin de ___ cinq minutes.",
+          "options": ["souffler", "goûter", "saluer", "gérer"],
+          "answer": 0,
+          "why": "souffler = to take a breather. Les autres verbes existent, mais ne vont pas ici."
+        },
+        {
+          "type": "gap",
+          "q": "Tu n’as pas le droit ___ entrer sans badge.",
+          "options": ["d’", "à", "de l’", "pour"],
+          "answer": 0,
+          "why": "avoir le droit DE + verbe. Devant une voyelle, de → d’."
+        },
+        {
+          "type": "open",
+          "q": "Compare les pauses dans ton travail et celles décrites dans le texte. Utilise « au lieu de » et « surtout ».",
+          "model": "Dans mon entreprise, on prend rarement de vraie pause. Au lieu de sortir, la plupart des ingénieurs mangent devant leur ordinateur, surtout quand il y a une échéance. Moi, j’essaie de marcher dix minutes après le déjeuner. Je reviens plus concentré, c’est évident."
+        }
+      ]
+    },
+    {
+      "id": "chercher-appart",
+      "title": "Chercher un appartement",
+      "subtitle": "Rent, deposits, and the paperwork nobody warns you about.",
+      "difficulty": 2,
+      "topics": ["logement", "argent"],
+      "newWords": [
+        { "fr": "la caution", "en": "the security deposit", "note": "Also called le dépôt de garantie. Usually one month's rent." },
+        { "fr": "les charges (f. pl.)", "en": "building fees / utilities included in the rent", "note": "loyer charges comprises = rent with fees included." },
+        { "fr": "le dossier", "en": "the application file", "note": "In France, renting means assembling a dossier of documents." },
+        { "fr": "un logement", "en": "a place to live, housing", "note": "More neutral and more common in writing than 'appartement'." }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "Quand je suis arrivé à Lyon, je pensais qu’il suffisait de visiter deux ou trois appartements et de choisir. En fait, c’est beaucoup plus compliqué. Pour chaque logement, il faut préparer un dossier : les trois derniers bulletins de salaire, le contrat de travail, une pièce d’identité, et souvent un garant.",
+          "Le premier appartement que j’ai visité était proche du centre. Le loyer était de 750 euros, charges comprises, pour trente mètres carrés. C’était cher, mais le bâtiment était propre et le quartier calme. Le problème, c’est que dix-huit personnes ont visité le même jour. Le propriétaire a choisi quelqu’un d’autre.",
+          "Au bout de trois semaines, j’ai enfin signé. Il fallait payer le premier loyer et la caution en même temps, donc presque 1 500 euros d’un coup. Heureusement, j’avais économisé pendant l’été. Grâce à ça, je n’ai pas eu besoin d’emprunter de l’argent à mes parents."
+        ],
+        "glossary": [
+          { "fr": "il suffit de", "en": "it's enough to, all you have to do is" },
+          { "fr": "un garant", "en": "a guarantor (someone who covers you if you can't pay)" },
+          { "fr": "mètres carrés", "en": "square metres" },
+          { "fr": "au bout de", "en": "after (a period of time)" },
+          { "fr": "d’un coup", "en": "all at once" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Agent", "text": "Bonjour, vous appelez pour le deux-pièces rue Garibaldi ?" },
+          { "speaker": "Robert", "text": "Oui, c’est ça. Il est toujours disponible ?" },
+          { "speaker": "Agent", "text": "Pour le moment, oui. Le loyer est de 780 euros, charges comprises." },
+          { "speaker": "Robert", "text": "Et la caution, c’est combien ?" },
+          { "speaker": "Agent", "text": "Un mois de loyer. À payer à la signature du bail." },
+          { "speaker": "Robert", "text": "D’accord. Qu’est-ce qu’il faut dans le dossier ?" },
+          { "speaker": "Agent", "text": "Vos trois derniers bulletins de salaire, votre contrat, et une pièce d’identité." },
+          { "speaker": "Robert", "text": "J’ai tout ça. Est-ce qu’il me faut un garant ?" },
+          { "speaker": "Agent", "text": "Si vous gagnez plus de trois fois le loyer, non." },
+          { "speaker": "Robert", "text": "Ça devrait aller, alors. Je peux visiter quand ?" },
+          { "speaker": "Agent", "text": "Jeudi à dix-huit heures. Mais venez à l’heure : il y a déjà douze visites prévues." },
+          { "speaker": "Robert", "text": "Douze ! Bon, j’apporte le dossier complet, du coup." }
+        ]
+      },
+      "grammar": {
+        "point": "il faut / il fallait",
+        "explain": "Il faut is impersonal: 'you need to / one must'. Its imparfait, il fallait, describes what was needed in the past. Follow it with an infinitive, or with que + subjonctif.",
+        "examples": [
+          "Il faut préparer un dossier. (you have to prepare a file)",
+          "Il fallait payer la caution le jour de la signature.",
+          "Il me faut un garant. (with a noun: I need a guarantor)",
+          "Il faut que tu viennes à l’heure. (+ subjonctif)"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi le narrateur n’a-t-il pas obtenu le premier appartement ?",
+          "options": [
+            "Le loyer était trop cher pour lui.",
+            "Son dossier était incomplet.",
+            "Beaucoup d’autres personnes ont visité le même jour.",
+            "Le quartier était trop bruyant."
+          ],
+          "answer": 2,
+          "why": "« Dix-huit personnes ont visité le même jour. Le propriétaire a choisi quelqu’un d’autre. »"
+        },
+        {
+          "type": "tf",
+          "q": "Il a dû emprunter de l’argent à ses parents pour payer la caution.",
+          "answer": false,
+          "why": "« Grâce à ça, je n’ai pas eu besoin d’emprunter de l’argent à mes parents. » Il avait économisé."
+        },
+        {
+          "type": "gap",
+          "q": "Le loyer est de 700 euros, ___ comprises.",
+          "options": ["charges", "cautions", "dossiers", "attentes"],
+          "answer": 0,
+          "why": "« charges comprises » est une formule fixe : les frais de l’immeuble sont inclus."
+        },
+        {
+          "type": "gap",
+          "q": "Hier, ___ payer la caution en espèces.",
+          "options": ["il fallait", "il faut", "il faudra", "il faille"],
+          "answer": 0,
+          "why": "« Hier » demande le passé : il fallait, l’imparfait de il faut."
+        },
+        {
+          "type": "open",
+          "q": "Décris ton logement actuel : le loyer, le quartier, ce qui te plaît et ce qui te dérange. Utilise « proche de » et « au moins ».",
+          "model": "J’habite dans un appartement assez récent, proche du centre de Charlotte. Le loyer est cher pour la région, mais les charges sont comprises, donc ça reste abordable. Ce qui me plaît, c’est que je peux aller au travail à pied. Ce qui me dérange, c’est le bruit : il y a au moins trois chantiers dans la rue."
+        }
+      ]
+    },
+    {
+      "id": "canicule",
+      "title": "La canicule",
+      "subtitle": "A heatwave, and why French flats have no A/C.",
+      "difficulty": 2,
+      "topics": ["climat", "maison"],
+      "newWords": [
+        { "fr": "la canicule", "en": "heatwave", "note": "The standard word in French media for a serious heatwave." },
+        { "fr": "les volets (m. pl.)", "en": "shutters", "note": "fermer les volets = the classic French way to keep a flat cool." },
+        { "fr": "supporter", "en": "to bear, to put up with", "note": "False friend! Not 'to support' — je ne supporte pas la chaleur." },
+        { "fr": "insupportable", "en": "unbearable" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "En été, la France connaît de plus en plus souvent des canicules. À Paris, il peut faire 38 degrés pendant plusieurs jours, et la nuit la température ne descend pas sous 25. Dans les appartements sous les toits, c’est franchement insupportable.",
+          "Pourtant, très peu de logements français ont un climatiseur. Pourquoi ? D’abord, les bâtiments sont vieux : installer la clim coûte cher et abîme les façades. Ensuite, l’électricité n’est pas gratuite, et beaucoup de gens trouvent que ce n’est pas écologique. Enfin, il y a une habitude culturelle : on préfère un ventilateur et des volets fermés.",
+          "La méthode traditionnelle marche mieux qu’on ne le croit. On ferme les volets vers neuf heures du matin, on ne les rouvre qu’à la nuit tombée, et on aère quand l’air extérieur devient plus frais que l’air intérieur. Ça ne remplace pas la clim, mais ça fait baisser la température de plusieurs degrés."
+        ],
+        "glossary": [
+          { "fr": "sous les toits", "en": "under the roof, top-floor" },
+          { "fr": "abîmer", "en": "to damage, to ruin" },
+          { "fr": "la façade", "en": "the front of a building" },
+          { "fr": "aérer", "en": "to air out (a room)" },
+          { "fr": "à la nuit tombée", "en": "once night has fallen" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Léa", "text": "Il fait combien chez toi ? Ici, c’est 31 degrés dans le salon." },
+          { "speaker": "Robert", "text": "Trente-deux. Et je n’ai même pas de ventilateur." },
+          { "speaker": "Léa", "text": "Attends, tu n’as pas fermé les volets ce matin ?" },
+          { "speaker": "Robert", "text": "Non, j’aime bien la lumière. Pourquoi, ça change quelque chose ?" },
+          { "speaker": "Léa", "text": "Énormément ! Tu laisses entrer le soleil toute la journée." },
+          { "speaker": "Robert", "text": "Ah. Donc je chauffe mon appartement moi-même, en fait." },
+          { "speaker": "Léa", "text": "Exactement. Tu fermes tout vers neuf heures, tu rouvres à la nuit tombée." },
+          { "speaker": "Robert", "text": "Et pourquoi personne ne met la clim ici ? Chez nous, tout le monde en a." },
+          { "speaker": "Léa", "text": "Les immeubles sont trop vieux, et ça consomme beaucoup. Du coup, on s’adapte." },
+          { "speaker": "Robert", "text": "Bon. J’achète un ventilateur demain, et je ferme mes volets." },
+          { "speaker": "Léa", "text": "Tu vas voir, c’est déjà beaucoup plus supportable." }
+        ]
+      },
+      "grammar": {
+        "point": "ne … que = only",
+        "explain": "To say 'only', French wraps que around the thing being limited, in the same position as pas. It is not a negation — the sentence stays positive in meaning.",
+        "examples": [
+          "On ne les rouvre QU’à la nuit tombée. (only once night falls)",
+          "Je ne bois que de l’eau. (I only drink water)",
+          "Il n’a qu’un frère. (he has only one brother)",
+          "Note the contrast: je ne bois pas DE café (none) vs je ne bois que DU café (only that)."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quelle raison n’est PAS donnée pour expliquer l’absence de climatiseurs ?",
+          "options": [
+            "Les bâtiments sont anciens.",
+            "L’installation coûte cher.",
+            "Les Français trouvent ça peu écologique.",
+            "Les climatiseurs sont interdits par la loi."
+          ],
+          "answer": 3,
+          "why": "Le texte parle du coût, de l’âge des immeubles et de l’écologie — jamais d’une interdiction légale."
+        },
+        {
+          "type": "tf",
+          "q": "Selon le texte, il faut aérer quand l’air dehors est plus frais que l’air dedans.",
+          "answer": true,
+          "why": "« On aère quand l’air extérieur devient plus frais que l’air intérieur. »"
+        },
+        {
+          "type": "gap",
+          "q": "Cette chaleur est ___ : je n’arrive pas à dormir.",
+          "options": ["insupportable", "abordable", "bondée", "évidente"],
+          "answer": 0,
+          "why": "insupportable = unbearable. Attention au faux ami : supporter ≠ to support."
+        },
+        {
+          "type": "gap",
+          "q": "Traduis « I only have one fan » : « Je ___ un ventilateur. »",
+          "options": ["n’ai qu’", "n’ai pas d’", "ai seulement pas", "n’ai que de"],
+          "answer": 0,
+          "why": "ne … que = only. Devant une voyelle : qu’."
+        },
+        {
+          "type": "open",
+          "q": "Décris comment tu gères la chaleur en été. Utilise « au lieu de » et « quelque chose de + adjectif ».",
+          "model": "L’été à Charlotte, il fait très humide, donc la clim tourne presque tout le temps. Au lieu de la mettre très fort, je la règle à 24 degrés et j’utilise un ventilateur. Le soir, je sors marcher : c’est quelque chose de simple, mais ça aide à supporter la journée."
+        }
+      ]
+    },
+    {
+      "id": "malbouffe",
+      "title": "Manger vite, manger mal",
+      "subtitle": "Fast food, guilt, and a 20-minute lunch.",
+      "difficulty": 2,
+      "topics": ["nourriture", "santé"],
+      "newWords": [
+        { "fr": "grignoter", "en": "to snack, to nibble", "note": "Also used for eating between meals in general." },
+        { "fr": "équilibré(e)", "en": "balanced", "note": "un repas équilibré = a balanced meal." },
+        { "fr": "avoir la flemme (de)", "en": "to not be bothered, can't be arsed", "note": "Very common and very familiar." }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "Le midi, au bureau, j’ai deux options. Soit je prépare quelque chose la veille, soit je descends acheter un sandwich et une boisson en bas de l’immeuble. En théorie, je préfère cuisiner. En pratique, le soir j’ai souvent la flemme, du coup j’achète.",
+          "Le problème, ce n’est pas vraiment le sandwich. C’est ce qui vient après : à quinze heures, j’ai faim, alors je grignote. Des gâteaux, un deuxième café, parfois du poulet frit si un collègue en rapporte. À la fin de la journée, j’ai mangé beaucoup mais rien d’équilibré.",
+          "J’ai essayé une chose simple : le dimanche soir, je prépare trois repas et je les mets au frigo. Ça prend une heure. Le reste de la semaine, je ne réfléchis plus. Ce n’est pas de la grande cuisine, mais au moins je ne grignote plus à quinze heures, et je dépense moins."
+        ],
+        "glossary": [
+          { "fr": "soit … soit", "en": "either … or" },
+          { "fr": "la veille", "en": "the day before" },
+          { "fr": "en bas de", "en": "at the bottom of, downstairs from" },
+          { "fr": "rapporter", "en": "to bring back" },
+          { "fr": "le frigo", "en": "the fridge" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Amina", "text": "Tu manges encore un sandwich ? C’est le troisième cette semaine." },
+          { "speaker": "Robert", "text": "Je sais. Hier soir, j’avais la flemme de cuisiner." },
+          { "speaker": "Amina", "text": "Moi, je prépare tout le dimanche. Trois plats, et c’est fini." },
+          { "speaker": "Robert", "text": "Ça ne prend pas trop de temps ?" },
+          { "speaker": "Amina", "text": "Une heure, une heure et quart. Après, tu ne réfléchis plus toute la semaine." },
+          { "speaker": "Robert", "text": "Et tu ne t’ennuies pas de manger la même chose ?" },
+          { "speaker": "Amina", "text": "Un peu. Mais je change la sauce, du coup ça passe." },
+          { "speaker": "Robert", "text": "Le vrai problème pour moi, c’est l’après-midi. Vers trois heures, je grignote." },
+          { "speaker": "Amina", "text": "Ça, c’est parce que ton déjeuner n’est pas équilibré. Tu manques de protéines." },
+          { "speaker": "Robert", "text": "Franchement, tu as sûrement raison. Je vais essayer ton système dimanche." },
+          { "speaker": "Amina", "text": "Tu me diras. Et ça coûte deux fois moins cher, en plus." }
+        ]
+      },
+      "grammar": {
+        "point": "soit … soit",
+        "explain": "The clean way to lay out two alternatives, equivalent to 'either … or'. Ou … ou works too, but soit … soit sounds more structured — useful in writing and in an oral exam.",
+        "examples": [
+          "Soit je cuisine, soit j’achète un sandwich.",
+          "On part soit lundi, soit mardi.",
+          "For a negative version, use ni … ni : je ne mange ni viande ni poisson."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Selon le narrateur, quel est le vrai problème ?",
+          "options": [
+            "Le sandwich coûte trop cher.",
+            "Il grignote l’après-midi parce que son déjeuner n’est pas équilibré.",
+            "Il n’a pas le temps de déjeuner.",
+            "Ses collègues mangent trop de poulet frit."
+          ],
+          "answer": 1,
+          "why": "« Le problème, ce n’est pas vraiment le sandwich. C’est ce qui vient après. »"
+        },
+        {
+          "type": "tf",
+          "q": "Sa solution lui prend environ une heure le dimanche soir.",
+          "answer": true,
+          "why": "« Je prépare trois repas et je les mets au frigo. Ça prend une heure. »"
+        },
+        {
+          "type": "gap",
+          "q": "Je n’ai pas faim, mais je ___ devant la télé.",
+          "options": ["grignote", "goûte", "vomis", "salue"],
+          "answer": 0,
+          "why": "grignoter = to snack, souvent sans vraie faim. goûter = to taste."
+        },
+        {
+          "type": "gap",
+          "q": "___ tu viens avec nous, ___ tu restes ici. À toi de choisir.",
+          "options": ["Soit … soit", "Ni … ni", "Ou bien … et", "Si … donc"],
+          "answer": 0,
+          "why": "Deux options exclusives : soit … soit."
+        },
+        {
+          "type": "open",
+          "q": "Décris ce que tu manges un jour normal, et une chose que tu voudrais changer. Utilise « au lieu de » et « la malbouffe ».",
+          "model": "Le matin, je prends juste un café, ce qui n’est pas idéal. À midi, je mange souvent à l’extérieur, donc pas mal de malbouffe. Le soir, je cuisine quelque chose de simple, du poulet et du riz. Ce que je voudrais changer, c’est le déjeuner : au lieu d’acheter, je pourrais préparer la veille."
+        }
+      ]
+    },
+    {
+      "id": "dimanche-seul",
+      "title": "Un dimanche tout seul",
+      "subtitle": "Friendship gets harder after school. What actually works.",
+      "difficulty": 2,
+      "topics": ["relations", "quotidien"],
+      "newWords": [
+        { "fr": "un lien", "en": "a bond, a connection, a link", "note": "créer / garder un lien avec quelqu’un." },
+        { "fr": "prendre des nouvelles (de)", "en": "to check in on someone", "note": "Je prends des nouvelles de mon frère." },
+        { "fr": "faire le premier pas", "en": "to make the first move" },
+        { "fr": "un prétexte", "en": "an excuse, a pretext" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "À l’école, l’amitié ne demande aucun effort. On voit les mêmes personnes cinq jours par semaine, on partage les mêmes cours, les mêmes profs, les mêmes pauses. Le lien se crée tout seul, sans qu’on y pense. Après les études, tout change : chacun déménage, commence à travailler, et les semaines passent très vite.",
+          "Beaucoup de gens de vingt-cinq ans se retrouvent seuls le dimanche après-midi sans comprendre pourquoi. Ce n’est pas qu’ils n’ont pas d’amis. C’est que personne ne fait le premier pas. Tout le monde attend un message, et tout le monde pense la même chose : « il ne m’écrit jamais, donc ça ne l’intéresse plus ».",
+          "La solution n’est pas très romantique, mais elle marche : il faut organiser. Un dîner fixe une fois par mois, un sport le mardi soir, un message le dimanche pour prendre des nouvelles. Ce n’est pas grave si le prétexte est banal. L’amitié adulte, c’est surtout du calendrier et un peu de courage."
+        ],
+        "glossary": [
+          { "fr": "ne demander aucun effort", "en": "to require no effort at all" },
+          { "fr": "sans qu’on y pense", "en": "without us thinking about it" },
+          { "fr": "déménager", "en": "to move house" },
+          { "fr": "banal(e)", "en": "ordinary, unremarkable" },
+          { "fr": "ce n’est pas grave", "en": "it doesn't matter" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "Bienvenue dans Petit à petit. Aujourd’hui : pourquoi se faire des amis devient difficile après vingt-cinq ans." },
+          { "speaker": "Animatrice", "text": "Une auditrice nous écrit : « J’ai déménagé pour le travail il y a huit mois. Je connais mes collègues, mais le week-end, je suis seule. »" },
+          { "speaker": "Invité", "text": "C’est une situation extrêmement courante. Et ce n’est pas un problème de caractère." },
+          { "speaker": "Invité", "text": "À l’école, on avait trois choses gratuitement : du temps, de la répétition, et un lieu commun." },
+          { "speaker": "Invité", "text": "Adulte, il n’y a plus rien de tout ça. Du coup, il faut le reconstruire à la main." },
+          { "speaker": "Animatrice", "text": "Concrètement, qu’est-ce que vous conseillez ?" },
+          { "speaker": "Invité", "text": "Choisissez une activité qui revient chaque semaine. Le même jour, le même endroit." },
+          { "speaker": "Invité", "text": "La répétition fait le travail à votre place. Vous n’avez pas besoin d’être charmant, juste présent." },
+          { "speaker": "Animatrice", "text": "Et pour les amis qu’on a déjà, mais qu’on ne voit plus ?" },
+          { "speaker": "Invité", "text": "Écrivez. Même une phrase. Le prétexte n’a aucune importance." },
+          { "speaker": "Invité", "text": "Presque tout le monde attend que l’autre fasse le premier pas. Faites-le, et vous serez surpris." }
+        ]
+      },
+      "grammar": {
+        "point": "quelque chose DE + adjectif",
+        "explain": "Indefinite words (quelque chose, rien, quelqu'un, personne) attach their adjective with de. The adjective always stays masculine singular, whatever you're talking about.",
+        "examples": [
+          "Il n’y a plus rien DE tout ça.",
+          "J’ai rencontré quelqu’un DE sympa.",
+          "Ce n’est rien D’important.",
+          "Elle a dit quelque chose DE bizarre. (bizarre, not bizarres)"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "D’après le texte, pourquoi l’amitié est-elle plus facile à l’école ?",
+          "options": [
+            "Les jeunes ont plus de courage.",
+            "On voit les mêmes personnes régulièrement, dans un même lieu.",
+            "Les élèves ont plus d’argent pour sortir.",
+            "Les professeurs organisent les rencontres."
+          ],
+          "answer": 1,
+          "why": "« Du temps, de la répétition, et un lieu commun » — le lien se crée sans effort."
+        },
+        {
+          "type": "tf",
+          "q": "L’invité pense qu’il faut être quelqu’un de charmant pour se faire des amis.",
+          "answer": false,
+          "why": "« Vous n’avez pas besoin d’être charmant, juste présent. » C’est la répétition qui compte."
+        },
+        {
+          "type": "gap",
+          "q": "Je vais lui écrire pour ___ de sa famille.",
+          "options": ["prendre des nouvelles", "faire le premier pas", "prendre une pause", "se moquer"],
+          "answer": 0,
+          "why": "prendre des nouvelles de quelqu’un = to check in on someone."
+        },
+        {
+          "type": "gap",
+          "q": "Il m’a raconté quelque chose ___ vraiment intéressant.",
+          "options": ["de", "d’un", "que", "à"],
+          "answer": 0,
+          "why": "quelque chose DE + adjectif masculin singulier."
+        },
+        {
+          "type": "open",
+          "q": "Qui est-ce que tu n’as pas contacté depuis longtemps, et pourquoi ? Utilise « il y a » (= ago) et « faire le premier pas ».",
+          "model": "Il y a presque un an, j’ai arrêté d’écrire à un ami de l’université. Ce n’est pas une dispute : on est simplement devenus occupés tous les deux. Je pense souvent à lui, mais je n’ai jamais fait le premier pas. Ce week-end, je vais lui envoyer un message, même court."
+        }
+      ]
+    },
+    {
+      "id": "repeindre",
+      "title": "Repeindre la chambre",
+      "subtitle": "A weekend project that takes three.",
+      "difficulty": 2,
+      "topics": ["logement", "quotidien"],
+      "newWords": [
+        { "fr": "une couche", "en": "a coat (of paint), a layer", "note": "deux couches de peinture = two coats." },
+        { "fr": "le rouleau", "en": "the paint roller" },
+        { "fr": "bâcler", "en": "to rush and botch (a job)", "note": "Strong word: bâcler le travail = to do a sloppy job." },
+        { "fr": "ça en valait la peine", "en": "it was worth it", "note": "Ça vaut la peine = it's worth it." }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "Je voulais repeindre ma chambre à coucher en bleu foncé. Dans ma tête, c’était un projet d’un samedi : deux heures le matin, deux heures l’après-midi, et le soir on dort dans une pièce neuve. Je devais commencer à huit heures. J’ai commencé à onze.",
+          "Première leçon : la préparation prend plus de temps que la peinture. Il faut vider la pièce, protéger le sol, laver les murs, et poser du ruban adhésif partout. J’ai voulu aller vite et j’ai bâclé cette partie. Résultat : de la peinture bleue sur le plafond blanc, et une trace sur la fenêtre que je vois encore.",
+          "Deuxième leçon : une couche ne suffit jamais avec une couleur foncée. Il en faut deux, parfois trois, et il faut attendre quatre heures entre chaque. Du coup, mon projet d’un samedi a pris tout le week-end plus le lundi soir. Mais franchement, quand j’ai remis le lit en place, ça en valait la peine."
+        ],
+        "glossary": [
+          { "fr": "vider", "en": "to empty" },
+          { "fr": "le ruban adhésif", "en": "masking tape" },
+          { "fr": "le plafond", "en": "the ceiling" },
+          { "fr": "une trace", "en": "a mark, a smudge" },
+          { "fr": "remettre en place", "en": "to put back" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Vendeur", "text": "Bonjour ! Je peux vous aider ?" },
+          { "speaker": "Robert", "text": "Oui, je cherche de la peinture pour une chambre. Bleu foncé." },
+          { "speaker": "Vendeur", "text": "Très bien. La pièce fait combien de mètres carrés ?" },
+          { "speaker": "Robert", "text": "Douze, à peu près. Il me faut combien de pots ?" },
+          { "speaker": "Vendeur", "text": "Pour deux couches, prenez deux pots de deux litres et demi." },
+          { "speaker": "Robert", "text": "Deux couches ? Une seule ne suffit pas ?" },
+          { "speaker": "Vendeur", "text": "Avec du foncé, jamais. Vous verriez le blanc à travers." },
+          { "speaker": "Robert", "text": "D’accord. Et il faut attendre longtemps entre les deux ?" },
+          { "speaker": "Vendeur", "text": "Quatre heures minimum. Si vous bâclez, ça fait des traces." },
+          { "speaker": "Robert", "text": "Bon. Et pour le sol et les fenêtres ?" },
+          { "speaker": "Vendeur", "text": "Une bâche et du ruban adhésif. Croyez-moi, ça vaut la peine." },
+          { "speaker": "Robert", "text": "Je vous crois. Ajoutez un rouleau et deux pinceaux, s’il vous plaît." }
+        ]
+      },
+      "grammar": {
+        "point": "il en faut / j’en ai besoin — the pronoun EN",
+        "explain": "En replaces a quantity or a de-phrase already mentioned. It goes before the verb, and it is not optional: leaving it out sounds wrong to a French ear.",
+        "examples": [
+          "Il faut deux couches → Il EN faut deux.",
+          "J’ai besoin de peinture → J’EN ai besoin.",
+          "Tu as des pinceaux ? — Oui, j’EN ai trois.",
+          "Il rapporte du poulet frit → Il EN rapporte."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quelle erreur le narrateur a-t-il commise ?",
+          "options": [
+            "Il a choisi la mauvaise couleur.",
+            "Il a bâclé la préparation de la pièce.",
+            "Il a acheté trop de peinture.",
+            "Il a peint le plafond exprès."
+          ],
+          "answer": 1,
+          "why": "« J’ai voulu aller vite et j’ai bâclé cette partie » — d’où la peinture sur le plafond."
+        },
+        {
+          "type": "tf",
+          "q": "Le projet a finalement pris plus longtemps qu’un samedi.",
+          "answer": true,
+          "why": "« Mon projet d’un samedi a pris tout le week-end plus le lundi soir. »"
+        },
+        {
+          "type": "gap",
+          "q": "Avec une couleur foncée, il faut deux ___ de peinture.",
+          "options": ["couches", "murs", "rouleaux", "traces"],
+          "answer": 0,
+          "why": "une couche = a coat of paint. Un rouleau, c’est l’outil."
+        },
+        {
+          "type": "gap",
+          "q": "— Il te faut combien de pots ? — Il ___ faut trois.",
+          "options": ["m’en", "me les", "m’y", "me le"],
+          "answer": 0,
+          "why": "Le pronom EN reprend « de pots », et me devient m’ devant la voyelle."
+        },
+        {
+          "type": "open",
+          "q": "Raconte un projet à la maison qui a pris plus de temps que prévu. Utilise « je devais » et « du coup ».",
+          "model": "L’année dernière, je devais installer des étagères dans mon bureau en une soirée. Le mur était en béton, du coup ma perceuse ne suffisait pas. J’ai dû acheter d’autres mèches et attendre le week-end. Au final, ça m’a pris trois jours, mais le résultat est solide."
+        }
+      ]
+    },
+    {
+      "id": "economiser",
+      "title": "Économiser sans se priver",
+      "subtitle": "Where the money actually goes.",
+      "difficulty": 2,
+      "topics": ["argent"],
+      "newWords": [
+        { "fr": "un prélèvement automatique", "en": "a direct debit / automatic withdrawal" },
+        { "fr": "mettre de côté", "en": "to set aside, to put away (money)", "note": "Je mets 200 € de côté chaque mois." },
+        { "fr": "se priver (de)", "en": "to deprive yourself, to go without" },
+        { "fr": "un imprévu", "en": "an unexpected expense or event" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Quand on veut économiser, le premier réflexe est de se priver : plus de restaurant, plus de café dehors, plus de sorties. Ça marche deux semaines. Ensuite, on en a marre, on craque, et on dépense plus qu’avant. Se priver n’est pas une stratégie, c’est un régime.",
+          "Les conseillers financiers proposent autre chose : ne pas décider chaque jour. On met en place un prélèvement automatique le lendemain du salaire, vers un compte séparé. L’argent part avant qu’on ait le temps d’y penser. Ce qui reste sur le compte courant, on peut le dépenser sans culpabiliser.",
+          "Deuxième idée : regarder les grosses dépenses, pas les petites. Un café à trois euros par jour, ça fait environ soixante euros par mois. Un loyer trop cher ou une voiture mal choisie, ça fait plusieurs centaines. Il vaut mieux renégocier une assurance une fois que compter ses cafés toute l’année. Et il faut garder une petite somme pour les imprévus, sinon le premier problème casse tout le système."
+        ],
+        "glossary": [
+          { "fr": "craquer", "en": "to crack, to give in" },
+          { "fr": "un régime", "en": "a diet" },
+          { "fr": "le compte courant", "en": "the current / checking account" },
+          { "fr": "culpabiliser", "en": "to feel guilty" },
+          { "fr": "une centaine", "en": "about a hundred" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animateur", "text": "Aujourd’hui, une question qui revient sans arrêt : comment économiser quand on a l’impression de ne pas gagner assez ?" },
+          { "speaker": "Invitée", "text": "D’abord, arrêtons avec l’idée qu’il faut se priver de tout. Personne ne tient six mois comme ça." },
+          { "speaker": "Animateur", "text": "Donc on peut garder ses petits plaisirs ?" },
+          { "speaker": "Invitée", "text": "Oui, à condition d’automatiser l’épargne. Le prélèvement part le lendemain du salaire." },
+          { "speaker": "Invitée", "text": "Comme ça, vous ne décidez qu’une fois, en janvier. Pas trois cents fois dans l’année." },
+          { "speaker": "Animateur", "text": "Et on commence avec quel montant ?" },
+          { "speaker": "Invitée", "text": "Cinq pour cent, même moins. L’important, c’est que ça existe et que ça soit automatique." },
+          { "speaker": "Animateur", "text": "Beaucoup de gens surveillent leur café du matin. C’est utile ?" },
+          { "speaker": "Invitée", "text": "Franchement, non. Soixante euros par mois contre un loyer de mille : ce n’est pas le même combat." },
+          { "speaker": "Invitée", "text": "Regardez le logement, la voiture, les assurances, les abonnements. C’est là qu’il y a de l’argent." },
+          { "speaker": "Animateur", "text": "Et les imprévus ?" },
+          { "speaker": "Invitée", "text": "Gardez mille euros à part. Sinon, la première panne de voiture détruit un an d’efforts." }
+        ]
+      },
+      "grammar": {
+        "point": "il vaut mieux + infinitif",
+        "explain": "The natural way to give advice or compare two options: 'it's better to'. Impersonal, always il vaut mieux — never 'c'est mieux de' in careful French.",
+        "examples": [
+          "Il vaut mieux renégocier une assurance que compter ses cafés.",
+          "Il vaut mieux commencer petit.",
+          "With a clause it takes the subjonctif: il vaut mieux QUE tu attendes."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi le texte critique-t-il le fait de se priver ?",
+          "options": [
+            "Parce que c’est mauvais pour la santé.",
+            "Parce que ça ne dure pas et qu’on finit par dépenser plus.",
+            "Parce que les banques l’interdisent.",
+            "Parce que ça ne rapporte que soixante euros."
+          ],
+          "answer": 1,
+          "why": "« Ça marche deux semaines. Ensuite, on en a marre, on craque, et on dépense plus qu’avant. »"
+        },
+        {
+          "type": "tf",
+          "q": "L’invitée conseille de commencer par un pourcentage élevé, sinon ce n’est pas utile.",
+          "answer": false,
+          "why": "« Cinq pour cent, même moins. L’important, c’est que ça existe et que ça soit automatique. »"
+        },
+        {
+          "type": "gap",
+          "q": "Chaque mois, j’essaie de ___ deux cents euros ___ côté.",
+          "options": ["mettre / de", "gagner / à", "prêter / en", "dépenser / au"],
+          "answer": 0,
+          "why": "mettre de l’argent de côté = to set money aside."
+        },
+        {
+          "type": "gap",
+          "q": "___ automatiser que décider chaque jour.",
+          "options": ["Il vaut mieux", "C’est mieux que", "Il faut mieux", "Ça vaut mieux de"],
+          "answer": 0,
+          "why": "il vaut mieux + infinitif. Attention à l’orthographe : vaut, du verbe valoir."
+        },
+        {
+          "type": "open",
+          "q": "Quelle est ta plus grosse dépense chaque mois, et est-ce que tu pourrais la réduire ? Utilise « au moindre prix » et « il vaut mieux ».",
+          "model": "Ma plus grosse dépense, c’est le logement : presque un tiers de mon salaire. Je pourrais chercher quelque chose au moindre prix un peu plus loin du centre, mais je perdrais une heure de transport par jour. Du coup, il vaut mieux réduire ailleurs : j’ai annulé deux abonnements que je n’utilisais pas."
+        }
+      ]
+    },
+    {
+      "id": "metro-bonde",
+      "title": "Le métro à 8h",
+      "subtitle": "Rush hour, and the unwritten rules of it.",
+      "difficulty": 2,
+      "topics": ["transport", "ville"],
+      "newWords": [
+        { "fr": "l’heure de pointe", "en": "rush hour" },
+        { "fr": "un quai", "en": "a platform" },
+        { "fr": "céder sa place", "en": "to give up your seat" },
+        { "fr": "un trajet", "en": "a journey, a commute", "note": "mon trajet dure quarante minutes." }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "À huit heures dix, la ligne 13 est complètement bondée. Sur le quai, les gens ne parlent pas : ils regardent l’écran qui annonce le prochain train, puis leur téléphone, puis l’écran. Quand les portes s’ouvrent, personne ne dit rien, mais tout le monde connaît les règles.",
+          "Il y a des choses qu’on ne fait pas. On ne parle pas fort au téléphone. On enlève son sac à dos et on le tient à la main, sinon on prend la place de deux personnes. On laisse descendre avant de monter, même si le train est plein. Et on cède sa place à une personne âgée ou à une femme enceinte, sans attendre qu’elle demande.",
+          "Mon trajet ne dure que vingt-cinq minutes, mais ces vingt-cinq minutes décident de mon humeur pour la matinée. Depuis que je pars un quart d’heure plus tôt, tout est différent : je trouve une place assise, je lis, et j’arrive au bureau calme. Franchement, quinze minutes de sommeil en moins, ça en vaut la peine."
+        ],
+        "glossary": [
+          { "fr": "les portes s’ouvrent", "en": "the doors open" },
+          { "fr": "un sac à dos", "en": "a backpack" },
+          { "fr": "une personne âgée", "en": "an elderly person" },
+          { "fr": "enceinte", "en": "pregnant" },
+          { "fr": "l’humeur", "en": "the mood" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Sofia", "text": "Tu as l’air épuisé. Ça va ?" },
+          { "speaker": "Robert", "text": "Le métro. Quarante minutes debout, serré comme une sardine." },
+          { "speaker": "Sofia", "text": "Tu prends la 13 ? À quelle heure ?" },
+          { "speaker": "Robert", "text": "Huit heures dix. C’est l’heure de pointe, je sais." },
+          { "speaker": "Sofia", "text": "Essaie sept heures cinquante. Ça change tout, tu ne vas pas me croire." },
+          { "speaker": "Robert", "text": "Vingt minutes plus tôt ? J’aurais du mal à me lever." },
+          { "speaker": "Sofia", "text": "Oui, mais tu t’assois. Tu peux lire, ou même dormir un peu." },
+          { "speaker": "Robert", "text": "Hier, un type parlait au téléphone très fort pendant tout le trajet." },
+          { "speaker": "Sofia", "text": "Ah, ça, c’est insupportable. Personne ne dit rien, mais tout le monde le déteste." },
+          { "speaker": "Robert", "text": "Et les sacs à dos ! Les gens ne les enlèvent pas." },
+          { "speaker": "Sofia", "text": "C’est la règle numéro un, pourtant. Bon, tu essaies demain, sept heures cinquante ?" },
+          { "speaker": "Robert", "text": "D’accord. Si ça marche, je t’offre le café." }
+        ]
+      },
+      "grammar": {
+        "point": "depuis que + présent",
+        "explain": "For an action that started in the past and is still going, French uses the PRESENT after depuis (que) — where English uses the present perfect. This trips up almost every English speaker.",
+        "examples": [
+          "Depuis que je pars plus tôt, tout est différent. (since I've been leaving…)",
+          "J’habite ici depuis trois ans. (I have lived here for three years)",
+          "Depuis qu’il travaille chez EPRI, il lit beaucoup de rapports.",
+          "Never: *j’ai habité ici depuis trois ans."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quelle règle n’est PAS mentionnée dans le texte ?",
+          "options": [
+            "Enlever son sac à dos.",
+            "Laisser descendre avant de monter.",
+            "Céder sa place à une personne âgée.",
+            "Ne pas manger dans le train."
+          ],
+          "answer": 3,
+          "why": "Le texte parle du sac, de la descente, du téléphone et de la place — pas de nourriture."
+        },
+        {
+          "type": "tf",
+          "q": "Le narrateur trouve que partir plus tôt vaut la perte de sommeil.",
+          "answer": true,
+          "why": "« Quinze minutes de sommeil en moins, ça en vaut la peine. »"
+        },
+        {
+          "type": "gap",
+          "q": "Le matin, à ___, le métro est complètement bondé.",
+          "options": ["l’heure de pointe", "l’heure du quai", "la pause", "l’entretien"],
+          "answer": 0,
+          "why": "l’heure de pointe = rush hour."
+        },
+        {
+          "type": "gap",
+          "q": "___ je prends le vélo, je me sens mieux.",
+          "options": ["Depuis que", "Depuis", "Il y a que", "Pendant que"],
+          "answer": 0,
+          "why": "Devant une proposition avec un verbe conjugué : depuis QUE. « Depuis » seul précède une durée ou une date."
+        },
+        {
+          "type": "open",
+          "q": "Décris ton trajet pour aller au travail et ce qui le rend agréable ou pénible. Utilise « depuis que » et « bondé ».",
+          "model": "Je vais au travail en voiture, et le trajet dure vingt minutes le matin, quarante le soir. L’autoroute est bondée entre dix-sept et dix-huit heures. Depuis que je pars à seize heures trente, je gagne presque vingt minutes. J’écoute des podcasts en français, du coup le temps passe plus vite."
+        }
+      ]
+    },
+    {
+      "id": "jours-feries",
+      "title": "Les ponts et les jours fériés",
+      "subtitle": "Eleven public holidays and the art of the 'pont'.",
+      "difficulty": 2,
+      "topics": ["culture", "travail"],
+      "newWords": [
+        { "fr": "faire le pont", "en": "to take the bridging day off", "note": "When a holiday falls on Thursday, you take Friday too." },
+        { "fr": "tomber (un jour)", "en": "to fall on (a day)", "note": "Le 1er mai tombe un mardi cette année." },
+        { "fr": "chômé(e)", "en": "non-working (of a holiday)", "note": "un jour férié et chômé = a holiday you actually get off." },
+        { "fr": "en revanche", "en": "on the other hand", "note": "Formal-ish connector, very useful in writing." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "La France compte onze jours fériés par an. Certains sont religieux, comme Pâques ou l’Assomption ; d’autres sont politiques, comme le 14 juillet ou le 1er mai. Tous ne sont pas automatiquement chômés, mais dans la pratique, la plupart des entreprises ferment.",
+          "Le vrai art, c’est le pont. Si un jour férié tombe un jeudi, beaucoup de salariés prennent le vendredi et se retrouvent avec quatre jours de repos. En mai, quand plusieurs fêtes tombent bien, il est possible de très peu travailler. Les Français en plaisantent eux-mêmes, mais personne ne renonce à un pont.",
+          "En revanche, quand un jour férié tombe un dimanche, il est perdu : il n’est pas reporté au lundi comme au Royaume-Uni. Beaucoup de gens regardent donc le calendrier de l’année suivante dès le mois de décembre, pour voir si l’année sera « bonne » ou « mauvaise ». C’est quelque chose de très français."
+        ],
+        "glossary": [
+          { "fr": "Pâques", "en": "Easter" },
+          { "fr": "la plupart de", "en": "most of" },
+          { "fr": "le repos", "en": "rest, time off" },
+          { "fr": "plaisanter", "en": "to joke" },
+          { "fr": "renoncer à", "en": "to give up on" },
+          { "fr": "reporté", "en": "postponed, moved" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Julien", "text": "Tu as vu le calendrier de mai prochain ? C’est magnifique." },
+          { "speaker": "Robert", "text": "Pourquoi, il y a quelque chose de spécial ?" },
+          { "speaker": "Julien", "text": "Le 1er mai tombe un jeudi, et le 8 mai aussi. Deux ponts d’affilée." },
+          { "speaker": "Robert", "text": "Attends, explique-moi. « Faire le pont », ça veut dire quoi exactement ?" },
+          { "speaker": "Julien", "text": "Le férié est jeudi, du coup tu prends le vendredi. Ça te fait quatre jours." },
+          { "speaker": "Robert", "text": "Ah, malin. Et l’entreprise accepte ?" },
+          { "speaker": "Julien", "text": "En général, oui. Parfois elle ferme carrément, c’est plus simple pour tout le monde." },
+          { "speaker": "Robert", "text": "Et si un jour férié tombe un dimanche ?" },
+          { "speaker": "Julien", "text": "Perdu. On ne le récupère pas le lundi, contrairement aux Anglais." },
+          { "speaker": "Robert", "text": "C’est dur. Chez nous, on n’a que dix jours, mais ils sont toujours en semaine." },
+          { "speaker": "Julien", "text": "En revanche, vous avez beaucoup moins de congés payés, non ?" },
+          { "speaker": "Robert", "text": "Deux semaines. Ici, c’est cinq. Là, franchement, vous gagnez." }
+        ]
+      },
+      "grammar": {
+        "point": "Ordinal dates: le 1er vs le 2",
+        "explain": "French uses the cardinal number for every day of the month except the first, which is ordinal: le premier. And you never say 'le premier de mai' — just le 1er mai.",
+        "examples": [
+          "le 1er mai (le premier mai)",
+          "le 8 mai (le huit mai) — not 'le huitième'",
+          "le 14 juillet (le quatorze juillet)",
+          "Months are lowercase in French: mai, juillet, décembre."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Combien de jours fériés y a-t-il en France ?",
+          "options": ["Huit", "Onze", "Quatorze", "Cinq"],
+          "answer": 1,
+          "why": "« La France compte onze jours fériés par an. »"
+        },
+        {
+          "type": "tf",
+          "q": "En France, un jour férié qui tombe un dimanche est reporté au lundi.",
+          "answer": false,
+          "why": "« Il est perdu : il n’est pas reporté au lundi comme au Royaume-Uni. »"
+        },
+        {
+          "type": "gap",
+          "q": "Le férié est jeudi, donc on prend le vendredi : on ___.",
+          "options": ["fait le pont", "fait la grasse matinée", "fait une pause", "fait fonctionner"],
+          "answer": 0,
+          "why": "faire le pont = to take the bridging day off."
+        },
+        {
+          "type": "gap",
+          "q": "La fête nationale française, c’est le ___ juillet.",
+          "options": ["14", "quatorzième", "1er", "premier"],
+          "answer": 0,
+          "why": "On utilise le nombre cardinal, sauf pour le 1er : le 14 juillet."
+        },
+        {
+          "type": "open",
+          "q": "Compare les congés dans ton pays et en France. Utilise « en revanche » et « les jours fériés ».",
+          "model": "Aux États-Unis, on a environ dix jours fériés, et ils tombent presque toujours un lundi. En revanche, les congés payés sont beaucoup plus courts : souvent deux semaines au début d’un emploi. En France, cinq semaines sont normales. Du coup, les Français organisent leur année autour du calendrier, ce qui me paraissait bizarre au début."
+        }
+      ]
+    }
+  ]
+}

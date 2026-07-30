@@ -1,0 +1,969 @@
+{
+  "pack": "core-02",
+  "label": "Real situations (B1+)",
+  "challenges": [
+    {
+      "id": "entretien-embauche",
+      "title": "L’entretien d’embauche",
+      "subtitle": "The questions you will actually be asked.",
+      "difficulty": 3,
+      "topics": ["travail", "argent"],
+      "newWords": [
+        { "fr": "un poste", "en": "a position, a job (the role itself)" },
+        { "fr": "mettre en avant", "en": "to highlight, to play up" },
+        { "fr": "une prétention salariale", "en": "salary expectation", "note": "Usually plural: quelles sont vos prétentions ?" },
+        { "fr": "se démarquer", "en": "to stand out, to set yourself apart" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Un entretien d’embauche français suit souvent le même ordre. On commence par « Parlez-moi de vous », qui n’est pas une invitation à raconter sa vie mais à résumer son parcours en deux minutes. Ensuite viennent les questions sur le poste, puis les fameuses questions sur les défauts et les qualités, et enfin les prétentions salariales.",
+          "Ce que les recruteurs attendent est assez précis : des exemples concrets. « Je suis rigoureux » ne vaut rien tout seul. « Sur mon dernier projet, j’ai trouvé une erreur de câblage qui aurait coûté trois semaines de retard » vaut beaucoup. Il faut mettre en avant ce qu’on a fait, pas ce qu’on est.",
+          "La question du salaire met tout le monde mal à l’aise, mais il ne faut ni la fuir ni répondre « ce que vous voulez ». Le mieux est de donner une fourchette, en expliquant qu’elle dépend des responsabilités et des avantages. Un candidat qui sait ce qu’il vaut se démarque immédiatement — à condition de rester poli et de ne pas exagérer."
+        ],
+        "glossary": [
+          { "fr": "un parcours", "en": "a career path, a background" },
+          { "fr": "un défaut", "en": "a flaw, a weakness" },
+          { "fr": "le câblage", "en": "the wiring" },
+          { "fr": "mal à l’aise", "en": "uncomfortable, ill at ease" },
+          { "fr": "fuir", "en": "to flee, to dodge" },
+          { "fr": "une fourchette", "en": "a range (also: a fork)" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Recruteuse", "text": "Merci d’être venu. Pour commencer, parlez-moi un peu de vous." },
+          { "speaker": "Robert", "text": "Je suis ingénieur en génie électrique, diplômé il y a deux ans." },
+          { "speaker": "Robert", "text": "Je travaille surtout sur des systèmes embarqués pour le réseau électrique." },
+          { "speaker": "Recruteuse", "text": "Très bien. Et qu’est-ce qui vous intéresse dans ce poste précisément ?" },
+          { "speaker": "Robert", "text": "Le fait que les capteurs soient testés en conditions réelles, pas seulement au laboratoire." },
+          { "speaker": "Recruteuse", "text": "Donnez-moi un exemple d’un problème difficile que vous avez résolu." },
+          { "speaker": "Robert", "text": "Nos mesures étaient fausses par temps humide. Personne ne comprenait pourquoi." },
+          { "speaker": "Robert", "text": "J’ai découvert que le boîtier n’était pas étanche. On l’a modifié, et le problème a disparu." },
+          { "speaker": "Recruteuse", "text": "C’est exactement le genre de réponse que j’attendais. Et vos défauts ?" },
+          { "speaker": "Robert", "text": "J’ai tendance à vouloir tout vérifier moi-même. Du coup, je délègue trop tard." },
+          { "speaker": "Recruteuse", "text": "Au moins c’est honnête. Dernière question : vos prétentions salariales ?" },
+          { "speaker": "Robert", "text": "Entre soixante-dix et quatre-vingts mille, selon les responsabilités et les avantages." }
+        ]
+      },
+      "grammar": {
+        "point": "le conditionnel passé: aurait coûté",
+        "explain": "To talk about what would have happened but didn't, use the conditionnel of avoir/être plus the past participle. Essential for describing risks avoided — which is most of engineering.",
+        "examples": [
+          "Cette erreur aurait coûté trois semaines. (would have cost)",
+          "Si je n’avais pas vérifié, on aurait perdu le contrat.",
+          "Elle serait partie plus tôt. (être verbs take serait)",
+          "J’aurais dû le dire avant. = I should have said so earlier."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Selon le texte, que veut dire « Parlez-moi de vous » dans un entretien ?",
+          "options": [
+            "Raconter sa vie personnelle en détail.",
+            "Résumer son parcours professionnel en deux minutes.",
+            "Décrire ses défauts.",
+            "Annoncer son salaire souhaité."
+          ],
+          "answer": 1,
+          "why": "« Ce n’est pas une invitation à raconter sa vie mais à résumer son parcours en deux minutes. »"
+        },
+        {
+          "type": "tf",
+          "q": "Le texte conseille de répondre « ce que vous voulez » à la question du salaire.",
+          "answer": false,
+          "why": "« Il ne faut ni la fuir ni répondre “ce que vous voulez”. » Il faut donner une fourchette."
+        },
+        {
+          "type": "gap",
+          "q": "Dans mon CV, j’essaie de ___ mes projets concrets.",
+          "options": ["mettre en avant", "faire le pont", "mettre de côté", "prendre des nouvelles"],
+          "answer": 0,
+          "why": "mettre en avant = to highlight, to play up."
+        },
+        {
+          "type": "gap",
+          "q": "Si je n’avais rien dit, cette erreur ___ très cher.",
+          "options": ["aurait coûté", "avait coûté", "coûterait", "a coûté"],
+          "answer": 0,
+          "why": "Conditionnel passé : une conséquence qui n’a pas eu lieu."
+        },
+        {
+          "type": "open",
+          "q": "Réponds en quatre ou cinq phrases : « Parlez-moi d’un problème technique difficile que vous avez résolu. » Utilise « grâce à » et « du coup ».",
+          "model": "L’année dernière, nos capteurs donnaient des mesures fausses après quelques jours sur le terrain. Au début, l’équipe pensait à un problème de logiciel. Grâce à des tests en chambre climatique, j’ai montré que l’humidité entrait dans le boîtier. Du coup, nous avons changé les joints et ajouté un test d’étanchéité systématique. Depuis, nous n’avons plus eu ce défaut."
+        }
+      ]
+    },
+    {
+      "id": "teletravail",
+      "title": "Le télétravail, trois ans après",
+      "subtitle": "Two days at home, three at the office, and nobody's happy.",
+      "difficulty": 3,
+      "topics": ["travail", "société"],
+      "newWords": [
+        { "fr": "le télétravail", "en": "remote work, working from home" },
+        { "fr": "un jour de présence", "en": "a day required in the office" },
+        { "fr": "la charge de travail", "en": "the workload" },
+        { "fr": "s’avérer", "en": "to turn out to be, to prove (to be)", "note": "Cela s’est avéré difficile. Elegant and very B2." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Trois ans après la fin de la pandémie, la plupart des grandes entreprises françaises ont adopté un modèle hybride : deux ou trois jours de télétravail par semaine, le reste au bureau. Ce compromis semblait raisonnable. Il s’avère qu’il ne satisfait presque personne.",
+          "Les salariés qui aiment le télétravail trouvent les jours de présence artificiels : ils viennent au bureau pour faire les mêmes visioconférences que chez eux, avec un mauvais casque et un trajet d’une heure en plus. Ceux qui préfèrent le bureau se plaignent du contraire : les jours où l’équipe est dispersée, on attend des réponses pendant des heures et rien n’avance.",
+          "Les managers, eux, sont pris entre les deux. Ils doivent surveiller la charge de travail sans avoir l’air de surveiller les gens, et maintenir une culture d’équipe avec des collègues qu’ils voient trois jours sur cinq. Certaines entreprises ont trouvé une solution simple : fixer les mêmes jours pour tout le monde. Ce n’est pas populaire, mais au moins ça a du sens."
+        ],
+        "glossary": [
+          { "fr": "un compromis", "en": "a compromise" },
+          { "fr": "satisfaire", "en": "to satisfy" },
+          { "fr": "un casque", "en": "a headset" },
+          { "fr": "se plaindre de", "en": "to complain about" },
+          { "fr": "dispersé(e)", "en": "scattered" },
+          { "fr": "pris entre les deux", "en": "caught in the middle" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "Le télétravail hybride : bonne idée mal appliquée, ou mauvaise idée dès le début ?" },
+          { "speaker": "Invité", "text": "Le problème n’est pas le nombre de jours. C’est que personne ne les coordonne." },
+          { "speaker": "Animatrice", "text": "C’est-à-dire ?" },
+          { "speaker": "Invité", "text": "Vous venez au bureau le mardi, votre équipe vient le jeudi. Vous êtes seul les deux fois." },
+          { "speaker": "Invité", "text": "Du coup, vous faites une heure de trajet pour passer la journée en visio. C’est absurde." },
+          { "speaker": "Animatrice", "text": "Et les entreprises qui imposent les mêmes jours à tout le monde ?" },
+          { "speaker": "Invité", "text": "Ça fonctionne mieux, franchement. Moins de liberté, mais les journées ont un sens." },
+          { "speaker": "Animatrice", "text": "Certains managers disent qu’ils n’arrivent plus à évaluer le travail." },
+          { "speaker": "Invité", "text": "Là, je suis dur : s’ils ne savaient évaluer qu’en voyant les gens assis, ils n’évaluaient rien." },
+          { "speaker": "Animatrice", "text": "Et pour les jeunes qui commencent ?" },
+          { "speaker": "Invité", "text": "Ça, c’est le vrai risque. On apprend un métier en écoutant les autres, pas en lisant des documents." },
+          { "speaker": "Invité", "text": "Pour un débutant, il vaut mieux être au bureau. Après trois ans, la question ne se pose plus." }
+        ]
+      },
+      "grammar": {
+        "point": "Ceux qui / celui qui",
+        "explain": "Celui, celle, ceux, celles + qui means 'the one(s) who'. It replaces a noun you don't want to repeat, and it must agree with what it stands for.",
+        "examples": [
+          "Ceux qui préfèrent le bureau se plaignent. (those who)",
+          "Celle qui a écrit le rapport est en congé.",
+          "Prends celui que tu veux. (the one you want — que, because it's an object)",
+          "Also with de: le salaire d’un ingénieur et celui d’un technicien."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quel reproche les partisans du télétravail font-ils aux jours de présence ?",
+          "options": [
+            "Le bureau est trop bruyant.",
+            "Ils font le trajet pour faire les mêmes visioconférences qu’à la maison.",
+            "Leur charge de travail augmente.",
+            "Les managers les surveillent trop."
+          ],
+          "answer": 1,
+          "why": "« Ils viennent au bureau pour faire les mêmes visioconférences que chez eux… avec un trajet d’une heure en plus. »"
+        },
+        {
+          "type": "tf",
+          "q": "L’invité pense que le télétravail est aussi bon pour un débutant que pour quelqu’un d’expérimenté.",
+          "answer": false,
+          "why": "« Pour un débutant, il vaut mieux être au bureau. Après trois ans, la question ne se pose plus. »"
+        },
+        {
+          "type": "gap",
+          "q": "Cette solution ___ finalement plus compliquée que prévu.",
+          "options": ["s’est avérée", "s’est plainte", "s’est démarquée", "s’est privée"],
+          "answer": 0,
+          "why": "s’avérer = to turn out to be. Accord au féminin avec « solution »."
+        },
+        {
+          "type": "gap",
+          "q": "___ qui viennent le mardi ne voient jamais l’équipe.",
+          "options": ["Ceux", "Ce", "Celui", "Celles-ci"],
+          "answer": 0,
+          "why": "Pluriel masculin, sujet d’une relative : ceux qui."
+        },
+        {
+          "type": "open",
+          "q": "Le télétravail te convient-il ? Explique en quatre ou cinq phrases. Utilise « en revanche » et « la charge de travail ».",
+          "model": "Je travaille au bureau quatre jours sur cinq, parce que j’ai besoin du laboratoire et des instruments. Le vendredi à la maison me sert à écrire des rapports, et je suis beaucoup plus concentré. En revanche, je remarque que la charge de travail est moins visible à distance : personne ne voit que tu es débordé. Du coup, il faut le dire clairement, sinon ça s’accumule."
+        }
+      ]
+    },
+    {
+      "id": "banque",
+      "title": "Ouvrir un compte en banque",
+      "subtitle": "The appointment, the paperwork, and the fees.",
+      "difficulty": 3,
+      "topics": ["argent", "administration"],
+      "newWords": [
+        { "fr": "un justificatif de domicile", "en": "proof of address" },
+        { "fr": "les frais (m. pl.)", "en": "fees, charges", "note": "les frais bancaires. Always plural." },
+        { "fr": "un virement", "en": "a bank transfer" },
+        { "fr": "un RIB", "en": "your bank details slip", "note": "Relevé d'Identité Bancaire — everyone asks for it." }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "Ouvrir un compte en France demande un rendez-vous, ce qui surprend beaucoup d’étrangers. On ne se présente pas au guichet un mardi après-midi : on prend un créneau, parfois deux semaines plus tard, et on apporte un dossier. Pièce d’identité, justificatif de domicile de moins de trois mois, et justificatif de revenus.",
+          "Le justificatif de domicile est le piège classique. Une facture d’électricité fait l’affaire, mais si vous venez d’arriver, vous n’en avez pas encore. Or, pour ouvrir un compteur d’électricité, on vous demande souvent un compte bancaire. Beaucoup de gens tournent en rond pendant des semaines à cause de ce cercle vicieux.",
+          "Une fois le compte ouvert, on reçoit une carte bancaire une semaine plus tard, par courrier, et le code par un courrier séparé. On obtient aussi un RIB, ce petit document que tout le monde va vous demander : l’employeur pour le salaire, le propriétaire pour le loyer, l’assurance pour les prélèvements. Gardez-en une copie sur votre téléphone : vous en aurez besoin dix fois la première année."
+        ],
+        "glossary": [
+          { "fr": "un guichet", "en": "a counter, a service window" },
+          { "fr": "un créneau", "en": "a time slot" },
+          { "fr": "faire l’affaire", "en": "to do the job, to be good enough" },
+          { "fr": "or", "en": "and yet, now (introducing a contradiction)" },
+          { "fr": "tourner en rond", "en": "to go round in circles" },
+          { "fr": "un cercle vicieux", "en": "a vicious circle" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Conseiller", "text": "Bonjour, asseyez-vous. Vous souhaitez ouvrir un compte courant, c’est bien ça ?" },
+          { "speaker": "Robert", "text": "Oui. J’ai apporté mon passeport et mon contrat de travail." },
+          { "speaker": "Conseiller", "text": "Parfait. Il me faut aussi un justificatif de domicile de moins de trois mois." },
+          { "speaker": "Robert", "text": "C’est-à-dire ? Une facture ?" },
+          { "speaker": "Conseiller", "text": "Une facture d’électricité, d’internet, ou une quittance de loyer." },
+          { "speaker": "Robert", "text": "Je viens d’arriver, je n’ai pas encore de facture à mon nom." },
+          { "speaker": "Conseiller", "text": "Votre bail suffira, alors, s’il est signé et daté. Vous l’avez ?" },
+          { "speaker": "Robert", "text": "Sur mon téléphone, oui. Et les frais, ça représente combien par mois ?" },
+          { "speaker": "Conseiller", "text": "Deux euros pour la tenue de compte, plus trois euros pour la carte." },
+          { "speaker": "Robert", "text": "Il n’y a pas d’option gratuite ?" },
+          { "speaker": "Conseiller", "text": "En ligne, oui, mais vous n’auriez pas de conseiller. À vous de voir." },
+          { "speaker": "Robert", "text": "Je commence comme ça, et je verrai plus tard. Quand est-ce que je reçois le RIB ?" },
+          { "speaker": "Conseiller", "text": "Tout de suite, je vous l’imprime. La carte arrivera par courrier sous huit jours." }
+        ]
+      },
+      "grammar": {
+        "point": "venir de + infinitif = to have just",
+        "explain": "The recent past. Venir conjugated in the present + de + infinitive means the action happened moments ago. In the imparfait it means 'had just'.",
+        "examples": [
+          "Je viens d’arriver. = I have just arrived.",
+          "Ils viennent de signer le bail.",
+          "Je venais de partir quand il a appelé. = I had just left when he called.",
+          "Do not use the passé composé here — *j’ai venu d’arriver is wrong."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quel est le « cercle vicieux » décrit dans le texte ?",
+          "options": [
+            "La banque exige un rendez-vous impossible à obtenir.",
+            "Il faut une facture d’électricité pour le compte, et un compte pour l’électricité.",
+            "La carte arrive avant le code secret.",
+            "Les frais augmentent chaque mois."
+          ],
+          "answer": 1,
+          "why": "« Pour ouvrir un compteur d’électricité, on vous demande souvent un compte bancaire. »"
+        },
+        {
+          "type": "tf",
+          "q": "Dans le dialogue, le bail signé peut remplacer la facture comme justificatif de domicile.",
+          "answer": true,
+          "why": "« Votre bail suffira, alors, s’il est signé et daté. »"
+        },
+        {
+          "type": "gap",
+          "q": "Mon employeur me demande un ___ pour verser mon salaire.",
+          "options": ["RIB", "créneau", "guichet", "virement"],
+          "answer": 0,
+          "why": "Le RIB contient les coordonnées du compte. Le virement, c’est l’opération elle-même."
+        },
+        {
+          "type": "gap",
+          "q": "Je ___ d’arriver en France, je n’ai encore rien reçu.",
+          "options": ["viens", "suis venu", "venais", "vais"],
+          "answer": 0,
+          "why": "venir de + infinitif au présent = to have just done something."
+        },
+        {
+          "type": "open",
+          "q": "Raconte une démarche administrative pénible que tu as dû faire. Utilise « il fallait » et « à cause de ».",
+          "model": "Quand j’ai commencé chez EPRI, il fallait remplir une dizaine de formulaires avant même le premier jour. À cause d’une erreur sur mon numéro de sécurité sociale, mon accès au laboratoire a été bloqué pendant deux semaines. J’ai dû appeler trois services différents, et chacun me renvoyait vers un autre. Franchement, j’ai perdu plus de temps là-dessus que sur mon premier projet."
+        }
+      ]
+    },
+    {
+      "id": "medecin",
+      "title": "Chez le médecin",
+      "subtitle": "Describing symptoms without guessing the words.",
+      "difficulty": 3,
+      "topics": ["santé"],
+      "newWords": [
+        { "fr": "une ordonnance", "en": "a prescription" },
+        { "fr": "avoir mal à", "en": "to have a pain in", "note": "j'ai mal à la tête, au dos, aux dents. Always à + article." },
+        { "fr": "des courbatures (f. pl.)", "en": "body aches, sore muscles" },
+        { "fr": "la carte Vitale", "en": "the French health insurance card" }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "La première fois que je suis allé chez un médecin en France, j’avais préparé mes phrases dans ma tête. J’avais mal à la gorge depuis quatre jours, de la fièvre le soir, et des courbatures partout. Ce que je n’avais pas prévu, c’est la vitesse : la consultation a duré douze minutes, et le médecin parlait comme s’il me connaissait depuis dix ans.",
+          "Il m’a posé les questions habituelles : depuis quand, est-ce que je tousse, est-ce que j’ai du mal à avaler. Puis il a écrit une ordonnance et m’a expliqué le traitement. J’ai compris environ soixante-dix pour cent. J’ai fait ce que je fais toujours dans ce cas : j’ai répété ce que j’avais compris, et il a corrigé les deux erreurs importantes.",
+          "Le système est simple une fois qu’on l’a compris. On paie la consultation, on présente sa carte Vitale, et la Sécurité sociale rembourse une grande partie quelques jours plus tard. Le reste est couvert par la mutuelle, si on en a une. Ce n’est pas gratuit, mais ça reste très abordable comparé à ce que je connaissais."
+        ],
+        "glossary": [
+          { "fr": "la gorge", "en": "the throat" },
+          { "fr": "la fièvre", "en": "fever" },
+          { "fr": "tousser", "en": "to cough" },
+          { "fr": "avaler", "en": "to swallow" },
+          { "fr": "rembourser", "en": "to reimburse" },
+          { "fr": "une mutuelle", "en": "top-up private health insurance" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Médecin", "text": "Bonjour, installez-vous. Qu’est-ce qui vous amène ?" },
+          { "speaker": "Robert", "text": "J’ai mal à la gorge depuis quatre jours, et j’ai de la fièvre le soir." },
+          { "speaker": "Médecin", "text": "Vous avez pris votre température ?" },
+          { "speaker": "Robert", "text": "Oui, 38,5 hier soir. Et j’ai des courbatures partout." },
+          { "speaker": "Médecin", "text": "Est-ce que vous toussez ? Vous avez du mal à avaler ?" },
+          { "speaker": "Robert", "text": "Je tousse un peu la nuit. Avaler, oui, c’est douloureux." },
+          { "speaker": "Médecin", "text": "Ouvrez la bouche, s’il vous plaît. Dites « ah »." },
+          { "speaker": "Médecin", "text": "C’est rouge, mais je ne vois pas de dépôt blanc. C’est probablement viral." },
+          { "speaker": "Robert", "text": "Donc pas d’antibiotiques ?" },
+          { "speaker": "Médecin", "text": "Non, ça ne servirait à rien. Du paracétamol, et beaucoup d’eau." },
+          { "speaker": "Robert", "text": "Combien de temps avant que ça passe ?" },
+          { "speaker": "Médecin", "text": "Comptez cinq à sept jours. Si la fièvre dépasse 39, ou si ça dure plus d’une semaine, revenez." },
+          { "speaker": "Robert", "text": "Très bien. Vous pouvez me faire un arrêt de deux jours ?" },
+          { "speaker": "Médecin", "text": "Je vous le mets sur l’ordonnance. N’oubliez pas votre carte Vitale à la pharmacie." }
+        ]
+      },
+      "grammar": {
+        "point": "avoir mal à + article contracté",
+        "explain": "The pattern never changes: avoir mal à, then the article merges with à. Say the body part with its article, never with a possessive — French says 'the head', not 'my head'.",
+        "examples": [
+          "J’ai mal à LA tête / à LA gorge.",
+          "J’ai mal AU dos / AU ventre. (à + le → au)",
+          "J’ai mal AUX dents / AUX yeux. (à + les → aux)",
+          "Not *j’ai mal à ma tête."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi le médecin ne prescrit-il pas d’antibiotiques ?",
+          "options": [
+            "Parce que le patient n’a pas sa carte Vitale.",
+            "Parce que l’infection est probablement virale.",
+            "Parce que la fièvre est trop élevée.",
+            "Parce que le patient tousse trop."
+          ],
+          "answer": 1,
+          "why": "« Je ne vois pas de dépôt blanc. C’est probablement viral… ça ne servirait à rien. »"
+        },
+        {
+          "type": "tf",
+          "q": "Le narrateur dit qu’il a tout compris pendant la consultation.",
+          "answer": false,
+          "why": "« J’ai compris environ soixante-dix pour cent » — puis il a répété pour se faire corriger."
+        },
+        {
+          "type": "gap",
+          "q": "Après la salle de sport, j’ai des ___ dans les jambes.",
+          "options": ["courbatures", "ordonnances", "mutuelles", "frais"],
+          "answer": 0,
+          "why": "des courbatures = sore muscles, body aches."
+        },
+        {
+          "type": "gap",
+          "q": "Depuis hier, j’ai mal ___ dos et ___ dents.",
+          "options": ["au / aux", "à le / à les", "du / des", "en / aux"],
+          "answer": 0,
+          "why": "à + le → au, à + les → aux. Jamais « à le »."
+        },
+        {
+          "type": "open",
+          "q": "Décris à un médecin une fois où tu as été malade : les symptômes, la durée, ce que tu as fait. Utilise « depuis » et « avoir mal à ».",
+          "model": "L’hiver dernier, j’ai eu une grippe assez forte. J’avais mal à la tête et à tout le corps, et je dormais mal depuis plusieurs nuits. Je devais partir en déplacement, du coup j’ai essayé de continuer à travailler. Au bout de trois jours, j’ai abandonné et je suis resté chez moi une semaine. En fait, j’aurais dû m’arrêter tout de suite."
+        }
+      ]
+    },
+    {
+      "id": "premier-salaire",
+      "title": "Le premier salaire",
+      "subtitle": "Gross, net, and where the rest went.",
+      "difficulty": 3,
+      "topics": ["argent", "travail"],
+      "newWords": [
+        { "fr": "le salaire brut / net", "en": "gross / net salary", "note": "In France you negotiate in brut annuel." },
+        { "fr": "une fiche de paie", "en": "a payslip" },
+        { "fr": "les cotisations (f. pl.)", "en": "social security contributions" },
+        { "fr": "le pouvoir d’achat", "en": "purchasing power" }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "Quand j’ai signé mon contrat, le chiffre annoncé était 42 000 euros. J’avais fait le calcul : 3 500 euros par mois. Le premier virement est arrivé : 2 690 euros. J’ai relu la fiche de paie trois fois avant de comprendre que je n’avais rien compris.",
+          "En France, on négocie toujours en brut annuel. Entre le brut et le net, il y a les cotisations sociales : santé, retraite, chômage, formation. Elles représentent environ vingt-deux pour cent pour le salarié — et l’employeur en paie encore davantage de son côté. Ce n’est pas de l’argent perdu : c’est ce qui finance la Sécurité sociale et la retraite. Mais il vaut mieux le savoir avant de calculer son loyer.",
+          "L’autre surprise, c’est l’impôt. Il est maintenant prélevé à la source, donc directement retiré du salaire. Sur ma fiche de paie, je vois donc trois chiffres différents, et le seul qui compte vraiment est le dernier : le net à payer. Depuis, quand un recruteur me donne un chiffre, je demande toujours : « brut ou net ? »"
+        ],
+        "glossary": [
+          { "fr": "un virement", "en": "a transfer (of money)" },
+          { "fr": "la retraite", "en": "retirement, pension" },
+          { "fr": "le chômage", "en": "unemployment (insurance)" },
+          { "fr": "davantage", "en": "more (than that)" },
+          { "fr": "l’impôt", "en": "tax" },
+          { "fr": "prélevé à la source", "en": "deducted at source" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Robert", "text": "Marie, tu peux m’expliquer ma fiche de paie ? Je ne comprends pas les chiffres." },
+          { "speaker": "Marie", "text": "Montre. Alors, en haut, tu as le brut : 3 500 euros." },
+          { "speaker": "Robert", "text": "Voilà, c’est ce qu’on m’avait annoncé. Mais j’ai reçu 2 690." },
+          { "speaker": "Marie", "text": "Normal. Regarde cette colonne : ce sont les cotisations salariales." },
+          { "speaker": "Robert", "text": "Santé, retraite, chômage… ça fait beaucoup de lignes." },
+          { "speaker": "Marie", "text": "Environ vingt-deux pour cent. Et l’employeur paie encore plus, de son côté." },
+          { "speaker": "Robert", "text": "Attends, donc je coûte beaucoup plus que 3 500 à l’entreprise ?" },
+          { "speaker": "Marie", "text": "À peu près 4 900. C’est ce qu’on appelle le coût employeur." },
+          { "speaker": "Robert", "text": "Et cette ligne, en bas, « prélèvement à la source » ?" },
+          { "speaker": "Marie", "text": "C’est l’impôt sur le revenu. Il est retiré directement, tu n’as rien à faire." },
+          { "speaker": "Robert", "text": "Du coup, quand on parle de salaire ici, c’est toujours en brut ?" },
+          { "speaker": "Marie", "text": "Toujours, et en annuel. Divise par douze, puis enlève vingt-cinq pour cent : tu tombes juste." },
+          { "speaker": "Robert", "text": "Bon à savoir. J’ai failli signer un bail trop cher à cause de ça." }
+        ]
+      },
+      "grammar": {
+        "point": "Percentages, fractions and approximation",
+        "explain": "Numbers come up constantly in professional French. Note the prepositions — they are not the same as English.",
+        "examples": [
+          "vingt-deux pour cent DU salaire (22% of)",
+          "un tiers, un quart, la moitié DE mon revenu",
+          "environ / à peu près 3 000 euros (about)",
+          "une vingtaine d’euros = around twenty euros",
+          "Divise PAR douze, multiplie PAR deux."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi le narrateur a-t-il reçu moins que prévu ?",
+          "options": [
+            "L’entreprise s’est trompée dans le virement.",
+            "Il avait négocié en net sans le savoir.",
+            "Le chiffre annoncé était le brut, avant cotisations et impôt.",
+            "Il n’avait pas encore de carte Vitale."
+          ],
+          "answer": 2,
+          "why": "« En France, on négocie toujours en brut annuel. Entre le brut et le net, il y a les cotisations sociales. »"
+        },
+        {
+          "type": "tf",
+          "q": "Selon Marie, l’employeur paie encore plus que le salaire brut.",
+          "answer": true,
+          "why": "« À peu près 4 900. C’est ce qu’on appelle le coût employeur. »"
+        },
+        {
+          "type": "gap",
+          "q": "Les ___ sociales financent la santé et la retraite.",
+          "options": ["cotisations", "ordonnances", "fourchettes", "prétentions"],
+          "answer": 0,
+          "why": "les cotisations sociales = social security contributions."
+        },
+        {
+          "type": "gap",
+          "q": "Ces charges représentent vingt pour cent ___ salaire brut.",
+          "options": ["du", "au", "le", "sur le"],
+          "answer": 0,
+          "why": "un pourcentage DE quelque chose : de + le → du."
+        },
+        {
+          "type": "open",
+          "q": "Explique à un ami français comment fonctionne un salaire dans ton pays. Utilise « en revanche » et « environ ».",
+          "model": "Aux États-Unis, on annonce presque toujours le salaire brut annuel, comme en France. En revanche, les cotisations sont beaucoup plus faibles : environ huit pour cent pour la retraite et la santé publique. Le problème, c’est que l’assurance maladie passe par l’employeur et coûte cher. Du coup, deux salaires identiques ne donnent pas du tout le même pouvoir d’achat."
+        }
+      ]
+    },
+    {
+      "id": "vacances-pas-cher",
+      "title": "Partir en vacances au moindre prix",
+      "subtitle": "Cheap travel without a miserable trip.",
+      "difficulty": 3,
+      "topics": ["voyage", "argent"],
+      "newWords": [
+        { "fr": "hors saison", "en": "off-season" },
+        { "fr": "un hébergement", "en": "accommodation" },
+        { "fr": "faire des économies", "en": "to save money", "note": "The everyday phrase; économiser is slightly more formal." },
+        { "fr": "valoir le détour", "en": "to be worth the trip" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Partir au moindre prix ne veut pas dire mal voyager. La première règle, c’est la date : le même hébergement au bord de la mer coûte trois fois moins cher en septembre qu’en août. Hors saison, il y a moins de monde, les prix baissent, et il fait souvent encore beau. Ceux qui n’ont pas d’enfants n’ont aucune raison de partir en plein mois d’août.",
+          "La deuxième règle concerne le transport. En France, le train est confortable mais cher si on réserve tard ; les billets les moins chers partent trois mois à l’avance. Le covoiturage et les bus longue distance coûtent beaucoup moins, avec un trajet plus long. À trois ou quatre, la voiture redevient compétitive, surtout si on partage l’essence et les péages.",
+          "Troisième règle, la moins évidente : ce sont les petites dépenses qui font exploser un budget. Deux cafés en terrasse, un déjeuner touristique, un musée à quinze euros — répétez cela sept jours de suite. Beaucoup de voyageurs réservent un logement avec une cuisine, mangent bien un soir sur deux, et visitent les musées le premier dimanche du mois, quand ils sont gratuits. Ça vaut vraiment le détour."
+        ],
+        "glossary": [
+          { "fr": "au bord de la mer", "en": "by the sea" },
+          { "fr": "en plein mois d’août", "en": "right in the middle of August" },
+          { "fr": "le covoiturage", "en": "carpooling / ride-sharing" },
+          { "fr": "l’essence", "en": "petrol, gas" },
+          { "fr": "les péages", "en": "motorway tolls" },
+          { "fr": "faire exploser", "en": "to blow up, to send sky-high" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animateur", "text": "Vacances à petit budget : nos trois conseils, et un piège à éviter." },
+          { "speaker": "Invitée", "text": "Premier conseil, et de loin le plus rentable : décalez vos dates." },
+          { "speaker": "Invitée", "text": "La deuxième semaine de septembre, vous divisez le prix de l’hébergement par deux ou par trois." },
+          { "speaker": "Animateur", "text": "Et il fait encore beau, en général." },
+          { "speaker": "Invitée", "text": "Souvent mieux qu’en août, franchement. Et il y a moins de monde partout." },
+          { "speaker": "Animateur", "text": "Deuxième conseil ?" },
+          { "speaker": "Invitée", "text": "Réservez le train tôt. Très tôt. Les billets à petit prix partent en quelques jours." },
+          { "speaker": "Invitée", "text": "Sinon, regardez le covoiturage. C’est trois fois moins cher, mais comptez deux heures de plus." },
+          { "speaker": "Animateur", "text": "Et le piège dont vous parliez ?" },
+          { "speaker": "Invitée", "text": "Les petites dépenses. Personne ne les compte, et elles représentent souvent la moitié du budget." },
+          { "speaker": "Invitée", "text": "Un café en terrasse sur une place touristique, c’est cinq euros. Trois par jour, sept jours…" },
+          { "speaker": "Animateur", "text": "Cent euros sans rien avoir visité." },
+          { "speaker": "Invitée", "text": "Exactement. Prenez un logement avec cuisine, et gardez les restaurants pour deux ou trois vrais repas." }
+        ]
+      },
+      "grammar": {
+        "point": "Comparatives: moins cher que, trois fois moins",
+        "explain": "The comparative frame is plus / moins / aussi + adjective + que. Multipliers go in front of the whole block, which is where English speakers usually put them wrong.",
+        "examples": [
+          "C’est moins cher QU’en août.",
+          "trois fois moins cher = three times cheaper",
+          "deux fois plus de monde = twice as many people",
+          "Irregular: bon → meilleur, bien → mieux. Never *plus bon."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Selon l’invitée, quel conseil est le plus rentable ?",
+          "options": [
+            "Réserver le train très tôt.",
+            "Décaler ses dates hors saison.",
+            "Prendre un logement avec cuisine.",
+            "Visiter les musées gratuits."
+          ],
+          "answer": 1,
+          "why": "« Premier conseil, et de loin le plus rentable : décalez vos dates. »"
+        },
+        {
+          "type": "tf",
+          "q": "D’après le texte, les petites dépenses quotidiennes sont négligeables.",
+          "answer": false,
+          "why": "« Elles représentent souvent la moitié du budget » — c’est justement le piège."
+        },
+        {
+          "type": "gap",
+          "q": "En septembre, on voyage ___ : c’est plus calme et moins cher.",
+          "options": ["hors saison", "à tour de rôle", "au guichet", "à temps partiel"],
+          "answer": 0,
+          "why": "hors saison = off-season."
+        },
+        {
+          "type": "gap",
+          "q": "Le bus est ___ cher ___ le train.",
+          "options": ["moins / que", "moins / de", "le moins / que", "peu / comme"],
+          "answer": 0,
+          "why": "Comparatif : moins + adjectif + QUE."
+        },
+        {
+          "type": "open",
+          "q": "Raconte un voyage que tu as fait à petit budget, et dis si ça valait le détour. Utilise « grâce à » et « au moindre prix ».",
+          "model": "Il y a deux ans, je suis parti dix jours au Québec. J’ai trouvé les billets au moindre prix en réservant quatre mois à l’avance, et j’ai dormi chez un ami à Montréal. Grâce à ça, presque tout mon budget est passé dans la nourriture et les visites. Ce n’était pas un voyage de luxe, mais franchement, ça valait le détour."
+        }
+      ]
+    },
+    {
+      "id": "greve",
+      "title": "Jour de grève",
+      "subtitle": "Why the trains stop, and how people plan around it.",
+      "difficulty": 3,
+      "topics": ["transport", "société"],
+      "newWords": [
+        { "fr": "une grève", "en": "a strike", "note": "faire grève, être en grève." },
+        { "fr": "un préavis", "en": "advance notice", "note": "un préavis de grève must be filed 48h ahead." },
+        { "fr": "un syndicat", "en": "a trade union" },
+        { "fr": "perturbé(e)", "en": "disrupted", "note": "Le trafic sera fortement perturbé." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "La grève fait partie du paysage français, et elle suit des règles précises. Dans les transports publics, les syndicats doivent déposer un préavis quarante-huit heures à l’avance. C’est pour cela que les usagers savent, souvent dès le mardi, que le jeudi sera compliqué. On annonce alors « un train sur trois » ou « trafic fortement perturbé ».",
+          "Pour les étrangers, la réaction des Français est déroutante. Beaucoup se plaignent du bruit, du retard et de la fatigue, mais peu remettent en cause le droit de grève lui-même. Une phrase revient souvent : « ça m’embête, mais je comprends pourquoi ils le font ». Le droit de grève est inscrit dans la Constitution, et il est considéré comme un contre-pouvoir normal.",
+          "En pratique, un jour de grève s’organise. On télétravaille si on peut, on décale une réunion, on part à vélo, ou on fait du covoiturage avec un voisin. Les entreprises envoient un message la veille pour dire que les retards seront tolérés. C’est loin d’être idéal, mais tout le monde connaît le scénario, et l’adaptation est étonnamment rapide."
+        ],
+        "glossary": [
+          { "fr": "le paysage", "en": "the landscape" },
+          { "fr": "déposer", "en": "to file, to lodge" },
+          { "fr": "un usager", "en": "a user (of a public service)" },
+          { "fr": "déroutant(e)", "en": "baffling, confusing" },
+          { "fr": "remettre en cause", "en": "to call into question" },
+          { "fr": "un contre-pouvoir", "en": "a check on power" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Nadia", "text": "Tu es au courant pour jeudi ? Grève à la SNCF." },
+          { "speaker": "Robert", "text": "Encore ? J’ai une réunion à Lyon à neuf heures." },
+          { "speaker": "Nadia", "text": "Ah. Il y aura un train sur trois, d’après le préavis." },
+          { "speaker": "Robert", "text": "Un sur trois, ça veut dire que mon train peut être annulé ?" },
+          { "speaker": "Nadia", "text": "Oui. Vérifie mercredi soir, ils publient le plan de transport la veille." },
+          { "speaker": "Robert", "text": "Et si je suis bloqué ? La réunion est importante." },
+          { "speaker": "Nadia", "text": "Franchement, décale-la ou fais-la en visio. Tout le monde comprendra." },
+          { "speaker": "Robert", "text": "Ça ne t’énerve pas, toi ? Trois grèves depuis janvier." },
+          { "speaker": "Nadia", "text": "Si, ça m’embête. Mais je comprends pourquoi ils le font." },
+          { "speaker": "Robert", "text": "C’est ce que tout le monde me répond. Ça me surprend toujours un peu." },
+          { "speaker": "Nadia", "text": "C’est un droit constitutionnel ici. On râle, mais on ne le remet pas en cause." },
+          { "speaker": "Robert", "text": "Bon. Je passe la réunion en visio et je travaille de chez moi." },
+          { "speaker": "Nadia", "text": "Voilà. Tu deviens français, petit à petit." }
+        ]
+      },
+      "grammar": {
+        "point": "Answering a negative question: SI, not oui",
+        "explain": "When you contradict a negative question or statement, French uses si instead of oui. Getting this right is a small thing that instantly sounds native.",
+        "examples": [
+          "— Ça ne t’énerve pas ? — SI, ça m’embête. (yes it does)",
+          "— Tu n’as pas compris ? — Si, si, j’ai compris.",
+          "Compare: — Tu as compris ? — Oui.",
+          "Only for contradicting a negative. Never *si to a positive question."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi les usagers connaissent-ils la grève à l’avance ?",
+          "options": [
+            "Les entreprises préviennent leurs salariés.",
+            "Les syndicats doivent déposer un préavis 48 heures avant.",
+            "Les grèves ont toujours lieu le jeudi.",
+            "La Constitution l’exige."
+          ],
+          "answer": 1,
+          "why": "« Les syndicats doivent déposer un préavis quarante-huit heures à l’avance. »"
+        },
+        {
+          "type": "tf",
+          "q": "D’après le texte, la plupart des Français veulent supprimer le droit de grève.",
+          "answer": false,
+          "why": "« Peu remettent en cause le droit de grève lui-même » — c’est vu comme un contre-pouvoir normal."
+        },
+        {
+          "type": "gap",
+          "q": "Jeudi, le trafic sera fortement ___.",
+          "options": ["perturbé", "bondé", "chômé", "dérangeant"],
+          "answer": 0,
+          "why": "perturbé = disrupted. C’est la formule officielle des transports."
+        },
+        {
+          "type": "gap",
+          "q": "— Tu n’es pas fatigué ? — ___, un peu, mais ça va.",
+          "options": ["Si", "Oui", "Non", "Bien"],
+          "answer": 0,
+          "why": "Pour contredire une question négative, on répond SI."
+        },
+        {
+          "type": "open",
+          "q": "Comment réagirais-tu si ton train était annulé le matin d’une réunion importante ? Utilise « au lieu de » et « du coup ».",
+          "model": "Si mon train était annulé, je regarderais d’abord s’il y en a un autre dans l’heure. Au lieu d’annuler la réunion, je proposerais de la faire en visioconférence depuis la gare ou de chez moi. Du coup, je perdrais peut-être en qualité de discussion, mais pas la journée entière. J’enverrais aussi un message tôt, pour que personne n’attende."
+        }
+      ]
+    },
+    {
+      "id": "apprendre-langue",
+      "title": "Ce qui marche vraiment pour apprendre",
+      "subtitle": "Comprehensible input, output, and the plateau.",
+      "difficulty": 3,
+      "topics": ["études"],
+      "newWords": [
+        { "fr": "un palier", "en": "a plateau, a level you get stuck on" },
+        { "fr": "assimiler", "en": "to absorb, to take in (knowledge)" },
+        { "fr": "à l’écrit / à l’oral", "en": "in writing / in speech" },
+        { "fr": "faire des progrès", "en": "to make progress", "note": "Always plural: des progrès." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Presque tous les apprenants connaissent le même problème : après un an ou deux, on comprend beaucoup, on lit sans dictionnaire, et pourtant on parle toujours mal. C’est le fameux palier B1. Il ne vient pas d’un manque de vocabulaire, mais d’un déséquilibre : on assimile énormément et on produit très peu.",
+          "La recherche est assez claire sur deux points. D’abord, il faut de l’input compréhensible : des textes et des audios où l’on connaît déjà quatre-vingt-dix pour cent des mots. Trop facile, on n’apprend rien ; trop difficile, on décroche. Ensuite, il faut de l’output régulier, même imparfait. Écrire cinq phrases et se faire corriger vaut mieux qu’écouter une heure de plus.",
+          "Le troisième élément, c’est la répétition espacée. On oublie environ soixante-dix pour cent d’un mot nouveau en une semaine si on ne le revoit jamais. En le revoyant à intervalles croissants — un jour, trois jours, une semaine, un mois — on garde presque tout, pour beaucoup moins d’efforts. Ce n’est pas très amusant, mais c’est ce qui fait la différence entre stagner et progresser."
+        ],
+        "glossary": [
+          { "fr": "un apprenant", "en": "a learner" },
+          { "fr": "un déséquilibre", "en": "an imbalance" },
+          { "fr": "décrocher", "en": "to switch off, to lose the thread" },
+          { "fr": "croissant(e)", "en": "increasing" },
+          { "fr": "stagner", "en": "to stagnate" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "Vous êtes bloqué au niveau intermédiaire ? Vous n’êtes pas seul, et ce n’est pas votre faute." },
+          { "speaker": "Invité", "text": "Le palier B1 est presque universel. Et il a une cause très simple." },
+          { "speaker": "Animatrice", "text": "Laquelle ?" },
+          { "speaker": "Invité", "text": "Vous écoutez et vous lisez beaucoup. Mais vous ne produisez presque rien." },
+          { "speaker": "Invité", "text": "Comprendre et produire, ce sont deux compétences différentes. L’une ne donne pas l’autre." },
+          { "speaker": "Animatrice", "text": "Donc il faut parler, même mal ?" },
+          { "speaker": "Invité", "text": "Surtout mal, au début. Une phrase fausse qu’on corrige vaut dix phrases parfaites qu’on n’a jamais dites." },
+          { "speaker": "Animatrice", "text": "Et pour le vocabulaire ? Beaucoup de gens font des listes énormes." },
+          { "speaker": "Invité", "text": "Les listes ne servent à rien sans révision espacée. Vous oubliez soixante-dix pour cent en une semaine." },
+          { "speaker": "Invité", "text": "Cinq mots par jour, revus régulièrement, battent cinquante mots vus une fois." },
+          { "speaker": "Animatrice", "text": "Combien de temps par jour, idéalement ?" },
+          { "speaker": "Invité", "text": "Vingt minutes tous les jours valent mieux que trois heures le dimanche. La régularité fait tout." },
+          { "speaker": "Animatrice", "text": "Et le plus important, si vous ne deviez garder qu’une chose ?" },
+          { "speaker": "Invité", "text": "Ne cassez pas la chaîne. C’est bête, mais c’est ce qui distingue ceux qui arrivent à B2." }
+        ]
+      },
+      "grammar": {
+        "point": "valoir mieux que + comparing actions",
+        "explain": "Two structures for weighing options. Il vaut mieux is impersonal advice; X vaut mieux que Y compares two specific things, with X as the real subject.",
+        "examples": [
+          "Écrire cinq phrases VAUT MIEUX QUE écouter une heure.",
+          "Vingt minutes par jour valent mieux que trois heures le dimanche.",
+          "Il vaut mieux commencer petit. (impersonal)",
+          "Note the spelling: il vaut (valoir), not *il faut."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "D’après le texte, quelle est la cause du palier B1 ?",
+          "options": [
+            "Un manque de vocabulaire.",
+            "Un déséquilibre entre ce qu’on assimile et ce qu’on produit.",
+            "Une mauvaise prononciation.",
+            "Le manque de temps."
+          ],
+          "answer": 1,
+          "why": "« Il ne vient pas d’un manque de vocabulaire, mais d’un déséquilibre. »"
+        },
+        {
+          "type": "tf",
+          "q": "L’invité dit que trois heures le dimanche valent mieux que vingt minutes par jour.",
+          "answer": false,
+          "why": "L’inverse : « Vingt minutes tous les jours valent mieux que trois heures le dimanche. »"
+        },
+        {
+          "type": "gap",
+          "q": "Je comprends bien à l’écrit, mais je fais peu de ___ à l’oral.",
+          "options": ["progrès", "paliers", "préavis", "frais"],
+          "answer": 0,
+          "why": "faire des progrès, toujours au pluriel."
+        },
+        {
+          "type": "gap",
+          "q": "Écrire un peu chaque jour ___ mieux que tout faire le week-end.",
+          "options": ["vaut", "faut", "veut", "va"],
+          "answer": 0,
+          "why": "Le verbe valoir : ça vaut mieux. Ne pas confondre avec falloir (il faut)."
+        },
+        {
+          "type": "open",
+          "q": "Quelle est ta plus grande difficulté en français, et qu’est-ce que tu vas changer cette semaine ? Utilise « au lieu de » et « petit à petit ».",
+          "model": "Ma plus grande difficulté, c’est de parler sans préparer mes phrases à l’avance. Je comprends presque tout ce que j’écoute, mais à l’oral je cherche mes mots et je perds le fil. Cette semaine, au lieu d’écouter un podcast de plus, je vais enregistrer deux minutes de moi chaque soir. Petit à petit, j’espère être moins lent."
+        }
+      ]
+    },
+    {
+      "id": "sommeil-ecrans",
+      "title": "Le sommeil et les écrans",
+      "subtitle": "Why you're tired at 7am and awake at midnight.",
+      "difficulty": 3,
+      "topics": ["santé", "quotidien"],
+      "newWords": [
+        { "fr": "veiller", "en": "to stay up late", "note": "Different from surveiller (to monitor)." },
+        { "fr": "un réveil", "en": "an alarm clock; the moment of waking" },
+        { "fr": "repousser", "en": "to push back, to postpone" },
+        { "fr": "une dette de sommeil", "en": "sleep debt" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Beaucoup d’adultes dorment six heures en semaine et dix le samedi. Ils croient rattraper leur retard, mais le corps ne fonctionne pas comme un compte en banque. Faire la grasse matinée le week-end répare une petite partie de la dette de sommeil, et décale l’horloge interne, ce qui rend le lundi encore plus difficile.",
+          "Le rôle des écrans est souvent mal compris. La lumière bleue existe, mais son effet est modeste comparé à un autre mécanisme : le contenu. Une série, un fil d’actualité ou une discussion en ligne maintient le cerveau en état d’alerte. On repousse le moment de se coucher non pas parce qu’on n’a pas sommeil, mais parce que la soirée est le seul moment de la journée qui nous appartient.",
+          "Les conseils qui marchent sont ennuyeux, comme toujours. Se lever à la même heure, y compris le week-end. Sortir dix minutes le matin, parce que la lumière du jour règle l’horloge mieux que n’importe quelle application. Et surtout, décider d’une heure de coucher et la traiter comme un rendez-vous professionnel : quelque chose qu’on ne repousse pas trois fois."
+        ],
+        "glossary": [
+          { "fr": "rattraper", "en": "to catch up on" },
+          { "fr": "décaler", "en": "to shift, to offset" },
+          { "fr": "l’horloge interne", "en": "the body clock" },
+          { "fr": "un fil d’actualité", "en": "a news feed" },
+          { "fr": "en état d’alerte", "en": "on alert" },
+          { "fr": "appartenir à", "en": "to belong to" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animateur", "text": "Vous dormez six heures en semaine et vous vous sentez épuisé ? Parlons-en." },
+          { "speaker": "Invitée", "text": "D’abord, arrêtons un mythe : on ne rattrape pas vraiment son sommeil le week-end." },
+          { "speaker": "Animateur", "text": "Pourtant, dormir jusqu’à onze heures le dimanche, ça fait du bien." },
+          { "speaker": "Invitée", "text": "Sur le moment, oui. Mais vous décalez votre horloge de deux heures." },
+          { "speaker": "Invitée", "text": "Résultat : le dimanche soir vous n’avez pas sommeil, et le lundi est terrible." },
+          { "speaker": "Animateur", "text": "Et les écrans ? La lumière bleue, c’est sérieux ou pas ?" },
+          { "speaker": "Invitée", "text": "C’est réel mais secondaire. Le vrai problème, c’est ce que vous regardez." },
+          { "speaker": "Invitée", "text": "Une série ou une discussion en ligne garde votre cerveau en alerte pendant une heure après." },
+          { "speaker": "Animateur", "text": "Donc il faudrait éteindre à quelle heure ?" },
+          { "speaker": "Invitée", "text": "Moins une heure fixe qu’une règle : rien qui demande une réponse après vingt-deux heures." },
+          { "speaker": "Animateur", "text": "Et le conseil le plus efficace, selon vous ?" },
+          { "speaker": "Invitée", "text": "Se lever à la même heure tous les jours. Même le samedi. C’est le levier numéro un." },
+          { "speaker": "Invitée", "text": "Et sortir dix minutes le matin. La lumière naturelle vaut mieux que toutes les applications du monde." }
+        ]
+      },
+      "grammar": {
+        "point": "y compris / non pas … mais",
+        "explain": "Two connectors that make written French look much more mature. Y compris means 'including, even'. Non pas … mais corrects a wrong assumption before giving the real reason.",
+        "examples": [
+          "Tous les jours, y compris le week-end. (including)",
+          "On repousse le coucher NON PAS parce qu’on n’a pas sommeil, MAIS parce que la soirée nous appartient.",
+          "Ce n’est pas un problème de volonté, mais d’organisation."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Selon le texte, pourquoi repousse-t-on l’heure du coucher ?",
+          "options": [
+            "À cause de la lumière bleue des écrans.",
+            "Parce que la soirée est le seul moment qui nous appartient.",
+            "Parce qu’on n’a pas sommeil avant minuit.",
+            "Parce qu’on a une dette de sommeil."
+          ],
+          "answer": 1,
+          "why": "« Non pas parce qu’on n’a pas sommeil, mais parce que la soirée est le seul moment de la journée qui nous appartient. »"
+        },
+        {
+          "type": "tf",
+          "q": "L’invitée dit que le levier le plus efficace est de se lever à la même heure chaque jour.",
+          "answer": true,
+          "why": "« Se lever à la même heure tous les jours. Même le samedi. C’est le levier numéro un. »"
+        },
+        {
+          "type": "gap",
+          "q": "J’ai ___ jusqu’à deux heures du matin pour finir ce rapport.",
+          "options": ["veillé", "surveillé", "réveillé", "repoussé"],
+          "answer": 0,
+          "why": "veiller = to stay up late. surveiller = to monitor."
+        },
+        {
+          "type": "gap",
+          "q": "Il travaille tous les jours, ___ le dimanche.",
+          "options": ["y compris", "au lieu de", "grâce à", "sauf que"],
+          "answer": 0,
+          "why": "y compris = including, even."
+        },
+        {
+          "type": "open",
+          "q": "Décris tes habitudes de sommeil et ce qui les dérange. Utilise « faire la grasse matinée » et « au lieu de ».",
+          "model": "En semaine, je me couche vers minuit et je me lève à six heures et demie, donc je manque clairement de sommeil. Le samedi, je fais la grasse matinée jusqu’à dix heures, et le dimanche soir je n’arrive plus à dormir. Ce qui me dérange le plus, c’est mon téléphone : au lieu de lire, je regarde des vidéos pendant une heure. Je vais essayer de le laisser dans une autre pièce."
+        }
+      ]
+    },
+    {
+      "id": "voiture-occasion",
+      "title": "Acheter une voiture d’occasion",
+      "subtitle": "The listing, the test drive, and the questions that matter.",
+      "difficulty": 3,
+      "topics": ["transport", "argent"],
+      "newWords": [
+        { "fr": "d’occasion", "en": "second-hand, used", "note": "une voiture d'occasion. Opposite: neuf/neuve." },
+        { "fr": "le kilométrage", "en": "the mileage" },
+        { "fr": "une panne", "en": "a breakdown", "note": "tomber en panne = to break down." },
+        { "fr": "le contrôle technique", "en": "the roadworthiness inspection / MOT" },
+        { "fr": "négocier", "en": "to negotiate" }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "J’ai mis trois semaines à acheter ma première voiture d’occasion en France, et j’ai failli me tromper deux fois. La première annonce semblait parfaite : 130 000 kilomètres, prix correct, photos propres. En appelant, j’ai appris que le contrôle technique était à refaire et que l’embrayage faisait un bruit « normal ». Ni l’un ni l’autre n’était normal.",
+          "Ce qui m’a sauvé, c’est une liste de questions préparées à l’avance. Depuis quand êtes-vous propriétaire ? Pourquoi vendez-vous ? Est-ce que vous avez le carnet d’entretien ? Y a-t-il eu des pannes importantes ? Un vendeur honnête répond sans hésiter ; un vendeur qui improvise se contredit au bout de trois minutes.",
+          "L’essai routier compte plus que tout le reste. Il faut rouler au moins vingt minutes, sur route et en ville, freiner fort une fois, et écouter le moteur à froid — pas après que le vendeur a chauffé la voiture. J’ai finalement payé 6 800 euros au lieu des 7 500 demandés, grâce au contrôle technique à refaire. Négocier n’est pas impoli : c’est attendu."
+        ],
+        "glossary": [
+          { "fr": "faillir + infinitif", "en": "to almost do something" },
+          { "fr": "une annonce", "en": "a listing, an ad" },
+          { "fr": "l’embrayage", "en": "the clutch" },
+          { "fr": "le carnet d’entretien", "en": "the service history book" },
+          { "fr": "se contredire", "en": "to contradict oneself" },
+          { "fr": "un essai routier", "en": "a test drive" },
+          { "fr": "freiner", "en": "to brake" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Robert", "text": "Bonjour, j’appelle pour la Clio de 2017. Elle est toujours à vendre ?" },
+          { "speaker": "Vendeur", "text": "Oui, toujours. 7 500 euros, 130 000 kilomètres." },
+          { "speaker": "Robert", "text": "Depuis quand êtes-vous propriétaire ?" },
+          { "speaker": "Vendeur", "text": "Depuis cinq ans. Je l’ai achetée à 40 000 kilomètres." },
+          { "speaker": "Robert", "text": "Et pourquoi est-ce que vous la vendez ?" },
+          { "speaker": "Vendeur", "text": "On attend un deuxième enfant, il nous faut plus grand." },
+          { "speaker": "Robert", "text": "D’accord. Vous avez le carnet d’entretien ?" },
+          { "speaker": "Vendeur", "text": "Oui, complet, tout a été fait chez le concessionnaire." },
+          { "speaker": "Robert", "text": "Le contrôle technique date de quand ?" },
+          { "speaker": "Vendeur", "text": "Ah, alors, il est à refaire. Il expire le mois prochain." },
+          { "speaker": "Robert", "text": "Est-ce qu’il y a eu des pannes importantes ?" },
+          { "speaker": "Vendeur", "text": "Rien de grave. L’embrayage fait un petit bruit, mais c’est normal sur ce modèle." },
+          { "speaker": "Robert", "text": "Je préférerais l’entendre à froid. Je peux passer samedi matin, avant que vous ne rouliez ?" },
+          { "speaker": "Vendeur", "text": "Euh… oui, si vous voulez. Neuf heures ?" },
+          { "speaker": "Robert", "text": "Parfait. Et vu le contrôle technique, il faudra revoir le prix." }
+        ]
+      },
+      "grammar": {
+        "point": "ni … ni … / faillir + infinitif",
+        "explain": "Two precise tools. Ni … ni negates two things at once and takes ne before the verb. Faillir + infinitive is the neat way to say something almost happened.",
+        "examples": [
+          "Ni l’un ni l’autre n’était normal.",
+          "Je ne bois ni café ni thé.",
+          "J’ai failli me tromper. = I almost made a mistake.",
+          "Il a failli tomber. (he nearly fell — no 'presque' needed)"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Qu’est-ce qui a permis au narrateur de négocier le prix ?",
+          "options": [
+            "Le kilométrage trop élevé.",
+            "Le contrôle technique à refaire.",
+            "L’absence de carnet d’entretien.",
+            "Un accident déclaré."
+          ],
+          "answer": 1,
+          "why": "« J’ai finalement payé 6 800 euros… grâce au contrôle technique à refaire. »"
+        },
+        {
+          "type": "tf",
+          "q": "Le narrateur conseille d’écouter le moteur après que le vendeur a chauffé la voiture.",
+          "answer": false,
+          "why": "L’inverse : « écouter le moteur à froid — pas après que le vendeur a chauffé la voiture. »"
+        },
+        {
+          "type": "gap",
+          "q": "Ma voiture est tombée en ___ sur l’autoroute.",
+          "options": ["panne", "occasion", "annonce", "grève"],
+          "answer": 0,
+          "why": "tomber en panne = to break down."
+        },
+        {
+          "type": "gap",
+          "q": "J’___ acheter une voiture avec un moteur cassé.",
+          "options": ["ai failli", "ai presque", "avais failli de", "ai manqué"],
+          "answer": 0,
+          "why": "faillir + infinitif, sans préposition : j’ai failli acheter."
+        },
+        {
+          "type": "open",
+          "q": "Tu veux acheter une voiture d’occasion. Écris quatre questions que tu poserais au vendeur, et explique pourquoi. Utilise « est-ce que » et « depuis quand ».",
+          "model": "D’abord, je demanderais depuis quand il est propriétaire, parce qu’un propriétaire récent connaît mal la voiture. Ensuite : est-ce que le carnet d’entretien est complet ? Ça montre si les révisions ont été faites. Je demanderais aussi s’il y a eu des pannes importantes, et pourquoi il vend. Enfin, est-ce que le contrôle technique est récent ? Sinon, ça change le prix."
+        }
+      ]
+    }
+  ]
+}

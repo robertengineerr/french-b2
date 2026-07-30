@@ -1,0 +1,1069 @@
+{
+  "pack": "core-03",
+  "label": "Argument and abstraction (B2.1–B2.2)",
+  "challenges": [
+    {
+      "id": "ia-travail",
+      "title": "L’IA au bureau : qui fait quoi ?",
+      "subtitle": "Beyond the hype: what actually changes in a team.",
+      "difficulty": 4,
+      "topics": ["technologie", "travail"],
+      "newWords": [
+        { "fr": "un gain de productivité", "en": "a productivity gain" },
+        { "fr": "à terme", "en": "in the long run, eventually" },
+        { "fr": "une tâche ingrate", "en": "a thankless task" },
+        { "fr": "se substituer à", "en": "to replace, to take the place of", "note": "Formal. L'outil ne se substitue pas au jugement." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Le débat sur l’intelligence artificielle au travail souffre d’un défaut de méthode : on parle de métiers entiers alors qu’il faudrait parler de tâches. Un ingénieur ne fait pas « un métier » ; il rédige des rapports, relit des spécifications, cherche des références, écrit du code, discute avec des clients et prend des décisions techniques. Ces activités ne sont pas menacées de la même façon, ni au même rythme.",
+          "Là où les gains de productivité sont réels, ils concernent des tâches ingrates et bien délimitées : résumer trois cents pages de normes, transformer des données brutes en tableau lisible, écrire une première version d’un document qu’on va de toute façon réécrire. Ce que ces tâches ont en commun, c’est qu’une erreur y est facile à repérer. Quand le coût de vérification est faible, l’outil est rentable.",
+          "Le risque se déplace donc ailleurs. Il ne s’agit pas tant de perdre son emploi que de perdre sa compétence : un jeune ingénieur qui n’a jamais écrit de rapport lui-même n’apprendra pas à en juger un. Bien que les outils soient impressionnants, ils ne se substituent pas au jugement — ils le rendent au contraire plus rare, et donc plus précieux. À terme, la question n’est pas « qui sera remplacé ? », mais « qui saura encore vérifier ? »"
+        ],
+        "glossary": [
+          { "fr": "souffrir d’un défaut", "en": "to suffer from a flaw" },
+          { "fr": "rédiger", "en": "to draft, to write up" },
+          { "fr": "une norme", "en": "a standard (technical or legal)" },
+          { "fr": "des données brutes", "en": "raw data" },
+          { "fr": "repérer", "en": "to spot" },
+          { "fr": "il ne s’agit pas tant de … que de", "en": "it's not so much a matter of … as of" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "On nous annonce depuis trois ans que l’IA va tout changer au travail. Où en est-on vraiment ?" },
+          { "speaker": "Invité", "text": "Dans les faits, les gains sont réels mais très inégaux selon les tâches." },
+          { "speaker": "Animatrice", "text": "Donnez-moi un exemple concret." },
+          { "speaker": "Invité", "text": "Résumer un document de deux cents pages : excellent. Décider si le résumé est fidèle : c’est vous." },
+          { "speaker": "Invité", "text": "La règle est simple. Plus la vérification est rapide, plus l’outil est utile." },
+          { "speaker": "Animatrice", "text": "Et quand la vérification est longue ?" },
+          { "speaker": "Invité", "text": "Alors vous ne gagnez rien. Vous déplacez le travail, vous ne le supprimez pas." },
+          { "speaker": "Animatrice", "text": "Beaucoup de gens craignent surtout pour leur emploi." },
+          { "speaker": "Invité", "text": "Je crois que le vrai risque est différent. C’est l’érosion des compétences." },
+          { "speaker": "Invité", "text": "Un débutant qui n’a jamais rédigé de rapport ne saura pas juger celui qu’on lui propose." },
+          { "speaker": "Animatrice", "text": "Que faudrait-il faire, alors, dans une équipe ?" },
+          { "speaker": "Invité", "text": "Que les juniors fassent le travail difficile d’abord, et qu’ils utilisent l’outil ensuite, pour comparer." },
+          { "speaker": "Invité", "text": "Bien que ce soit plus lent au début, c’est la seule façon de former quelqu’un." },
+          { "speaker": "Animatrice", "text": "Autrement dit, la compétence rare, ce sera le jugement." },
+          { "speaker": "Invité", "text": "Exactement. Et le jugement, ça ne s’achète pas par abonnement." }
+        ]
+      },
+      "grammar": {
+        "point": "bien que + subjonctif",
+        "explain": "Bien que and quoique ('although') always take the subjunctive — no exceptions. This is one of the highest-value B2 structures: it lets you concede a point before making your own.",
+        "examples": [
+          "Bien que les outils SOIENT impressionnants, ils ne remplacent pas le jugement.",
+          "Bien qu’il AIT raison, je ne suis pas d’accord sur la méthode.",
+          "Bien que ce SOIT plus lent, c’est plus formateur.",
+          "Alternative without the subjunctive: même si + indicatif — même s’il a raison…"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Selon l’auteur, quel est le défaut de méthode du débat sur l’IA ?",
+          "options": [
+            "On surestime la qualité des outils.",
+            "On raisonne en métiers entiers au lieu de raisonner en tâches.",
+            "On oublie les questions juridiques.",
+            "On ne parle que des ingénieurs."
+          ],
+          "answer": 1,
+          "why": "« On parle de métiers entiers alors qu’il faudrait parler de tâches. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Quand un outil d’IA est-il vraiment rentable, d’après le texte et l’entretien ?",
+          "options": [
+            "Quand la tâche est créative.",
+            "Quand la tâche est longue.",
+            "Quand le coût de vérification est faible.",
+            "Quand plusieurs personnes l’utilisent."
+          ],
+          "answer": 2,
+          "why": "« Quand le coût de vérification est faible, l’outil est rentable » — repris par « plus la vérification est rapide, plus l’outil est utile »."
+        },
+        {
+          "type": "tf",
+          "q": "L’invité pense que le principal risque est la disparition des emplois.",
+          "answer": false,
+          "why": "« Le vrai risque est différent. C’est l’érosion des compétences. »"
+        },
+        {
+          "type": "gap",
+          "q": "___ cet outil soit puissant, il faut toujours vérifier ses résultats.",
+          "options": ["Bien que", "Même s’", "Puisque", "Parce que"],
+          "answer": 0,
+          "why": "Bien que + subjonctif (soit). « Même si » exigerait l’indicatif : même s’il EST puissant."
+        },
+        {
+          "type": "open",
+          "q": "Quelles tâches de ton travail confierais-tu à un outil d’IA, et lesquelles jamais ? Justifie. Utilise « bien que » et « il ne s’agit pas tant de … que de ».",
+          "model": "Je lui confierais volontiers la relecture de normes techniques et la mise en forme de données de mesure : la vérification est rapide, et l’erreur se voit. En revanche, je ne lui confierais jamais l’interprétation d’un essai en conditions réelles. Bien que l’outil sache décrire une courbe, il ne connaît pas le montage ni ce qui s’est passé sur le terrain. Il ne s’agit pas tant de gagner du temps que de garder la responsabilité de la conclusion."
+        }
+      ]
+    },
+    {
+      "id": "logement-cher",
+      "title": "Pourquoi le logement coûte si cher",
+      "subtitle": "An argument with three competing explanations.",
+      "difficulty": 4,
+      "topics": ["logement", "société", "argent"],
+      "newWords": [
+        { "fr": "l’offre et la demande", "en": "supply and demand" },
+        { "fr": "un permis de construire", "en": "a building permit" },
+        { "fr": "la spéculation", "en": "speculation (financial)" },
+        { "fr": "endiguer", "en": "to stem, to curb", "note": "Formal, used for crises and rising costs." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Dans presque toutes les grandes villes occidentales, les loyers ont augmenté beaucoup plus vite que les salaires depuis vingt ans. Trois explications s’affrontent, et chacune a ses partisans convaincus. La première est mécanique : on ne construit pas assez. Là où la population augmente et où les permis de construire restent rares, l’offre ne suit pas la demande, et les prix montent.",
+          "La deuxième explication met en cause la financiarisation. Le logement n’est plus seulement un lieu de vie, c’est un placement. Des fonds d’investissement achètent des immeubles entiers, non pour les habiter mais pour les rentabiliser ; à cela s’ajoutent les locations touristiques de courte durée, qui retirent des milliers d’appartements du marché locatif classique dans les centres-villes.",
+          "La troisième est plus inconfortable, car elle concerne les habitants eux-mêmes. Ceux qui possèdent déjà un logement ont un intérêt objectif à ce que les prix montent, et ce sont souvent eux qui votent le plus, qui participent aux réunions de quartier et qui s’opposent aux nouveaux projets. Quoi qu’on pense de ces trois thèses, elles ont un point commun : aucune ne se règle en un mandat électoral. C’est pourquoi les mesures d’urgence, comme l’encadrement des loyers, endiguent la hausse sans jamais la faire disparaître."
+        ],
+        "glossary": [
+          { "fr": "s’affronter", "en": "to clash, to compete" },
+          { "fr": "un placement", "en": "an investment" },
+          { "fr": "rentabiliser", "en": "to make profitable" },
+          { "fr": "le marché locatif", "en": "the rental market" },
+          { "fr": "un mandat électoral", "en": "a term of office" },
+          { "fr": "l’encadrement des loyers", "en": "rent control" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animateur", "text": "Le logement est devenu le premier poste de dépense des ménages. Comment en est-on arrivé là ?" },
+          { "speaker": "Économiste", "text": "Il faut résister à la tentation d’une explication unique. Il y a trois mécanismes, et ils se cumulent." },
+          { "speaker": "Animateur", "text": "Commençons par le plus simple." },
+          { "speaker": "Économiste", "text": "La construction. Dans les zones tendues, on construit deux fois moins qu’il ne faudrait." },
+          { "speaker": "Animateur", "text": "Pourquoi, si la demande est là ?" },
+          { "speaker": "Économiste", "text": "Parce que délivrer un permis coûte politiquement cher. Les riverains s’y opposent presque systématiquement." },
+          { "speaker": "Animateur", "text": "Et la spéculation ? On l’accuse souvent." },
+          { "speaker": "Économiste", "text": "Elle joue, surtout dans les centres. Mais elle amplifie une rareté ; elle ne la crée pas." },
+          { "speaker": "Animateur", "text": "Donc l’encadrement des loyers ne sert à rien ?" },
+          { "speaker": "Économiste", "text": "Je n’irais pas jusque-là. Ça protège les locataires en place, ce qui n’est pas rien." },
+          { "speaker": "Économiste", "text": "En revanche, ça ne crée pas un seul logement supplémentaire. C’est un pansement, pas un traitement." },
+          { "speaker": "Animateur", "text": "Qu’est-ce qui marcherait, alors ?" },
+          { "speaker": "Économiste", "text": "Construire massivement là où les gens veulent vivre, et accepter que le paysage change." },
+          { "speaker": "Économiste", "text": "Quoi qu’en disent les uns et les autres, il n’y a pas de solution sans coût politique." }
+        ]
+      },
+      "grammar": {
+        "point": "quoi que / quoi qu’il en soit",
+        "explain": "Quoi que + subjunctive means 'whatever, no matter what'. Do not confuse it with quoique (one word) = although. The set phrases are worth memorising whole.",
+        "examples": [
+          "Quoi qu’on PENSE de ces thèses… (whatever one thinks)",
+          "Quoi qu’en DISENT les uns et les autres… (whatever people say about it)",
+          "Quoi qu’il en soit, il faut agir. = In any case, whatever the situation…",
+          "Contrast: quoique = bien que + subjonctif (although)."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quelle est la troisième explication, présentée comme « plus inconfortable » ?",
+          "options": [
+            "Les fonds d’investissement achètent des immeubles entiers.",
+            "Les propriétaires actuels ont intérêt à la hausse et s’opposent aux projets.",
+            "Les salaires n’augmentent pas assez vite.",
+            "Les locations touristiques réduisent l’offre."
+          ],
+          "answer": 1,
+          "why": "« Ceux qui possèdent déjà un logement ont un intérêt objectif à ce que les prix montent… et s’opposent aux nouveaux projets. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Comment l’économiste juge-t-il l’encadrement des loyers ?",
+          "options": [
+            "C’est inutile et même nuisible.",
+            "C’est la seule solution efficace.",
+            "Ça protège les locataires en place mais ne crée aucun logement.",
+            "Ça fait baisser les prix durablement."
+          ],
+          "answer": 2,
+          "why": "« Ça protège les locataires en place… En revanche, ça ne crée pas un seul logement supplémentaire. C’est un pansement, pas un traitement. »"
+        },
+        {
+          "type": "tf",
+          "q": "Selon l’économiste, la spéculation est la cause première de la rareté des logements.",
+          "answer": false,
+          "why": "« Elle amplifie une rareté ; elle ne la crée pas. »"
+        },
+        {
+          "type": "gap",
+          "q": "___ il en soit, il faudra construire davantage.",
+          "options": ["Quoi qu’", "Quoiqu’", "Bien qu’", "Malgré qu’"],
+          "answer": 0,
+          "why": "Locution figée : quoi qu’il en soit = in any case. « Quoique » en un mot signifie « bien que »."
+        },
+        {
+          "type": "open",
+          "q": "Le logement est-il trop cher là où tu vis ? Quelle explication te paraît la plus juste, et pourquoi ? Utilise « quoi qu’on en pense » et « en revanche ».",
+          "model": "À Charlotte, les loyers ont augmenté très vite, surtout depuis que plusieurs entreprises se sont installées dans la région. L’explication qui me paraît la plus juste est la première : on construit surtout des immeubles haut de gamme, et presque rien d’abordable. En revanche, je ne crois pas que la spéculation explique tout. Quoi qu’on en pense, tant que la population augmentera plus vite que le nombre de logements, les prix continueront de monter."
+        }
+      ]
+    },
+    {
+      "id": "semaine-quatre-jours",
+      "title": "La semaine de quatre jours",
+      "subtitle": "Same pay, fewer days — and the catch nobody mentions.",
+      "difficulty": 4,
+      "topics": ["travail", "société"],
+      "newWords": [
+        { "fr": "à salaire égal", "en": "for the same pay" },
+        { "fr": "un essai / une expérimentation", "en": "a trial / a pilot scheme" },
+        { "fr": "l’absentéisme", "en": "absenteeism" },
+        { "fr": "les tâches à faible valeur", "en": "low-value tasks" },
+        { "fr": "en pâtir", "en": "to suffer from it, to be hurt by it", "note": "Formal: la qualité en pâtit." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Depuis quelques années, plusieurs pays ont mené des expérimentations sur la semaine de quatre jours à salaire égal. Les résultats publiés sont, dans l’ensemble, favorables : baisse de l’absentéisme, salariés moins fatigués, productivité stable ou légèrement supérieure. Peu d’entreprises ayant participé à ces essais sont revenues en arrière, ce qui constitue en soi un indice sérieux.",
+          "Il faut cependant lire ces chiffres avec prudence. La plupart des essais ont été menés dans des secteurs où le travail se mesure en projets livrés, pas en heures de présence : conseil, logiciel, communication. Dans ces métiers, il existe une réserve considérable de tâches à faible valeur — réunions inutiles, courriels de courtoisie, rapports que personne ne lit — que l’on peut supprimer sans que rien n’en pâtisse.",
+          "Le problème surgit là où la présence est le service : un hôpital, une usine, une école, un centre de contrôle. On ne peut pas surveiller un réseau électrique en quatre jours plutôt qu’en cinq ; il faut embaucher, donc payer davantage. Autrement dit, la semaine de quatre jours n’est pas un progrès social universel, mais une réforme dont le coût varie énormément selon le métier. Que l’on soit pour ou contre, c’est cette asymétrie qu’il faudrait discuter, plutôt que d’opposer les partisans du repos aux défenseurs de l’effort."
+        ],
+        "glossary": [
+          { "fr": "mener", "en": "to conduct, to carry out" },
+          { "fr": "dans l’ensemble", "en": "on the whole" },
+          { "fr": "revenir en arrière", "en": "to go back, to reverse course" },
+          { "fr": "un indice", "en": "a clue, an indicator" },
+          { "fr": "surgir", "en": "to arise, to crop up" },
+          { "fr": "embaucher", "en": "to hire" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "Quatre jours payés cinq : utopie ou réforme sérieuse ?" },
+          { "speaker": "Invité", "text": "Les essais existent, ils sont documentés, et les résultats sont plutôt bons. Ça, c’est établi." },
+          { "speaker": "Animatrice", "text": "Alors pourquoi tout le monde ne s’y met pas ?" },
+          { "speaker": "Invité", "text": "Parce qu’on généralise des résultats obtenus dans le secteur tertiaire." },
+          { "speaker": "Invité", "text": "Dans le conseil ou le logiciel, il y a une énorme réserve de temps gaspillé." },
+          { "speaker": "Animatrice", "text": "Vous voulez dire les réunions ?" },
+          { "speaker": "Invité", "text": "Les réunions, les rapports que personne ne lit, les validations en cinq étapes. Supprimez ça, vous avez votre journée." },
+          { "speaker": "Animatrice", "text": "Et ailleurs ?" },
+          { "speaker": "Invité", "text": "Ailleurs, la présence est le service. Une infirmière ne peut pas soigner plus vite." },
+          { "speaker": "Invité", "text": "Un centre de supervision du réseau doit être tenu vingt-quatre heures sur vingt-quatre." },
+          { "speaker": "Animatrice", "text": "Donc il faudrait embaucher." },
+          { "speaker": "Invité", "text": "Voilà. Et là, ce n’est plus une réorganisation, c’est une dépense." },
+          { "speaker": "Animatrice", "text": "Vous y êtes favorable, personnellement ?" },
+          { "speaker": "Invité", "text": "Là où c’est possible, oui, franchement. Mais je refuse qu’on présente cela comme gratuit." },
+          { "speaker": "Invité", "text": "Que l’on soit pour ou contre, il faut dire qui paie. Sinon, on ne discute pas, on fait de la publicité." }
+        ]
+      },
+      "grammar": {
+        "point": "sans que + subjonctif",
+        "explain": "Sans que always takes the subjunctive. It's the elegant way to say 'without something happening'. If the subject is the same on both sides, prefer sans + infinitive instead.",
+        "examples": [
+          "…sans que rien n’en PÂTISSE. (without anything suffering)",
+          "Il est parti sans que je le SACHE.",
+          "Same subject → infinitive: il est parti sans rien dire.",
+          "Also subjunctive after: avant que, pour que, à condition que, jusqu’à ce que."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi faut-il lire les résultats des essais avec prudence ?",
+          "options": [
+            "Les entreprises ont menti sur leurs chiffres.",
+            "Les essais ont surtout eu lieu dans des secteurs où le travail se mesure en projets.",
+            "Les salariés étaient volontaires.",
+            "Les essais ont duré trop longtemps."
+          ],
+          "answer": 1,
+          "why": "« La plupart des essais ont été menés dans des secteurs où le travail se mesure en projets livrés, pas en heures de présence. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Quelle est la position finale de l’invité ?",
+          "options": [
+            "Il est contre la semaine de quatre jours.",
+            "Il y est favorable partout et sans condition.",
+            "Il y est favorable là où c’est possible, mais refuse qu’on la présente comme gratuite.",
+            "Il pense que seul le secteur public devrait l’appliquer."
+          ],
+          "answer": 2,
+          "why": "« Là où c’est possible, oui… Mais je refuse qu’on présente cela comme gratuit. »"
+        },
+        {
+          "type": "tf",
+          "q": "Selon le texte, la plupart des entreprises ayant fait l’essai sont revenues à cinq jours.",
+          "answer": false,
+          "why": "« Peu d’entreprises ayant participé à ces essais sont revenues en arrière. »"
+        },
+        {
+          "type": "gap",
+          "q": "On a supprimé ces réunions sans que la qualité en ___.",
+          "options": ["pâtisse", "pâtit", "pâtira", "a pâti"],
+          "answer": 0,
+          "why": "sans que + subjonctif : qu’elle en pâtisse."
+        },
+        {
+          "type": "open",
+          "q": "La semaine de quatre jours serait-elle applicable à ton travail ? Explique concrètement. Utilise « sans que » et « à salaire égal ».",
+          "model": "Dans mon service, une partie du travail est du calcul et de la rédaction : je pourrais probablement la faire en quatre jours sans que la qualité en souffre. En revanche, les essais en laboratoire imposent une présence physique, et certains montages tournent plusieurs jours d’affilée. À salaire égal, il faudrait donc embaucher un technicien de plus, sinon les campagnes d’essai prendraient un mois supplémentaire. Autrement dit, la réforme serait possible pour la moitié de mon poste seulement."
+        }
+      ]
+    },
+    {
+      "id": "reseau-electrique",
+      "title": "Les pics de consommation",
+      "subtitle": "Your own field, in French: grid load, peaks and flexibility.",
+      "difficulty": 4,
+      "topics": ["technique", "technologie"],
+      "newWords": [
+        { "fr": "le réseau électrique", "en": "the electrical grid" },
+        { "fr": "un pic de consommation", "en": "a demand peak" },
+        { "fr": "l’effacement", "en": "demand response / load shedding by agreement", "note": "Key French grid term: paying users to consume less at peak." },
+        { "fr": "l’acheminement", "en": "transmission and delivery" },
+        { "fr": "une panne généralisée", "en": "a blackout" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Un réseau électrique doit maintenir en permanence l’équilibre entre ce qui est produit et ce qui est consommé. Cet équilibre se lit sur la fréquence : 50 hertz en Europe, 60 en Amérique du Nord. Dès que la consommation dépasse la production, la fréquence baisse, et les automatismes de protection réagissent en quelques centaines de millisecondes — bien avant qu’un opérateur humain n’ait le temps d’intervenir.",
+          "Le problème n’est donc pas la quantité totale d’énergie, mais le moment. En France, le pic hivernal se situe vers dix-neuf heures, quand les gens rentrent, allument la lumière et le chauffage électrique. Chaque degré de moins dehors ajoute environ 2 400 mégawatts de demande, soit l’équivalent de deux réacteurs nucléaires. C’est pour cette raison que le gestionnaire de réseau surveille la météo aussi attentivement que la production.",
+          "Pour absorber ces pics, on dispose de trois leviers. Produire davantage, ce qui suppose des centrales de pointe coûteuses et souvent émettrices. Renforcer l’acheminement, ce qui prend une dizaine d’années entre l’étude et la mise en service. Ou réduire la demande au bon moment : c’est l’effacement, où des industriels et de plus en plus de particuliers acceptent de décaler leur consommation contre rémunération. Bien que ce dernier levier soit le moins spectaculaire, c’est le plus rapide à déployer — et de loin le moins cher par mégawatt évité."
+        ],
+        "glossary": [
+          { "fr": "en permanence", "en": "at all times" },
+          { "fr": "un automatisme de protection", "en": "a protection relay / automatic safeguard" },
+          { "fr": "le chauffage", "en": "heating" },
+          { "fr": "le gestionnaire de réseau", "en": "the grid operator (RTE in France)" },
+          { "fr": "une centrale de pointe", "en": "a peaking plant" },
+          { "fr": "la mise en service", "en": "commissioning, entry into service" },
+          { "fr": "contre rémunération", "en": "in exchange for payment" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Claire", "text": "Tu travailles sur la surveillance des lignes, c’est ça ? Explique-moi un truc." },
+          { "speaker": "Robert", "text": "Vas-y." },
+          { "speaker": "Claire", "text": "Pourquoi on parle toujours de « pic » ? L’électricité, on la produit, on la consomme, non ?" },
+          { "speaker": "Robert", "text": "Le problème, c’est qu’on ne peut presque pas la stocker. Tout doit s’équilibrer en temps réel." },
+          { "speaker": "Claire", "text": "En temps réel à quel point ?" },
+          { "speaker": "Robert", "text": "À la seconde. Si la consommation dépasse la production, la fréquence chute immédiatement." },
+          { "speaker": "Claire", "text": "Et si elle chute trop ?" },
+          { "speaker": "Robert", "text": "Les protections déconnectent des zones pour sauver le reste. C’est ça, éviter la panne généralisée." },
+          { "speaker": "Claire", "text": "Donc en hiver, à dix-neuf heures, tout le monde rentre et allume le chauffage…" },
+          { "speaker": "Robert", "text": "Exactement. Et un degré de moins dehors, c’est deux réacteurs de demande en plus." },
+          { "speaker": "Claire", "text": "C’est énorme. Vous faites quoi, vous construisez des centrales ?" },
+          { "speaker": "Robert", "text": "C’est une option, mais elle est chère et lente. Le levier le plus efficace, c’est l’effacement." },
+          { "speaker": "Claire", "text": "C’est-à-dire ?" },
+          { "speaker": "Robert", "text": "On paie des industriels pour qu’ils décalent leur consommation d’une heure ou deux." },
+          { "speaker": "Claire", "text": "Ah, malin. Au lieu de produire plus, tu consommes ailleurs dans le temps." },
+          { "speaker": "Robert", "text": "Voilà. Ça ne fait pas de belles photos, mais par mégawatt évité, rien n’est aussi rentable." }
+        ]
+      },
+      "grammar": {
+        "point": "avant que + subjonctif (+ ne explétif)",
+        "explain": "Avant que takes the subjunctive, and in careful written French it often carries a 'ne' that means nothing at all — the ne explétif. It is not a negation, so do not add pas.",
+        "examples": [
+          "…avant qu’un opérateur n’AIT le temps d’intervenir. (before an operator has time)",
+          "Je veux finir avant qu’il ne PARTE. (before he leaves)",
+          "Same after: de peur que, à moins que.",
+          "But après que takes the indicative: après qu’il est parti."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Que se passe-t-il si la consommation dépasse la production ?",
+          "options": [
+            "La tension augmente.",
+            "La fréquence baisse et les protections réagissent.",
+            "Les centrales de pointe s’arrêtent.",
+            "L’acheminement est interrompu volontairement."
+          ],
+          "answer": 1,
+          "why": "« Dès que la consommation dépasse la production, la fréquence baisse, et les automatismes de protection réagissent. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Pourquoi l’effacement est-il présenté comme le meilleur levier ?",
+          "options": [
+            "Parce qu’il produit plus d’énergie.",
+            "Parce qu’il est spectaculaire et populaire.",
+            "Parce qu’il est le plus rapide à déployer et le moins cher par mégawatt évité.",
+            "Parce qu’il supprime le besoin de réseau."
+          ],
+          "answer": 2,
+          "why": "« C’est le plus rapide à déployer — et de loin le moins cher par mégawatt évité. »"
+        },
+        {
+          "type": "tf",
+          "q": "D’après le texte, renforcer l’acheminement prend environ dix ans.",
+          "answer": true,
+          "why": "« Ce qui prend une dizaine d’années entre l’étude et la mise en service. »"
+        },
+        {
+          "type": "gap",
+          "q": "Les protections agissent avant qu’un opérateur ___ intervenir.",
+          "options": ["ne puisse", "ne peut", "ne pourra", "peut ne pas"],
+          "answer": 0,
+          "why": "avant que + subjonctif, avec le « ne » explétif qui n’est pas une négation."
+        },
+        {
+          "type": "open",
+          "q": "Explique en français, à quelqu’un qui n’est pas ingénieur, un aspect technique de ton travail. Cinq phrases maximum. Utilise « c’est-à-dire » et « autrement dit ».",
+          "model": "Je travaille sur des capteurs installés sur les lignes haute tension. Ils mesurent la température et le courant, c’est-à-dire à quel point la ligne est chargée et si elle chauffe trop. Ces données partent vers un centre de supervision qui décide s’il faut réduire le transit. Autrement dit, on essaie de voir venir un problème avant qu’il ne provoque une coupure. Le plus difficile n’est pas la mesure elle-même, mais de faire fonctionner l’électronique pendant des années dehors, par tous les temps."
+        }
+      ]
+    },
+    {
+      "id": "laicite",
+      "title": "La laïcité et le livre sacré",
+      "subtitle": "A French concept that translates badly into English.",
+      "difficulty": 4,
+      "topics": ["culture", "société"],
+      "newWords": [
+        { "fr": "la laïcité", "en": "French secularism (state neutrality in religion)", "note": "Not 'secularism' exactly — it is a legal principle, not an attitude." },
+        { "fr": "la croyance", "en": "belief" },
+        { "fr": "un culte", "en": "a religion, a form of worship", "note": "liberté de culte = freedom of worship." },
+        { "fr": "s’immiscer dans", "en": "to interfere in, to meddle in" },
+        { "fr": "relever de", "en": "to fall within the remit of, to be a matter for" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "La laïcité française se traduit mal, et c’est la source de la plupart des malentendus. Elle ne signifie pas que la religion soit mal vue, ni que les croyances doivent rester secrètes. Le principe, fixé par la loi de 1905, est double : l’État ne reconnaît ni ne finance aucun culte, et il garantit en échange à chacun la liberté de croire et de pratiquer.",
+          "La conséquence pratique porte sur les institutions, non sur les individus. Un fonctionnaire ne peut pas afficher son appartenance religieuse lorsqu’il représente l’État, parce qu’il doit apparaître neutre devant tous les usagers. En revanche, un usager, lui, entre dans une mairie comme il veut. Cette distinction paraît subtile de l’extérieur, mais elle structure tout le débat français : ce qui est demandé à l’État n’est pas demandé aux personnes.",
+          "L’école cristallise les tensions, parce que c’est là que se rencontrent des familles très différentes et que l’État s’adresse à des mineurs. Un livre sacré peut y être étudié comme texte littéraire ou historique — la Bible, le Coran et la Torah figurent dans les programmes de français et d’histoire — mais il n’est pas enseigné comme vérité. Que l’on approuve ou non ce modèle, il faut comprendre sa logique : la croyance relève de la conscience privée, et l’État se refuse à s’immiscer dans ce qui, à ses yeux, ne le concerne pas."
+        ],
+        "glossary": [
+          { "fr": "un malentendu", "en": "a misunderstanding" },
+          { "fr": "être mal vu", "en": "to be frowned upon" },
+          { "fr": "un fonctionnaire", "en": "a public servant" },
+          { "fr": "l’appartenance", "en": "membership, affiliation" },
+          { "fr": "une mairie", "en": "a town hall" },
+          { "fr": "cristalliser", "en": "to crystallise, to bring to a head" },
+          { "fr": "un mineur", "en": "a minor (under 18)" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "La laïcité : mot français intraduisible, et sujet de dispute permanente. Remettons les choses à plat." },
+          { "speaker": "Invité", "text": "Le premier malentendu, c’est de croire que la laïcité est dirigée contre les religions." },
+          { "speaker": "Animatrice", "text": "Elle ne l’est pas ?" },
+          { "speaker": "Invité", "text": "Non. La loi de 1905 garantit la liberté de culte dans son article premier. C’est même son point de départ." },
+          { "speaker": "Invité", "text": "Ce qu’elle organise, c’est la neutralité de l’État, pas celle des citoyens." },
+          { "speaker": "Animatrice", "text": "Donnez un exemple qui rende ça clair." },
+          { "speaker": "Invité", "text": "Derrière le guichet d’une mairie, l’agent doit être neutre. Devant le guichet, vous ne devez rien." },
+          { "speaker": "Animatrice", "text": "Et pourquoi l’école revient-elle toujours dans le débat ?" },
+          { "speaker": "Invité", "text": "Parce que l’État y parle à des enfants, et parce que les familles y sont très diverses." },
+          { "speaker": "Invité", "text": "On y étudie les textes sacrés, mais comme objets d’étude. La différence est essentielle." },
+          { "speaker": "Animatrice", "text": "Beaucoup d’étrangers trouvent ce modèle rigide." },
+          { "speaker": "Invité", "text": "Je le comprends. Dans le monde anglo-saxon, la neutralité consiste à accueillir toutes les expressions." },
+          { "speaker": "Invité", "text": "En France, elle consiste à ce que l’État n’en affiche aucune. Ce sont deux logiques cohérentes, mais opposées." },
+          { "speaker": "Animatrice", "text": "Aucune n’est plus « neutre » que l’autre, finalement." },
+          { "speaker": "Invité", "text": "Voilà. Chacune choisit ce qu’elle protège. Encore faut-il le savoir avant de juger." }
+        ]
+      },
+      "grammar": {
+        "point": "The subjunctive after doubt and negated opinion",
+        "explain": "Verbs of doubt, and opinion verbs in the negative, switch to the subjunctive. This is a reliable B2 marker — and note the trap: espérer never takes it.",
+        "examples": [
+          "Elle ne signifie pas que la religion SOIT mal vue. (negated → subjonctif)",
+          "Je ne crois pas qu’il AIT raison.",
+          "But: je crois qu’il A raison. (affirmative → indicatif)",
+          "Il faut que / il est important que + subjonctif.",
+          "Trap: j’espère qu’il VIENDRA — indicatif, always."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "D’après le texte, sur qui pèse l’obligation de neutralité ?",
+          "options": [
+            "Sur tous les citoyens dans l’espace public.",
+            "Sur les institutions et leurs représentants.",
+            "Sur les élèves et leurs familles.",
+            "Sur les religions reconnues par l’État."
+          ],
+          "answer": 1,
+          "why": "« La conséquence pratique porte sur les institutions, non sur les individus. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Comment l’invité compare-t-il le modèle français et le modèle anglo-saxon ?",
+          "options": [
+            "Le modèle français est plus neutre.",
+            "Le modèle anglo-saxon est plus neutre.",
+            "Ce sont deux logiques cohérentes mais opposées, aucune plus neutre que l’autre.",
+            "Les deux modèles sont en réalité identiques."
+          ],
+          "answer": 2,
+          "why": "« Ce sont deux logiques cohérentes, mais opposées… Chacune choisit ce qu’elle protège. »"
+        },
+        {
+          "type": "tf",
+          "q": "Les textes sacrés sont exclus des programmes scolaires français.",
+          "answer": false,
+          "why": "Ils y « figurent dans les programmes de français et d’histoire », mais comme objets d’étude, non comme vérité."
+        },
+        {
+          "type": "gap",
+          "q": "Je ne pense pas que ce modèle ___ facile à comprendre de l’extérieur.",
+          "options": ["soit", "est", "sera", "était"],
+          "answer": 0,
+          "why": "Verbe d’opinion à la forme négative → subjonctif."
+        },
+        {
+          "type": "open",
+          "q": "Compare la place de la religion dans l’espace public en France et dans ton pays. Utilise « en revanche » et « je ne crois pas que + subjonctif ».",
+          "model": "Aux États-Unis, la religion est très présente dans la vie publique : on la mentionne dans les discours politiques, et les écoles privées religieuses sont nombreuses. En revanche, l’État ne finance officiellement aucun culte, comme en France. La différence est plutôt culturelle que juridique. Je ne crois pas qu’un modèle soit supérieur à l’autre, mais je trouve que le modèle français demande plus d’explications aux étrangers."
+        }
+      ]
+    },
+    {
+      "id": "negocier-salaire",
+      "title": "Négocier son salaire",
+      "subtitle": "The script, the silence, and the number you say first.",
+      "difficulty": 4,
+      "topics": ["travail", "argent"],
+      "newWords": [
+        { "fr": "une augmentation", "en": "a raise" },
+        { "fr": "un argumentaire", "en": "a set of arguments, a pitch" },
+        { "fr": "revoir à la hausse", "en": "to revise upwards" },
+        { "fr": "faire valoir", "en": "to assert, to point out (in your favour)" },
+        { "fr": "s’aligner sur", "en": "to bring into line with, to match" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Demander une augmentation met mal à l’aise pour une raison culturelle simple : on a appris à considérer l’argent comme une question personnelle, alors que c’est une question de marché. Votre responsable ne décide pas de votre valeur morale ; il compare le coût de vous garder au coût de vous remplacer. Formulée ainsi, la conversation devient beaucoup moins intimidante.",
+          "Un bon argumentaire ne parle pas de besoins mais de contributions, et il repose sur trois éléments vérifiables : ce que vous avez livré depuis un an, ce que vous faites aujourd’hui qui n’était pas dans votre poste initial, et ce que le marché paie pour ce profil. Le troisième point est le plus négligé, alors que c’est le seul que votre interlocuteur ne peut pas contester. « J’ai travaillé dur » ne se vérifie pas ; « les offres comparables sont à 15 % au-dessus » se vérifie en dix minutes.",
+          "Trois erreurs reviennent constamment. Annoncer un chiffre trop tôt, avant d’avoir fait valoir ses arguments. Menacer de partir sans être prêt à le faire, ce qui abîme la relation pour rien. Et surtout, combler le silence : après avoir formulé sa demande, il faut se taire, aussi inconfortable que cela soit. Beaucoup de candidats négocient contre eux-mêmes dans les cinq secondes qui suivent, en ajoutant « mais bien sûr, je comprends si ce n’est pas possible »."
+        ],
+        "glossary": [
+          { "fr": "un responsable", "en": "a manager" },
+          { "fr": "reposer sur", "en": "to rest on, to be based on" },
+          { "fr": "négligé(e)", "en": "overlooked" },
+          { "fr": "contester", "en": "to dispute" },
+          { "fr": "combler", "en": "to fill (a gap, a silence)" },
+          { "fr": "se taire", "en": "to keep quiet, to say nothing" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Robert", "text": "Merci de me recevoir. Je voulais parler de ma rémunération." },
+          { "speaker": "Responsable", "text": "Bien sûr. Je vous écoute." },
+          { "speaker": "Robert", "text": "Depuis un an, j’ai repris la campagne d’essais climatiques, qui n’était pas dans ma fiche de poste." },
+          { "speaker": "Robert", "text": "J’ai aussi formé deux stagiaires et corrigé le défaut d’étanchéité sur la série précédente." },
+          { "speaker": "Responsable", "text": "C’est exact, et votre travail est apprécié, je vous le dis franchement." },
+          { "speaker": "Robert", "text": "J’ai regardé le marché pour un profil équivalent : on est entre dix et quinze pour cent au-dessus." },
+          { "speaker": "Robert", "text": "Je demande donc que mon salaire soit revu à la hausse, à soixante-dix-huit mille." },
+          { "speaker": "Responsable", "text": "…" },
+          { "speaker": "Responsable", "text": "C’est plus que ce que j’avais prévu pour cette année." },
+          { "speaker": "Robert", "text": "Je comprends. Qu’est-ce qui serait possible, de votre côté ?" },
+          { "speaker": "Responsable", "text": "Je peux m’engager sur soixante-treize mille maintenant, et revoir en janvier." },
+          { "speaker": "Robert", "text": "Est-ce qu’on peut écrire cette révision de janvier dans un courriel, avec un objectif clair ?" },
+          { "speaker": "Responsable", "text": "Ça me paraît raisonnable. Je vous envoie ça cette semaine." },
+          { "speaker": "Robert", "text": "Alors je suis d’accord. Merci d’en avoir discuté aussi directement." }
+        ]
+      },
+      "grammar": {
+        "point": "aussi … que + subjonctif (concession)",
+        "explain": "To concede a quality while dismissing its importance, French uses aussi / si + adjective + que + subjunctive. It sounds distinctly educated and is easy to reuse.",
+        "examples": [
+          "…aussi inconfortable que cela SOIT. (however uncomfortable it may be)",
+          "Si difficile que ce SOIT, il faut le faire.",
+          "Quelque talentueux qu’il SOIT, il doit apprendre.",
+          "Plainer alternative: même si c’est inconfortable."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quel élément d’argumentaire l’auteur juge-t-il le plus négligé ?",
+          "options": [
+            "Ce que vous avez livré depuis un an.",
+            "Les tâches ajoutées à votre poste.",
+            "Ce que le marché paie pour ce profil.",
+            "Vos besoins personnels."
+          ],
+          "answer": 2,
+          "why": "« Le troisième point est le plus négligé, alors que c’est le seul que votre interlocuteur ne peut pas contester. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Dans le dialogue, qu’obtient Robert au-delà de l’augmentation immédiate ?",
+          "options": [
+            "Une promotion officielle.",
+            "Un engagement écrit de révision en janvier, avec un objectif.",
+            "Une prime exceptionnelle.",
+            "Un changement de service."
+          ],
+          "answer": 1,
+          "why": "« Est-ce qu’on peut écrire cette révision de janvier dans un courriel, avec un objectif clair ? — Ça me paraît raisonnable. »"
+        },
+        {
+          "type": "tf",
+          "q": "L’auteur conseille de combler le silence après avoir formulé sa demande.",
+          "answer": false,
+          "why": "L’inverse : « il faut se taire, aussi inconfortable que cela soit. »"
+        },
+        {
+          "type": "gap",
+          "q": "___ difficile que ce soit, je vais lui en parler demain.",
+          "options": ["Aussi", "Bien", "Tant", "Malgré"],
+          "answer": 0,
+          "why": "aussi + adjectif + que + subjonctif = however … it may be."
+        },
+        {
+          "type": "open",
+          "q": "Prépare ton argumentaire réel pour une augmentation : trois arguments vérifiables. Utilise « faire valoir » et « revoir à la hausse ».",
+          "model": "D’abord, je ferais valoir que j’ai repris seul le suivi de deux campagnes d’essais, alors que ce n’était pas prévu dans ma fiche de poste. Ensuite, je rappellerais que la correction du défaut d’étanchéité a évité une reprise complète de série, donc un coût direct pour l’entreprise. Enfin, je montrerais que les offres comparables dans la région sont environ douze pour cent au-dessus de mon salaire actuel. Sur cette base, je demanderais que ma rémunération soit revue à la hausse, avec un point de suivi en janvier."
+        }
+      ]
+    },
+    {
+      "id": "benevolat",
+      "title": "Donner de son temps",
+      "subtitle": "Volunteering, and the uncomfortable question behind it.",
+      "difficulty": 4,
+      "topics": ["société", "relations"],
+      "newWords": [
+        { "fr": "le bénévolat", "en": "volunteering", "note": "un bénévole = a volunteer (unpaid)." },
+        { "fr": "une association", "en": "a non-profit organisation", "note": "The backbone of French civil society." },
+        { "fr": "s’engager", "en": "to commit, to get involved" },
+        { "fr": "pallier", "en": "to make up for, to compensate for (a shortfall)", "note": "Direct object, no preposition: pallier un manque." },
+        { "fr": "à la longue", "en": "in the long run, over time" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "La France compte plus d’un million d’associations et environ vingt millions de bénévoles, ce qui en fait l’un des pays les plus associatifs d’Europe. On y trouve tout : clubs sportifs, aide alimentaire, cours de français pour étrangers, protection des rivières, accompagnement scolaire. Beaucoup de services que l’on croit publics reposent en réalité, en partie, sur des gens qui ne sont pas payés.",
+          "Les motivations sont plus terre à terre qu’on ne l’imagine. Les enquêtes montrent que le premier moteur n’est pas l’altruisme abstrait mais le lien social : on s’engage parce qu’un ami s’engage, parce qu’on vient d’arriver dans une ville, ou parce qu’on cherche à occuper une retraite. Cela n’enlève rien à l’utilité du geste ; cela explique simplement pourquoi les associations recrutent mieux par le bouche-à-oreille que par des campagnes.",
+          "Reste une question dérangeante, que les responsables associatifs posent eux-mêmes de plus en plus. À force de pallier les manques de l’État — distribuer des repas, faire du soutien scolaire, accueillir des personnes isolées — les associations ne rendent-elles pas ces manques supportables, et donc durables ? Personne ne propose sérieusement d’arrêter d’aider. Mais beaucoup de bénévoles disent, à la longue, se sentir utilisés autant qu’utiles, et refusent désormais de servir de variable d’ajustement."
+        ],
+        "glossary": [
+          { "fr": "l’aide alimentaire", "en": "food aid" },
+          { "fr": "l’accompagnement scolaire", "en": "after-school tutoring support" },
+          { "fr": "terre à terre", "en": "down-to-earth" },
+          { "fr": "un moteur", "en": "a driver, a motivation" },
+          { "fr": "le bouche-à-oreille", "en": "word of mouth" },
+          { "fr": "à force de", "en": "by dint of, through repeatedly doing" },
+          { "fr": "une variable d’ajustement", "en": "a stopgap, something used to absorb slack" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "Vingt millions de bénévoles en France. Qu’est-ce qui pousse les gens à donner leur temps gratuitement ?" },
+          { "speaker": "Invitée", "text": "Rarement ce qu’on croit. L’altruisme pur existe, mais il arrive loin derrière." },
+          { "speaker": "Animatrice", "text": "Qu’est-ce qui arrive devant ?" },
+          { "speaker": "Invitée", "text": "Le lien. On s’engage parce qu’on connaît quelqu’un, ou parce qu’on vient de déménager." },
+          { "speaker": "Invitée", "text": "Les associations le savent : le bouche-à-oreille recrute dix fois mieux qu’une affiche." },
+          { "speaker": "Animatrice", "text": "Est-ce que ça dévalorise le geste ?" },
+          { "speaker": "Invitée", "text": "Pas du tout. Ça le rend seulement humain, et surtout ça le rend reproductible." },
+          { "speaker": "Animatrice", "text": "Vous évoquez souvent une tension, dans vos travaux. Laquelle ?" },
+          { "speaker": "Invitée", "text": "Les bénévoles remplacent de plus en plus des services qui devraient être financés." },
+          { "speaker": "Invitée", "text": "En le faisant bien, ils rendent le manque invisible. Et un manque invisible n’est jamais corrigé." },
+          { "speaker": "Animatrice", "text": "Que faudrait-il faire ? Arrêter ?" },
+          { "speaker": "Invitée", "text": "Personne ne dit ça, évidemment. On n’arrête pas de distribuer des repas par stratégie." },
+          { "speaker": "Invitée", "text": "En revanche, il faut le dire publiquement, chiffres à l’appui, au lieu de le compenser en silence." },
+          { "speaker": "Animatrice", "text": "Et l’épuisement des bénévoles ?" },
+          { "speaker": "Invitée", "text": "Il est réel. À la longue, beaucoup se sentent utilisés autant qu’utiles. C’est là qu’on les perd." }
+        ]
+      },
+      "grammar": {
+        "point": "à force de / au lieu de / à la longue",
+        "explain": "Three connectors that let you express accumulation and alternative without a heavy clause. À force de + infinitive means 'by doing something repeatedly', usually with a consequence the subject did not intend.",
+        "examples": [
+          "À force de pallier les manques, on les rend durables.",
+          "À force d’insister, il a obtenu un rendez-vous.",
+          "au lieu de le compenser en silence (instead of)",
+          "À la longue, ça devient épuisant. (over time)"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Selon les enquêtes citées, quel est le premier moteur du bénévolat ?",
+          "options": [
+            "L’altruisme abstrait.",
+            "Le lien social : un ami engagé, un déménagement, une retraite à occuper.",
+            "La valorisation sur un CV.",
+            "Les avantages fiscaux."
+          ],
+          "answer": 1,
+          "why": "« Le premier moteur n’est pas l’altruisme abstrait mais le lien social. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Quelle est la « question dérangeante » posée dans le texte ?",
+          "options": [
+            "Les bénévoles sont-ils assez compétents ?",
+            "Faut-il payer les bénévoles ?",
+            "En comblant les manques de l’État, les associations les rendent-elles durables ?",
+            "Les associations sont-elles trop nombreuses ?"
+          ],
+          "answer": 2,
+          "why": "« Les associations ne rendent-elles pas ces manques supportables, et donc durables ? »"
+        },
+        {
+          "type": "tf",
+          "q": "L’invitée conseille aux associations d’arrêter d’aider pour forcer l’État à agir.",
+          "answer": false,
+          "why": "« Personne ne dit ça… On n’arrête pas de distribuer des repas par stratégie. » Elle demande de le dire publiquement."
+        },
+        {
+          "type": "gap",
+          "q": "___ répéter la même chose, il a fini par convaincre son responsable.",
+          "options": ["À force de", "Au lieu de", "Grâce à", "À cause de"],
+          "answer": 0,
+          "why": "à force de + infinitif = par la répétition d’une action."
+        },
+        {
+          "type": "open",
+          "q": "T’es-tu déjà engagé bénévolement, ou pourquoi pas ? Que penses-tu de la « question dérangeante » du texte ? Utilise « à force de » et « il ne s’agit pas tant de … que de ».",
+          "model": "J’ai donné des cours de mathématiques bénévolement à l’université pendant deux ans, surtout à des étudiants en difficulté. Ce que j’ai constaté rejoint le texte : à force de compenser un encadrement insuffisant, on rend le problème acceptable pour l’institution. Cela ne m’a pas fait arrêter, parce que les étudiants devant moi avaient besoin d’aide tout de suite. Mais il ne s’agit pas tant de savoir si le bénévolat est utile que de savoir ce qu’il dispense l’institution de financer."
+        }
+      ]
+    },
+    {
+      "id": "inflation",
+      "title": "L’inflation et le pouvoir d’achat",
+      "subtitle": "Why prices stop rising and things still feel expensive.",
+      "difficulty": 5,
+      "topics": ["économie", "argent", "société"],
+      "newWords": [
+        { "fr": "la désinflation", "en": "disinflation (slowing of price rises)", "note": "Not deflation — prices still rise, just slower." },
+        { "fr": "le panier de la ménagère", "en": "the basket of household goods (used to measure CPI)" },
+        { "fr": "un effet de cliquet", "en": "a ratchet effect (prices go up, not back down)" },
+        { "fr": "indexé(e) sur", "en": "indexed to, pegged to" },
+        { "fr": "amputer", "en": "to cut into, to eat away at" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Il existe un décalage désormais bien documenté entre les statistiques d’inflation et la perception qu’en ont les ménages. Lorsque l’inflation passe de huit pour cent à deux, les économistes parlent de désinflation et considèrent, à juste titre, que la crise est en voie de résolution. Le consommateur, lui, constate que son caddie coûte toujours quarante pour cent de plus qu’il y a quatre ans — et il a également raison.",
+          "Ce malentendu tient à ce que les deux camps mesurent des choses différentes. L’indice mesure une variation, autrement dit une vitesse ; le ménage, lui, ressent un niveau. Or les prix fonctionnent par effet de cliquet : ils montent brutalement lors d’un choc, puis ne redescendent presque jamais, même quand la cause disparaît. Ajoutons que le panier de la ménagère est une moyenne : quelqu’un qui roule beaucoup, chauffe mal son logement et ne peut pas reporter ses achats subit une inflation personnelle nettement supérieure à l’indice publié.",
+          "La question qui compte n’est donc pas celle des prix seuls, mais celle du pouvoir d’achat, c’est-à-dire du rapport entre les prix et les revenus. Là où les salaires sont indexés, ou renégociés rapidement, le choc est amorti ; là où ils ne le sont pas, il ampute durablement le niveau de vie, et ce sont les ménages les plus modestes qui encaissent le plus, puisque l’alimentation et l’énergie pèsent d’autant plus lourd que le revenu est faible. Quoi qu’en disent les commentateurs pressés d’annoncer la fin de la crise, il faudra plusieurs années de hausses salariales pour rattraper ce qui a été perdu en dix-huit mois."
+        ],
+        "glossary": [
+          { "fr": "un décalage", "en": "a gap, a discrepancy" },
+          { "fr": "à juste titre", "en": "rightly so" },
+          { "fr": "un caddie", "en": "a shopping trolley (and by extension, the shop)" },
+          { "fr": "tenir à", "en": "to be due to, to stem from" },
+          { "fr": "reporter un achat", "en": "to postpone a purchase" },
+          { "fr": "amorti(e)", "en": "cushioned, absorbed" },
+          { "fr": "encaisser", "en": "to take the hit" },
+          { "fr": "d’autant plus … que", "en": "all the more … since" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animateur", "text": "L’inflation est retombée à deux pour cent. Pourquoi personne n’a l’impression que ça va mieux ?" },
+          { "speaker": "Économiste", "text": "Parce que vous et l’institut de statistique ne mesurez pas la même chose." },
+          { "speaker": "Animateur", "text": "Expliquez-moi ça simplement." },
+          { "speaker": "Économiste", "text": "L’indice mesure une vitesse. Deux pour cent, ça veut dire que ça monte encore, mais lentement." },
+          { "speaker": "Économiste", "text": "Vous, en revanche, vous comparez à il y a quatre ans. Vous regardez un niveau." },
+          { "speaker": "Animateur", "text": "Donc les prix ne redescendent jamais ?" },
+          { "speaker": "Économiste", "text": "Presque jamais. C’est ce qu’on appelle l’effet de cliquet." },
+          { "speaker": "Économiste", "text": "Le transport augmente, le pain augmente. Le transport baisse, le pain reste." },
+          { "speaker": "Animateur", "text": "Et l’argument selon lequel les salaires vont rattraper ?" },
+          { "speaker": "Économiste", "text": "Il est juste sur le principe, mais il oublie le calendrier. Les prix montent en dix-huit mois, les salaires en cinq ans." },
+          { "speaker": "Animateur", "text": "Qui encaisse le plus ?" },
+          { "speaker": "Économiste", "text": "Les ménages modestes, mécaniquement. L’alimentation et l’énergie représentent une part énorme de leur budget." },
+          { "speaker": "Économiste", "text": "Un cadre qui dépense quinze pour cent de son revenu en nourriture peut absorber. Quelqu’un à quarante pour cent, non." },
+          { "speaker": "Animateur", "text": "Que répondez-vous à ceux qui parlent de fin de crise ?" },
+          { "speaker": "Économiste", "text": "Que la crise des prix est finie, et que la crise du pouvoir d’achat commence à peine." }
+        ]
+      },
+      "grammar": {
+        "point": "d’autant plus … que / tenir à ce que",
+        "explain": "Two high-register structures for causal reasoning. D'autant plus … que intensifies a claim by giving its reason. Ce malentendu tient à ce que introduces an explanation of a fact.",
+        "examples": [
+          "L’alimentation pèse d’autant plus lourd QUE le revenu est faible.",
+          "C’est d’autant plus grave qu’il était prévenu.",
+          "Ce malentendu tient à ce que les deux camps mesurent des choses différentes.",
+          "Ce décalage tient au fait que les prix ne redescendent pas."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi économistes et ménages semblent-ils se contredire ?",
+          "options": [
+            "Les statistiques officielles sont fausses.",
+            "L’indice mesure une variation, alors que les ménages ressentent un niveau.",
+            "Les ménages n’achètent pas les produits de l’indice.",
+            "Les économistes ignorent l’énergie."
+          ],
+          "answer": 1,
+          "why": "« L’indice mesure une variation, autrement dit une vitesse ; le ménage, lui, ressent un niveau. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Qu’est-ce que « l’effet de cliquet » ?",
+          "options": [
+            "Les salaires augmentent plus vite que les prix.",
+            "L’inflation accélère d’elle-même.",
+            "Les prix montent lors d’un choc et ne redescendent presque jamais.",
+            "Les ménages reportent leurs achats."
+          ],
+          "answer": 2,
+          "why": "« Ils montent brutalement lors d’un choc, puis ne redescendent presque jamais, même quand la cause disparaît. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Quelle est la conclusion de l’économiste dans l’entretien ?",
+          "options": [
+            "La crise est terminée sur tous les plans.",
+            "La crise des prix est finie, mais celle du pouvoir d’achat commence.",
+            "L’inflation va repartir à huit pour cent.",
+            "Les salaires ont déjà rattrapé les prix."
+          ],
+          "answer": 1,
+          "why": "« Que la crise des prix est finie, et que la crise du pouvoir d’achat commence à peine. »"
+        },
+        {
+          "type": "gap",
+          "q": "Cette hausse est ___ difficile à supporter ___ les revenus sont faibles.",
+          "options": ["d’autant plus / que", "aussi / comme", "plus / de", "tant / qui"],
+          "answer": 0,
+          "why": "d’autant plus + adjectif + QUE + cause."
+        },
+        {
+          "type": "open",
+          "q": "As-tu ressenti l’inflation ces dernières années ? Sur quoi précisément, et comment as-tu adapté ton budget ? Utilise « d’autant plus … que » et « en revanche ».",
+          "model": "Je l’ai ressentie surtout sur l’alimentation et sur l’assurance de ma voiture, qui a augmenté de presque trente pour cent en trois ans. Le loyer, en revanche, est resté stable parce que mon bail était signé avant la hausse. C’est d’autant plus frappant que mon salaire a augmenté sur la même période : j’ai plus d’argent qu’avant et pourtant j’ai l’impression d’en avoir moins. Du coup, j’ai commencé à préparer mes repas à l’avance et j’ai renégocié deux abonnements."
+        }
+      ]
+    },
+    {
+      "id": "solitude-sante",
+      "title": "La solitude, question de santé publique",
+      "subtitle": "From private feeling to measurable risk.",
+      "difficulty": 5,
+      "topics": ["société", "santé", "relations"],
+      "newWords": [
+        { "fr": "l’isolement", "en": "isolation (objective lack of contact)", "note": "Distinct from la solitude, the felt experience." },
+        { "fr": "la morbidité", "en": "morbidity (rate of illness)" },
+        { "fr": "un facteur de risque", "en": "a risk factor" },
+        { "fr": "prendre en charge", "en": "to take on, to treat, to cover (a patient, a cost)" },
+        { "fr": "faire l’objet de", "en": "to be the subject of" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Longtemps, la solitude a été considérée comme une affaire privée, relevant au mieux de la psychologie, au pire du caractère. Depuis une quinzaine d’années, elle fait l’objet d’une littérature épidémiologique considérable, et le constat est difficile à écarter : l’isolement social prolongé constitue un facteur de risque comparable, en termes de morbidité, au tabagisme ou à l’obésité. Les méta-analyses convergent vers une surmortalité de l’ordre de vingt-cinq pour cent.",
+          "Encore faut-il distinguer deux notions que le français, plus commodément que l’anglais, sépare mal : l’isolement, qui est objectif et se compte en contacts hebdomadaires, et la solitude, qui est subjective et se ressent. On peut vivre entouré et se sentir profondément seul ; on peut voir peu de monde sans en souffrir. Or ce sont les effets du ressenti qui pèsent le plus lourd sur la santé, ce qui rend les politiques publiques particulièrement délicates à concevoir : il est autrement plus simple d’organiser des rencontres que de créer un sentiment d’appartenance.",
+          "Plusieurs pays ont néanmoins commencé à agir, avec une hypothèse commune : la solitude ne se traite pas frontalement. Les dispositifs qui fonctionnent passent par autre chose — une activité, un service à rendre, une compétence à transmettre. Au Royaume-Uni, des médecins généralistes peuvent désormais « prescrire » une activité associative, prise en charge comme un soin. Bien que ces expérimentations soient encore trop récentes pour qu’on en tire des conclusions définitives, elles reposent sur une intuition solide : ce qui crée un lien durable, ce n’est pas de se retrouver pour parler de sa solitude, c’est d’avoir une raison commune de se revoir la semaine suivante."
+        ],
+        "glossary": [
+          { "fr": "relever de", "en": "to fall within the domain of" },
+          { "fr": "écarter", "en": "to dismiss, to brush aside" },
+          { "fr": "le tabagisme", "en": "smoking (as a public health issue)" },
+          { "fr": "converger vers", "en": "to converge on" },
+          { "fr": "la surmortalité", "en": "excess mortality" },
+          { "fr": "commodément", "en": "conveniently" },
+          { "fr": "délicat(e)", "en": "tricky, sensitive" },
+          { "fr": "un dispositif", "en": "a scheme, a set-up" },
+          { "fr": "autrement plus", "en": "far more, considerably more" }
+        ]
+      },
+      "listening": {
+        "kind": "podcast",
+        "lines": [
+          { "speaker": "Animatrice", "text": "On parle de la solitude comme d’un problème de santé publique. Est-ce que ce n’est pas exagéré ?" },
+          { "speaker": "Chercheur", "text": "Je comprends la réaction, mais les données ne laissent plus beaucoup de place au doute." },
+          { "speaker": "Animatrice", "text": "C’est-à-dire ?" },
+          { "speaker": "Chercheur", "text": "L’isolement prolongé s’accompagne d’une surmortalité d’environ vingt-cinq pour cent." },
+          { "speaker": "Chercheur", "text": "C’est du même ordre que des facteurs qu’on prend très au sérieux, comme le tabac." },
+          { "speaker": "Animatrice", "text": "Comment un sentiment peut-il avoir un effet physique ?" },
+          { "speaker": "Chercheur", "text": "Par le stress chronique, essentiellement. Inflammation, sommeil dégradé, comportements de santé négligés." },
+          { "speaker": "Animatrice", "text": "Vous insistez toujours sur une distinction. Laquelle ?" },
+          { "speaker": "Chercheur", "text": "Isolement et solitude. L’un se compte, l’autre se ressent. Et c’est le second qui abîme le plus." },
+          { "speaker": "Animatrice", "text": "Ce qui complique les politiques publiques, j’imagine." },
+          { "speaker": "Chercheur", "text": "Énormément. Organiser un après-midi de rencontres, c’est faisable. Créer un sentiment d’appartenance, non." },
+          { "speaker": "Animatrice", "text": "Qu’est-ce qui marche, alors ?" },
+          { "speaker": "Chercheur", "text": "Passer par un détour. Une activité, une compétence à transmettre, un rôle à jouer." },
+          { "speaker": "Chercheur", "text": "Les groupes qui se réunissent pour parler de leur solitude tiennent rarement six mois." },
+          { "speaker": "Chercheur", "text": "Ceux qui réparent des vélos ensemble tiennent des années. Ce n’est pas un détail, c’est le mécanisme." }
+        ]
+      },
+      "grammar": {
+        "point": "Encore faut-il / inversion for emphasis",
+        "explain": "In formal French, certain adverbs at the start of a sentence force subject-verb inversion. It reads as educated, argumentative prose — exactly what a B2 written exam rewards.",
+        "examples": [
+          "Encore faut-il distinguer deux notions. (and yet one must still distinguish)",
+          "Peut-être a-t-il raison. (perhaps he is right)",
+          "Sans doute faudra-t-il attendre.",
+          "Ainsi peut-on conclure que…",
+          "Aussi = 'therefore' when it opens a sentence with inversion: aussi convient-il de…"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Quelle distinction le chercheur juge-t-il essentielle ?",
+          "options": [
+            "Entre solitude choisie et solitude imposée.",
+            "Entre isolement, qui se compte, et solitude, qui se ressent.",
+            "Entre jeunes et personnes âgées.",
+            "Entre santé mentale et santé physique."
+          ],
+          "answer": 1,
+          "why": "« Isolement et solitude. L’un se compte, l’autre se ressent. Et c’est le second qui abîme le plus. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Pourquoi les dispositifs efficaces passent-ils par « un détour » ?",
+          "options": [
+            "Parce que parler de sa solitude est interdit.",
+            "Parce qu’une raison commune de se revoir crée un lien plus durable.",
+            "Parce que les médecins ne sont pas formés.",
+            "Parce que c’est moins coûteux."
+          ],
+          "answer": 1,
+          "why": "« Ce qui crée un lien durable… c’est d’avoir une raison commune de se revoir la semaine suivante. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Par quel mécanisme principal la solitude agit-elle sur le corps, selon le chercheur ?",
+          "options": ["Le manque d’exercice", "Le stress chronique", "L’alimentation", "L’hérédité"],
+          "answer": 1,
+          "why": "« Par le stress chronique, essentiellement. Inflammation, sommeil dégradé, comportements de santé négligés. »"
+        },
+        {
+          "type": "gap",
+          "q": "Les données sont convaincantes. ___ faut-il rester prudent sur les causes.",
+          "options": ["Encore", "Aussi bien", "Alors", "Donc"],
+          "answer": 0,
+          "why": "« Encore faut-il… » : locution avec inversion, pour introduire une réserve."
+        },
+        {
+          "type": "open",
+          "q": "Es-tu d’accord pour traiter la solitude comme un problème de santé publique ? Argumente en cinq ou six phrases. Utilise « bien que + subjonctif » et « il ne s’agit pas tant de … que de ».",
+          "model": "Je suis plutôt d’accord, à condition de ne pas médicaliser un sentiment normal. Les chiffres de surmortalité sont difficiles à écarter, et ils sont du même ordre que ceux du tabac. Bien que la comparaison soit spectaculaire, elle a l’avantage de forcer les institutions à agir. Ce qui me convainc le plus, c’est l’argument du détour : je constate moi-même que mes liens les plus solides viennent d’activités régulières, pas de conversations sur l’amitié. Il ne s’agit donc pas tant de parler de la solitude que de donner aux gens une raison concrète de se revoir. En revanche, je resterais prudent sur la causalité : l’isolement est peut-être aussi la conséquence d’une mauvaise santé."
+        }
+      ]
+    },
+    {
+      "id": "projet-qui-derape",
+      "title": "Un projet qui dérape",
+      "subtitle": "Announcing bad news up the chain, in French.",
+      "difficulty": 5,
+      "topics": ["travail", "technique"],
+      "newWords": [
+        { "fr": "déraper", "en": "to go off the rails, to slip (schedule, budget)" },
+        { "fr": "un jalon", "en": "a milestone" },
+        { "fr": "revoir le périmètre", "en": "to rescope, to revise the scope" },
+        { "fr": "assumer", "en": "to take responsibility for", "note": "False friend: not 'to assume'. That's supposer." },
+        { "fr": "faire remonter l’information", "en": "to escalate, to report upwards" }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Tout projet technique un peu long finit par déraper, et l’expérience montre que ce n’est presque jamais la difficulté technique qui coûte le plus cher : c’est le délai entre le moment où quelqu’un comprend que le jalon ne tiendra pas et le moment où l’information remonte. Ce délai est un choix collectif, entretenu par une gêne parfaitement compréhensible et par la crainte, souvent fondée, que le messager soit tenu pour responsable.",
+          "Un signalement utile tient en quatre éléments, et il vaut mieux les écrire que les improviser. L’écart constaté, chiffré et daté : « la campagne d’essais accuse trois semaines de retard ». La cause, sans jugement de valeur : « le banc a été indisponible du 3 au 20 ». Les conséquences, y compris celles qui dépassent votre périmètre. Et deux ou trois options, avec ce que chacune coûte. Quiconque arrive avec ces quatre points cesse d’être un problème et devient un interlocuteur.",
+          "Ce qu’il faut absolument éviter, c’est l’optimisme par politesse : promettre de « rattraper » sans savoir comment, parce que le silence est plus confortable que la mauvaise nouvelle. Non seulement le retard finit par apparaître, mais il apparaît plus tard, plus gros, et sans marge de manœuvre. Assumer une erreur tôt abîme rarement une carrière ; l’avoir dissimulée jusqu’à ce qu’elle devienne visible en abîme beaucoup. Quoi qu’il en soit, mieux vaut une réunion désagréable en mars qu’un projet arrêté en juin."
+        ],
+        "glossary": [
+          { "fr": "un délai", "en": "a deadline; a lapse of time" },
+          { "fr": "la gêne", "en": "awkwardness, embarrassment" },
+          { "fr": "être tenu pour responsable", "en": "to be held responsible" },
+          { "fr": "un écart", "en": "a gap, a deviation" },
+          { "fr": "accuser un retard", "en": "to be running late (formal register)" },
+          { "fr": "un banc (d’essai)", "en": "a test bench" },
+          { "fr": "quiconque", "en": "whoever, anyone who" },
+          { "fr": "une marge de manœuvre", "en": "room for manoeuvre" },
+          { "fr": "dissimuler", "en": "to conceal" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Robert", "text": "Claire, j’ai une mauvaise nouvelle sur les essais climatiques. Autant te le dire tout de suite." },
+          { "speaker": "Claire", "text": "Vas-y, j’écoute." },
+          { "speaker": "Robert", "text": "Nous accusons trois semaines de retard sur le jalon de fin mars." },
+          { "speaker": "Claire", "text": "Trois semaines. Qu’est-ce qui s’est passé ?" },
+          { "speaker": "Robert", "text": "Le banc a été indisponible du 3 au 20 : une panne de régulation, pas un problème de notre côté." },
+          { "speaker": "Claire", "text": "Tu l’as su quand ?" },
+          { "speaker": "Robert", "text": "J’ai eu la confirmation hier soir. Je préférais venir avec des options plutôt que juste avec l’alerte." },
+          { "speaker": "Claire", "text": "Bien. Quelles options ?" },
+          { "speaker": "Robert", "text": "Trois. On loue un banc externe : deux semaines rattrapées, environ dix-huit mille euros." },
+          { "speaker": "Robert", "text": "On réduit le plan d’essais aux trois températures critiques : le jalon tient, mais on perd en couverture." },
+          { "speaker": "Robert", "text": "Ou on décale le jalon de trois semaines et on prévient le client maintenant." },
+          { "speaker": "Claire", "text": "Ta recommandation ?" },
+          { "speaker": "Robert", "text": "La troisième. Revoir le périmètre nous exposerait sur la qualification, et je ne veux pas assumer ça." },
+          { "speaker": "Claire", "text": "Je suis d’accord. Écris-moi les trois options en dix lignes, je fais remonter ce matin." },
+          { "speaker": "Claire", "text": "Et Robert — merci de ne pas avoir attendu la revue de projet de la semaine prochaine." }
+        ]
+      },
+      "grammar": {
+        "point": "non seulement … mais (aussi) / autant + infinitif",
+        "explain": "Two structures worth owning. Non seulement … mais escalates an argument; when non seulement opens the sentence, formal French inverts. Autant + infinitive proposes the least-bad course of action.",
+        "examples": [
+          "Non seulement le retard apparaît, mais il apparaît plus gros.",
+          "Non seulement est-il en retard, mais il ne prévient personne. (inverted, formal)",
+          "Autant te le dire tout de suite. = Might as well tell you right away.",
+          "Autant attendre demain. Mieux vaut une réunion désagréable que…"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "D’après le texte, qu’est-ce qui coûte le plus cher dans un projet qui dérape ?",
+          "options": [
+            "La difficulté technique elle-même.",
+            "Le délai entre la découverte du problème et sa remontée.",
+            "Le coût des équipements de remplacement.",
+            "Le changement de périmètre."
+          ],
+          "answer": 1,
+          "why": "« Ce n’est presque jamais la difficulté technique qui coûte le plus cher : c’est le délai… »"
+        },
+        {
+          "type": "mcq",
+          "q": "Quels sont les quatre éléments d’un bon signalement ?",
+          "options": [
+            "L’écart, la cause, les conséquences, et des options chiffrées.",
+            "L’écart, le responsable, le budget, et une excuse.",
+            "La cause, le client, le planning, et une promesse de rattrapage.",
+            "Le jalon, le banc, le périmètre, et la qualification."
+          ],
+          "answer": 0,
+          "why": "« L’écart constaté… La cause, sans jugement de valeur… Les conséquences… Et deux ou trois options, avec ce que chacune coûte. »"
+        },
+        {
+          "type": "mcq",
+          "q": "Dans le dialogue, pourquoi Robert écarte-t-il l’option de réduire le plan d’essais ?",
+          "options": [
+            "Parce qu’elle coûte trop cher.",
+            "Parce qu’elle exposerait l’équipe sur la qualification.",
+            "Parce que le client l’a refusée.",
+            "Parce que le banc externe est indisponible."
+          ],
+          "answer": 1,
+          "why": "« Revoir le périmètre nous exposerait sur la qualification, et je ne veux pas assumer ça. »"
+        },
+        {
+          "type": "gap",
+          "q": "___ le problème est réel, ___ il empire chaque semaine.",
+          "options": ["Non seulement / mais", "Bien que / mais", "Soit / soit", "Plus / plus"],
+          "answer": 0,
+          "why": "non seulement … mais (aussi) : structure de gradation."
+        },
+        {
+          "type": "open",
+          "q": "Rédige en français le signalement d’un retard réel ou imaginaire, avec les quatre éléments du texte. Utilise « accuser un retard » et « non seulement … mais ».",
+          "model": "Bonjour Claire, je te signale que le lot de capteurs accuse deux semaines de retard sur le jalon du 15 mai. La cause est externe : le fournisseur de boîtiers a décalé sa livraison du 2 au 16 avril. Non seulement le montage démarre plus tard, mais la campagne de vieillissement est décalée d’autant, ce qui touche aussi l’équipe de qualification. Trois options : commander un lot de dépannage chez un second fournisseur, environ neuf mille euros ; réduire l’échantillon de trente à vingt pièces, en acceptant une incertitude plus grande ; ou décaler le jalon de deux semaines. Je recommande la troisième et je peux détailler en réunion demain."
+        }
+      ]
+    }
+  ]
+}

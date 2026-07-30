@@ -1,0 +1,23 @@
+{
+  "name": "french-b2",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Adaptive B1 to B2 French trainer: a daily challenge, spaced-repetition vocabulary, and progress tracking. Installable PWA.",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "check:content": "node scripts/check-content.mjs",
+    "simulate": "node scripts/simulate.mjs",
+    "icons": "python3 scripts/make-icons.py"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7"
+  }
+}
