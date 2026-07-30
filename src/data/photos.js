@@ -10,7 +10,12 @@
 // better than any photograph of the colour could be, and a photo of a burger is
 // not an improvement on 🍔.
 //
-// `query` is what the importer searches Wikimedia Commons for. `pin` overrides
+// `query` is what the importer searches Wikimedia Commons for. Prefer
+// `incategory:` over free text: Commons categories are curated by hand, while
+// free-text search matches titles and descriptions and so surfaces museum
+// catalogue entries and incidental scenery. Measured on the first run, plain
+// keyword queries returned 2 usable images out of 8 — an 1880 museum fan for
+// "ventilateur", a flat campus for "collines", a church interior for "murs". `pin` overrides
 // it with an exact filename when a search result turned out to be wrong — that's
 // the escape hatch after reviewing what came back.
 //
@@ -21,7 +26,7 @@ const photos = [
   {
     slug: 'ventilateur',
     fr: 'le ventilateur',
-    query: 'electric fan appliance',
+    query: 'incategory:Electric_fans',
     why: '🌀 is a spiral — no relation to a fan at all.',
   },
   {
@@ -33,31 +38,31 @@ const photos = [
   {
     slug: 'collines',
     fr: 'les collines (f. pl.)',
-    query: 'rolling green hills landscape',
+    query: 'incategory:Hills',
     why: '⛰️ is a mountain, which is the word this card is trying not to be.',
   },
   {
     slug: 'murs',
     fr: 'les murs (m. pl.)',
-    query: 'empty room interior wall',
+    query: 'incategory:Walls',
     why: '🧱 is bricks — a material, not the wall of a room.',
   },
   {
     slug: 'chambre-a-coucher',
     fr: 'la chambre à coucher',
-    query: 'bedroom interior bed furniture',
+    query: 'incategory:Bedrooms',
     why: '🛏️ is a bed; the card is the room.',
   },
   {
     slug: 'patisserie',
     fr: 'la pâtisserie',
-    query: 'pastry shop display window',
+    query: 'incategory:Pâtisseries_in_France',
     why: '🥐 is one croissant; the card is the shop and the craft.',
   },
   {
     slug: 'nourriture',
     fr: 'la nourriture',
-    query: 'assorted food spread table',
+    query: 'incategory:Meals',
     why: '🍎 is an apple, which is a food, not food.',
   },
   {

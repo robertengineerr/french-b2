@@ -1,14 +1,6 @@
 {
  "note": "Photos from Wikimedia Commons. Each entry carries the licence it ships under; the app shows this on the card.",
  "photos": {
-  "ventilateur": {
-   "fr": "le ventilateur",
-   "title": "File:Bipolar Wall Fan, Western Electric Company, Chicago and New York, c. 1880 - Museum of Science and Industry (Chicago) - DSC06532.JPG",
-   "author": "Daderot",
-   "licence": "CC0",
-   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "source": "https://commons.wikimedia.org/wiki/File:Bipolar_Wall_Fan,_Western_Electric_Company,_Chicago_and_New_York,_c._1880_-_Museum_of_Science_and_Industry_(Chicago)_-_DSC06532.JPG"
-  },
   "climatiseur": {
    "fr": "le climatiseur / la clim",
    "title": "File:Outdoor air conditioner unit installed in residential garden space.jpg",
@@ -16,46 +8,6 @@
    "licence": "CC BY 2.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
    "source": "https://commons.wikimedia.org/wiki/File:Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg"
-  },
-  "collines": {
-   "fr": "les collines (f. pl.)",
-   "title": "File:The African Landscape of Aksu Obio Akpa Campus.jpg",
-   "author": "Ini-Idara David",
-   "licence": "CC0",
-   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "source": "https://commons.wikimedia.org/wiki/File:The_African_Landscape_of_Aksu_Obio_Akpa_Campus.jpg"
-  },
-  "murs": {
-   "fr": "les murs (m. pl.)",
-   "title": "File:Interior. hans christian hansen, architect- tagensbo kirke - church, copenhagen 1966-1970. (14664718136).jpg",
-   "author": "seier+seier",
-   "licence": "CC BY 2.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-   "source": "https://commons.wikimedia.org/wiki/File:Interior._hans_christian_hansen,_architect-_tagensbo_kirke_-_church,_copenhagen_1966-1970._(14664718136).jpg"
-  },
-  "chambre-a-coucher": {
-   "fr": "la chambre à coucher",
-   "title": "File:Bed MET DP294196.jpg",
-   "author": "Jean Dunand",
-   "licence": "CC0",
-   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "source": "https://commons.wikimedia.org/wiki/File:Bed_MET_DP294196.jpg"
-  },
-  "patisserie": {
-   "fr": "la pâtisserie",
-   "title": "File:Art Deco, MATTHIAE'S CAFE AND BAKERY, 76-84, KEW ROAD - Flickr - JOHN K THORNE.jpg",
-   "author": "JOHN K THORNE",
-   "licence": "CC0",
-   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "source": "https://commons.wikimedia.org/wiki/File:Art_Deco,_MATTHIAE%27S_CAFE_AND_BAKERY,_76-84,_KEW_ROAD_-_Flickr_-_JOHN_K_THORNE.jpg"
-  },
-  "nourriture": {
-   "fr": "la nourriture",
-   "title": "File:Delightful dessert spread featuring pastries and beverages at an elegant gathering in a cozy setting.jpg",
-   "author": "Shixart1985",
-   "licence": "CC BY 2.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-   "source": "https://commons.wikimedia.org/wiki/File:Delightful_dessert_spread_featuring_pastries_and_beverages_at_an_elegant_gathering_in_a_cozy_setting.jpg"
   },
   "plat": {
    "fr": "le plat",

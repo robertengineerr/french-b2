@@ -84,6 +84,18 @@ def api_get(params):
         return json.load(r)
 
 
+# Titles that betray a museum catalogue entry or a studio object shot. These
+# dominated the first run: a brass fan behind glass for "ventilateur", a bed
+# frame photographed on black for "chambre à coucher". Technically the right
+# object, useless as a picture of the everyday word.
+DENY = re.compile(
+    r"\b(MET DP|Metropolitan Museum|Museum|Musée|Rijksmuseum|Google Art|"
+    r"Wellcome|auction|catalogue|specimen|coin|stamp|engraving|lithograph|"
+    r"drawing|painting|1[6-9]\d\d)\b",
+    re.I,
+)
+
+
 def licence_key(meta):
     name = (meta.get("LicenseShortName", {}).get("value") or "").strip().lower()
     return re.sub(r"\s+", "-", name)
@@ -118,7 +130,7 @@ def candidates(entry):
                 "generator": "search",
                 "gsrsearch": f"filetype:bitmap {entry['query']}",
                 "gsrnamespace": "6",
-                "gsrlimit": "20",
+                "gsrlimit": "40",
                 "prop": "imageinfo",
                 "iiprop": "url|size|extmetadata|mime",
             }
@@ -129,6 +141,8 @@ def candidates(entry):
         info = (page.get("imageinfo") or [{}])[0]
         meta = info.get("extmetadata", {}) or {}
         if info.get("mime") not in ("image/jpeg", "image/png"):
+            continue
+        if DENY.search(page.get("title", "")):
             continue
         w, h = info.get("width", 0), info.get("height", 0)
         # Too small to crop to 512 square, or a banner-shaped panorama that
@@ -199,6 +213,12 @@ def main():
         print(f"  → {slug}: searching “{e.get('pin') or e['query']}”")
         try:
             cands = candidates(e)
+            if not cands and e["query"].startswith("incategory:"):
+                # A category name that doesn't exist returns nothing at all.
+                # Retry as free text so a typo degrades instead of failing.
+                words = e["query"].split(":", 1)[1].replace("_", " ")
+                print(f"    . no category hits, retrying as free text: “{words}”")
+                cands = candidates({**e, "query": words})
         except Exception as err:  # network, throttling, API shape change
             print(f"    ! search failed: {err}")
             failed.append(slug)
