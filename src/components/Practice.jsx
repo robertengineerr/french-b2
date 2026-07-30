@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { dueCards, gradeCard, isMastered, practiceCards, practiceGrade } from '../engine';
 import { buildClozeIndex, buildQuestion, checkTyped, TYPES } from '../lib/exercises';
+import { usePhotos } from '../lib/photos';
 import { ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
 
 // Practice has two phases, and the difference matters:
@@ -44,6 +45,7 @@ export default function Practice({ state, update, today, challenges, sentenceBan
   const [freeDone, setFreeDone] = useState(0);
   const [freeRight, setFreeRight] = useState(0);
 
+  const photos = usePhotos();
   const voices = useFrenchVoices();
   const { playLine } = useLineSpeaker({ voices, voiceURI: state.settings.voiceURI, rate: 0.85 });
   const canSpeak = ttsSupported() && voices.length > 0;
@@ -83,12 +85,12 @@ export default function Practice({ state, update, today, challenges, sentenceBan
   const card = currentId ? cards[currentId] : null;
 
   const question = useMemo(
-    () => (card ? buildQuestion(card, { pool, cloze, canSpeak }) : null),
+    () => (card ? buildQuestion(card, { pool, cloze, canSpeak, photos }) : null),
     // Re-derived per card and per rep — not on every keystroke. `freeDone` is in
     // here so a card drawn twice in free practice doesn't get the identical
     // question shape both times.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [card && card.id, card && card.reps, phase === 'free' && freeDone, pool.length, canSpeak]
+    [card && card.id, card && card.reps, phase === 'free' && freeDone, pool.length, canSpeak, photos]
   );
 
   // Auto-play the audio when a listening card comes up.
@@ -283,9 +285,30 @@ export default function Practice({ state, update, today, challenges, sentenceBan
           {card.fix && <span className="fix-flag">correction</span>}
 
           {question.type === TYPES.picture ? (
-            <div className="pictogram" role="img" aria-label="indice visuel">
-              {question.prompt}
-            </div>
+            question.image ? (
+              <figure className="photo">
+                <img
+                  src={`./photos/${question.image.slug}.webp`}
+                  alt="indice visuel"
+                  width="512"
+                  height="512"
+                  loading="eager"
+                />
+                {/* The licence asks for attribution, so it ships with the photo
+                    rather than being buried on a credits page. Shown after you
+                    answer — before that it's a distraction from the question. */}
+                {answered && question.image.credit && (
+                  <figcaption className="tiny-note muted">
+                    {question.image.credit.author} · {question.image.credit.licence} · Wikimedia
+                    Commons
+                  </figcaption>
+                )}
+              </figure>
+            ) : (
+              <div className="pictogram" role="img" aria-label="indice visuel">
+                {question.prompt}
+              </div>
+            )
           ) : question.type === TYPES.listen ? (
             <button
               className="listen-again"

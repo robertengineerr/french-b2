@@ -1,0 +1,64 @@
+name: Refresh pictogram photos
+
+# Fetches the handful of pictogram photos from Wikimedia Commons and commits
+# them. Runs here rather than locally because image hosts are blocked on many
+# networks, and because the images are a shared build input — everyone should
+# get the same eight files, not whatever their own search returned.
+#
+# Only runs on demand. The photo set is small, curated, and doesn't rot, so
+# there's nothing for a schedule to do.
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Re-fetch photos that already exist'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  actions: write # to dispatch the deploy after committing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install --quiet pillow
+
+      - name: Fetch photos
+        run: |
+          python3 scripts/import-photos.py ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/photos
+
+          # Staged, not worktree: `git diff` ignores untracked files, so brand
+          # new images would read as "no change" and be silently discarded.
+          if git diff --cached --quiet -- public/photos; then
+            echo "Photos unchanged — nothing to commit."
+            exit 0
+          fi
+
+          N=$(ls public/photos/*.webp 2>/dev/null | wc -l)
+          SIZE=$(du -sh public/photos | cut -f1)
+          git commit -m "Refresh pictogram photos: $N images ($SIZE)" \
+                     -m "Fetched from Wikimedia Commons by scripts/import-photos.py. Per-image licence and author are recorded in public/photos/credits.json and shown in the app."
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy the new photos
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref main

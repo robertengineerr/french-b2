@@ -31,6 +31,18 @@ self.addEventListener('install', (event) => {
       // inside the addAll above would reject the whole batch and lose the packs
       // with it.
       await cache.add(new URL('content/sentences.json', scope).pathname).catch(() => {});
+      // Pictogram photos, likewise tolerant: they're optional, and a card
+      // without one falls back to its emoji.
+      try {
+        const credits = await fetch(new URL('photos/credits.json', scope)).then((r) => r.json());
+        await Promise.all(
+          Object.keys(credits.photos || {}).map((slug) =>
+            cache.add(new URL(`photos/${slug}.webp`, scope).pathname).catch(() => {})
+          )
+        );
+      } catch {
+        // No photo set shipped — nothing to precache.
+      }
       self.skipWaiting();
     })()
   );
@@ -87,6 +99,15 @@ self.addEventListener('fetch', (event) => {
 
   if (url.pathname.includes('/content/')) {
     event.respondWith(networkFirst(request, SHELL));
+    return;
+  }
+
+  // Photos are cache-first and live in SHELL alongside the content they belong
+  // to. Their names aren't content-hashed, so they can't go in the ASSETS cache
+  // that assumes a name never changes meaning — but they only change when the
+  // photo workflow runs, which bumps the shell anyway.
+  if (url.pathname.includes('/photos/')) {
+    event.respondWith(cacheFirst(request, SHELL));
     return;
   }
 

@@ -1758,3 +1758,30 @@ mark.spoken {
 .card.exercise .feedback + .btn {
   width: 100%;
 }
+
+/* ------------------------------------------------------- pictogram photos */
+
+/* Sits where the emoji pictogram would. Fixed aspect and a reserved box so the
+   card doesn't jump when the image decodes — on a phone that shift lands right
+   as your thumb is heading for an answer. */
+.photo {
+  margin: 0 0 14px;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1;
+  height: auto;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  object-fit: cover;
+}
+
+.photo figcaption {
+  text-align: center;
+  margin-top: 6px;
+}

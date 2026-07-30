@@ -170,12 +170,14 @@ function mulberry(seed) {
 // hardest-production. A card only becomes eligible for `type` once you've
 // actually recalled it a few times — asking for production on a brand-new word
 // is just a guaranteed miss.
-function eligible(card, { pool, cloze, canSpeak }) {
+function eligible(card, ctx) {
+  const { pool, cloze, canSpeak } = ctx;
   const out = [];
   const enoughPool = pool.length >= 4;
 
   if (enoughPool) out.push(TYPES.meaning);
-  if (enoughPool && card.emoji) out.push(TYPES.picture);
+  if (enoughPool && (card.emoji || (ctx.photos && ctx.photos.has(card.fr))))
+    out.push(TYPES.picture);
   if (enoughPool && canSpeak) out.push(TYPES.listen);
   if (enoughPool) out.push(TYPES.reverse);
   if (cloze.has(card.id) && enoughPool) out.push(TYPES.cloze);
@@ -235,7 +237,11 @@ export function buildQuestion(card, ctx) {
   if (type === TYPES.picture) {
     const others = distractors(card, pool, 'fr').map((c) => c.fr);
     const { options, answer } = place(card.fr, others);
-    return { type, prompt: card.emoji, options, answer };
+    // A photo where one exists, the emoji otherwise. Only a few cards have a
+    // photo — the ones where the emoji pointed at the wrong idea — so the emoji
+    // is the normal case, not the fallback of last resort.
+    const photo = ctx.photos && ctx.photos.get(card.fr);
+    return { type, prompt: card.emoji, image: photo || null, options, answer };
   }
 
   if (type === TYPES.cloze) {
