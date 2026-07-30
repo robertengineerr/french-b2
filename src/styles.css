@@ -1855,3 +1855,46 @@ mark.spoken {
 .field.checkbox span {
   margin: 0;
 }
+
+/* ------------------------------------------------------------ silent mode */
+
+.silent-toggle {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1;
+  padding: 6px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  min-height: 34px;
+}
+
+.silent-toggle.on {
+  border-color: var(--amber);
+  background: color-mix(in srgb, var(--amber) 18%, transparent);
+}
+
+/* The transcript shown instead of the player when audio is off. Reads as a
+   script, so it's obvious you're reading something meant to be heard. */
+.silent-script {
+  border-left: 3px solid var(--amber);
+  padding-left: 12px;
+  margin: 12px 0;
+}
+
+.script-line {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.script-who {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}

@@ -49,6 +49,10 @@ export default function Practice({ state, update, today, challenges, sentenceBan
   const voices = useFrenchVoices();
   const { playLine } = useLineSpeaker({ voices, voiceURI: state.settings.voiceURI, rate: 0.85 });
   const canSpeak = ttsSupported() && voices.length > 0;
+  // Silent mode. Declared up here because the question builder below reads it —
+  // and so does its dependency array, which is evaluated at the same point.
+  const silent = state.settings.silent === true;
+  const autoPlay = !silent && state.settings.autoPlay !== false;
 
   const cards = state.cards;
   const allDue = useMemo(() => dueCards(state, today), [state, today]);
@@ -85,17 +89,16 @@ export default function Practice({ state, update, today, challenges, sentenceBan
   const card = currentId ? cards[currentId] : null;
 
   const question = useMemo(
-    () => (card ? buildQuestion(card, { pool, cloze, canSpeak, photos }) : null),
+    () => (card ? buildQuestion(card, { pool, cloze, canSpeak, photos, allowListen: !silent }) : null),
     // Re-derived per card and per rep — not on every keystroke. `freeDone` is in
     // here so a card drawn twice in free practice doesn't get the identical
     // question shape both times.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [card && card.id, card && card.reps, phase === 'free' && freeDone, pool.length, canSpeak, photos]
+    [card && card.id, card && card.reps, phase === 'free' && freeDone, pool.length, canSpeak, photos, silent]
   );
 
   // Auto-play the audio when a listening card comes up — unless you've turned
   // that off, in which case the 🔈 button is the only thing that makes noise.
-  const autoPlay = state.settings.autoPlay !== false;
   useEffect(() => {
     if (autoPlay && question && question.type === TYPES.listen && card && canSpeak) {
       playLine([{ text: card.fr }], 0);

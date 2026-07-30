@@ -53,16 +53,23 @@ comes from selection rather than generation:
 
 ## Doing it somewhere you can't make noise
 
-Two things made this awkward in public. Both are fixed:
+**Silent mode** is the 🔊 / 🔇 button in the top bar — one tap, because it's something you
+flip when you sit down at a desk and flip back on the sofa, not a preference you set once.
+While it's on:
 
-- **The player pauses.** ❚❚ stops immediately and keeps the place; ▶ resumes at the start of
-  the sentence it was on. Backgrounding the app pauses rather than stops, so switching away
-  for ten seconds no longer costs the whole listen. A separate ■ appears when there's
-  something to stop.
-- **Listening cards can stay quiet.** By default a listening card speaks the moment it
-  appears — which is the point of a listening card, and exactly wrong at a desk. Réglages →
-  Audio → *Lancer l'audio automatiquement* turns that off; the card then waits for you to
-  touch 🔈.
+- **No listening exercises.** The cards that would have been one still come up — they just get
+  a shape you can do without noise. That distinction matters: skipping them instead would
+  quietly stop you ever practising exactly the words that need it.
+- **The daily listening step shows the transcript to read.** You keep the vocabulary and the
+  sense and lose only the ear training, and the day completes normally. It says so rather than
+  pretending you did the listening.
+- **Nothing auto-plays**, including the read-aloud on the reading step.
+
+Two smaller controls sit underneath it. The player has real **pause/resume** — ❚❚ keeps your
+place, ▶ picks up at the start of the sentence it was on, and backgrounding the app pauses
+rather than stops, so glancing at something else for ten seconds no longer costs the whole
+listen. And Réglages → Audio → *Lancer l'audio automatiquement* turns off auto-play on its own,
+for when you have headphones in but don't want a card talking the moment it appears.
 
 ## Practice runs as long as you want it to
 

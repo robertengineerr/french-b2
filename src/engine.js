@@ -126,6 +126,10 @@ export function freshState(now = new Date()) {
       // because that's the point of a listening card — but it's the wrong
       // default anywhere you can't make noise on demand.
       autoPlay: true,
+      // Silent mode: no exercise that requires listening. Meant to be flipped
+      // on and off from the top bar as you move between a desk and a sofa, not
+      // configured once — which is why it lives here but is toggled there.
+      silent: false,
     },
     score: START_SCORE,
     scoreHistory: [{ date: today, score: START_SCORE }],

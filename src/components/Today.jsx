@@ -487,6 +487,7 @@ export default function Today({
             imageSource={(state.ai || {}).imageSource || 'pexels'}
           />
 
+          {!state.settings.silent && (
           <Player
             title="Écouter le texte"
             compact
@@ -494,6 +495,7 @@ export default function Today({
             settings={state.settings}
             onSeconds={(s) => setListenSeconds((x) => x + s)}
           />
+          )}
 
           {challenge.reading.glossary && challenge.reading.glossary.length > 0 && (
             <details className="glossary">
@@ -515,17 +517,41 @@ export default function Today({
       {step === 2 && (
         <div className="card">
           <h2>Écoute</h2>
-          <p className="muted small">
-            Écoute d’abord sans le texte. Deux fois, si nécessaire — c’est normal. Puis
-            affiche la transcription et repère ce que tu avais manqué.
-          </p>
-          <Player
-            title={challenge.listening.kind === 'podcast' ? 'Extrait de podcast' : 'Dialogue'}
-            lines={challenge.listening.lines}
-            settings={state.settings}
-            showTranscriptToggle
-            onSeconds={(s) => setListenSeconds((x) => x + s)}
-          />
+          {state.settings.silent ? (
+            <>
+              <p className="muted small">
+                <b>Mode silencieux.</b> Lis la transcription à la place — tu gardes le
+                vocabulaire et le sens, tu perds seulement l’entraînement de l’oreille. Le défi
+                se termine normalement sans l’écoute.
+              </p>
+              <div className="silent-script">
+                {challenge.listening.lines.map((l, i) => (
+                  <p key={i} className="script-line">
+                    {l.speaker && <span className="script-who">{l.speaker}</span>}
+                    {l.text}
+                  </p>
+                ))}
+              </div>
+              <p className="tiny-note muted">
+                Repasse en mode audio (l’icône en haut) quand tu es au calme pour la refaire
+                pour de vrai.
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="muted small">
+                Écoute d’abord sans le texte. Deux fois, si nécessaire — c’est normal. Puis
+                affiche la transcription et repère ce que tu avais manqué.
+              </p>
+              <Player
+                title={challenge.listening.kind === 'podcast' ? 'Extrait de podcast' : 'Dialogue'}
+                lines={challenge.listening.lines}
+                settings={state.settings}
+                showTranscriptToggle
+                onSeconds={(s) => setListenSeconds((x) => x + s)}
+              />
+            </>
+          )}
           {nav}
         </div>
       )}

@@ -178,7 +178,10 @@ function eligible(card, ctx) {
   if (enoughPool) out.push(TYPES.meaning);
   if (enoughPool && (card.emoji || (ctx.photos && ctx.photos.has(card.fr))))
     out.push(TYPES.picture);
-  if (enoughPool && canSpeak) out.push(TYPES.listen);
+  // `allowListen` is silent mode: the card still comes up for review, it just
+  // gets a shape you can do without making noise. Skipping the card instead
+  // would quietly stop you ever practising the words that need it.
+  if (enoughPool && canSpeak && ctx.allowListen !== false) out.push(TYPES.listen);
   if (enoughPool) out.push(TYPES.reverse);
   if (cloze.has(card.id) && enoughPool) out.push(TYPES.cloze);
   out.push(TYPES.reveal);

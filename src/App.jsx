@@ -110,6 +110,27 @@ export default function App() {
           </span>
         </div>
         <div className="topbar-right">
+          {/* Silent mode lives in the top bar, not in Réglages, because it's a
+              thing you flip when you sit down at a desk and flip back on the
+              sofa — not a preference you set once. */}
+          <button
+            className={`silent-toggle${state.settings.silent ? ' on' : ''}`}
+            onClick={() =>
+              setState((s) => ({
+                ...s,
+                settings: { ...s.settings, silent: !s.settings.silent },
+              }))
+            }
+            aria-pressed={!!state.settings.silent}
+            aria-label={
+              state.settings.silent
+                ? 'Mode silencieux activé — toucher pour réactiver l’audio'
+                : 'Activer le mode silencieux'
+            }
+            title={state.settings.silent ? 'Mode silencieux' : 'Audio activé'}
+          >
+            {state.settings.silent ? '🔇' : '🔊'}
+          </button>
           {stats.streak.current > 0 && (
             <span className={`streak${stats.streakAtRisk && !stats.doneToday ? ' at-risk' : ''}`}>
               {stats.doneToday || !stats.streakAtRisk ? '🔥' : '⏳'} {stats.streak.current}
