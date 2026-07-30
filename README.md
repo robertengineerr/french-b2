@@ -257,6 +257,7 @@ scripts/
   import-sentences.mjs builds the Tatoeba gap-fill sentence bank
   simulate.mjs         60-day adaptive-loop simulation
   make-icons.py        PNG icon generation, no dependencies
+  import-photos.py     fetches the pictogram photos from Wikimedia Commons
 ```
 
 ## How the derived features work
@@ -276,6 +277,38 @@ nothing to maintain:
 - **Pictogram cards** use emoji, on the 38 concrete cards where a picture actually
   disambiguates. Abstract entries (*du coup*, *quelque chose de + adjectif*) deliberately
   have none — Duolingo doesn't picture those either, and a picture for them is noise.
+  Three cards use a photograph instead, where the emoji pointed at the wrong idea: ❄️ for
+  *le climatiseur* reads as cold rather than the appliance, 🍽️ for *le plat* is empty
+  cutlery, 🍎 for *la nourriture* is *a* food rather than food. See below for why only three.
+
+## Why there are only three photographs
+
+Photos come from **[Wikimedia Commons](https://commons.wikimedia.org)** rather than Unsplash.
+Unsplash's licence would permit it, but its API guidelines expect you to hotlink their CDN and
+fire a download callback — and a hotlinked photo is a blank box on the métro, which defeats an
+offline-first app. Commons is built for redistribution and returns licence and author per file,
+so attribution is generated rather than hand-maintained. `scripts/import-photos.py` fetches,
+centre-crops to square, and writes WebP; the app shows the licence under the image once you've
+answered.
+
+The interesting part is the result. **Two rounds of automated fetching produced 3 usable images
+out of 14 attempts**, and every one was reviewed by eye before shipping:
+
+- **Free-text search returns museum catalogue entries.** "electric fan appliance" got an 1880
+  brass fan in a display case; "bedroom" got a bed frame photographed on black.
+- **Category search is worse, not better.** A Commons category often records *where* a photo was
+  taken, not what it shows: `incategory:Hills` returned a photograph of a glove someone dropped
+  on a hill. `incategory:Bedrooms` returned a framed watercolour of a ship's cabin with the
+  museum's colour calibration strip still in frame.
+
+So the five cards that failed review — *les collines*, *les murs*, *la chambre à coucher*,
+*le ventilateur*, *la pâtisserie* — kept their emoji. An imperfect emoji beats a wrong photo:
+🧱 is a material rather than a wall, but a glove on gravel actively teaches the wrong thing.
+
+The importer and its workflow remain, because they're how a photo gets added. What changed is
+the rule around them, now written at the top of `src/data/photos.js`: **nothing ships without
+someone looking at the image**, and a bad result is not evidence that a better query exists.
+`pin` takes an exact Commons filename for when you have one.
 
 ## Known limits
 
