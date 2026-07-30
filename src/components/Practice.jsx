@@ -1,7 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { dueCards, gradeCard, isMastered } from '../engine';
+import { dueCards, gradeCard, isMastered, practiceCards, practiceGrade } from '../engine';
 import { buildClozeIndex, buildQuestion, checkTyped, TYPES } from '../lib/exercises';
 import { ttsSupported, useFrenchVoices, useLineSpeaker } from '../lib/tts';
+
+// Practice has two phases, and the difference matters:
+//
+//   review — the cards spaced repetition says are due today. These grade normally
+//            and move the schedule.
+//   free   — everything else, forever. Drawn weakest-first from the whole deck,
+//            refilling automatically. Correct answers here deliberately don't
+//            extend intervals (see practiceGrade), so drilling can't quietly
+//            wreck the schedule; misses still count.
+//
+// The point of the split is that "I want to keep going" and "the algorithm says
+// this is due" are different things, and pretending otherwise makes the level
+// estimate lie.
 
 const RATINGS = [
   { id: 'again', label: 'Encore', hint: 'dans 5 min', cls: 'bad' },
@@ -20,13 +33,16 @@ const LABELS = {
   [TYPES.reveal]: '',
 };
 
-export default function Flashcards({ state, update, today, challenges }) {
+export default function Practice({ state, update, today, challenges, sentenceBank }) {
   const [queue, setQueue] = useState(null);
+  const [phase, setPhase] = useState('review'); // 'review' | 'free'
   const [revealed, setRevealed] = useState(false);
   const [picked, setPicked] = useState(null);
   const [typed, setTyped] = useState('');
   const [done, setDone] = useState(0);
   const [again, setAgain] = useState(0);
+  const [freeDone, setFreeDone] = useState(0);
+  const [freeRight, setFreeRight] = useState(0);
 
   const voices = useFrenchVoices();
   const { playLine } = useLineSpeaker({ voices, voiceURI: state.settings.voiceURI, rate: 0.85 });
@@ -35,7 +51,14 @@ export default function Flashcards({ state, update, today, challenges }) {
   const cards = state.cards;
   const allDue = useMemo(() => dueCards(state, today), [state, today]);
   const pool = useMemo(() => Object.values(cards), [cards]);
-  const cloze = useMemo(() => buildClozeIndex(challenges, pool), [challenges, pool]);
+  const cloze = useMemo(
+    () => buildClozeIndex(challenges, pool, sentenceBank),
+    [challenges, pool, sentenceBank]
+  );
+
+  // Everything free practice has already served today, so a refill doesn't hand
+  // back the same five cards on a loop.
+  const servedRef = useRef([]);
 
   // Build the session queue once, so grading a card doesn't reshuffle what's left.
   const limit = state.settings.reviewsPerSession || 20;
@@ -43,9 +66,13 @@ export default function Flashcards({ state, update, today, challenges }) {
   useEffect(() => {
     if (builtFor.current === today && queue !== null) return;
     builtFor.current = today;
+    servedRef.current = [];
+    setPhase('review');
     setQueue(allDue.slice(0, limit).map((c) => c.id));
     setDone(0);
     setAgain(0);
+    setFreeDone(0);
+    setFreeRight(0);
     setRevealed(false);
     setPicked(null);
     // Intentionally built from the due list at mount only.
@@ -57,9 +84,11 @@ export default function Flashcards({ state, update, today, challenges }) {
 
   const question = useMemo(
     () => (card ? buildQuestion(card, { pool, cloze, canSpeak }) : null),
-    // Re-derived per card and per rep — not on every keystroke.
+    // Re-derived per card and per rep — not on every keystroke. `freeDone` is in
+    // here so a card drawn twice in free practice doesn't get the identical
+    // question shape both times.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [card && card.id, card && card.reps, pool.length, canSpeak]
+    [card && card.id, card && card.reps, phase === 'free' && freeDone, pool.length, canSpeak]
   );
 
   // Auto-play the audio when a listening card comes up.
@@ -70,20 +99,68 @@ export default function Flashcards({ state, update, today, challenges }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question && question.type, card && card.id]);
 
-  const grade = (rating) => {
-    update((s) => gradeCard(s, currentId, rating, today));
+  const clear = () => {
     setRevealed(false);
     setPicked(null);
     setTyped('');
+  };
+
+  // Pulls the next batch of weakest cards. Returns the ids so the caller can tell
+  // an empty deck (nothing to draw at all) from a merely exhausted batch.
+  const drawFree = (n = limit) => {
+    const next = practiceCards(state, today, n, servedRef.current).map((c) => c.id);
+    // A deck smaller than what's been served can't produce anything new — start
+    // the rotation over rather than dead-ending.
+    if (!next.length && servedRef.current.length) {
+      servedRef.current = [];
+      return practiceCards(state, today, n, []).map((c) => c.id);
+    }
+    return next;
+  };
+
+  const startFree = () => {
+    const next = drawFree();
+    servedRef.current = [...servedRef.current, ...next];
+    setPhase('free');
+    setQueue(next);
+    clear();
+  };
+
+  // One place where an answer moves the session on, because the two phases grade
+  // differently but everything else about advancing is identical.
+  const advance = (rating, wasCorrect) => {
+    if (phase === 'review') {
+      update((s) => gradeCard(s, currentId, rating, today));
+    } else {
+      update((s) => practiceGrade(s, currentId, wasCorrect, today));
+      setFreeDone((n) => n + 1);
+      if (wasCorrect) setFreeRight((n) => n + 1);
+    }
+    clear();
+
     setQueue((q) => {
       const [head, ...rest] = q;
-      if (rating === 'again') {
+      if (phase === 'review' && rating === 'again') {
         setAgain((n) => n + 1);
         // Slot it back a few cards later so it isn't the very next thing you see.
         const at = Math.min(3, rest.length);
         return [...rest.slice(0, at), head, ...rest.slice(at)];
       }
-      setDone((n) => n + 1);
+      if (phase === 'review') setDone((n) => n + 1);
+      // Free practice keeps a miss in circulation too — that's the whole point of
+      // drilling — but pushes it far enough back to be a real recall.
+      if (phase === 'free' && !wasCorrect) {
+        const at = Math.min(4, rest.length);
+        return [...rest.slice(0, at), head, ...rest.slice(at)];
+      }
+      // Refill before hitting empty so free practice never shows a "finished" screen.
+      if (phase === 'free' && rest.length <= 2) {
+        const more = drawFree();
+        if (more.length) {
+          servedRef.current = [...servedRef.current, ...more];
+          return [...rest, ...more];
+        }
+      }
       return rest;
     });
   };
@@ -91,14 +168,43 @@ export default function Flashcards({ state, update, today, challenges }) {
   const startMore = () => {
     const remaining = allDue.filter((c) => !queue || !queue.includes(c.id));
     setQueue(remaining.slice(0, limit).map((c) => c.id));
-    setRevealed(false);
-    setPicked(null);
+    clear();
   };
 
   const deck = Object.values(cards);
   const mastered = deck.filter(isMastered).length;
 
   if (queue === null) return <div className="card muted">Préparation…</div>;
+
+  // Free practice refilling: the queue emptied between renders (deck smaller than
+  // the batch size, say). Draw again instead of dead-ending.
+  if (!card && phase === 'free') {
+    if (!deck.length) {
+      return (
+        <div className="card">
+          <h2>Paquet vide.</h2>
+          <p className="muted small">Fais le défi du jour — il ajoute les premiers mots.</p>
+        </div>
+      );
+    }
+    return (
+      <div className="card">
+        <h2>Pratique libre</h2>
+        <p>
+          <b>{freeDone}</b> réponse{freeDone > 1 ? 's' : ''}
+          {freeDone > 0 && (
+            <>
+              {' '}
+              · <b>{Math.round((freeRight / freeDone) * 100)}%</b> juste
+            </>
+          )}
+        </p>
+        <button className="btn primary" onClick={startFree}>
+          Continuer
+        </button>
+      </div>
+    );
+  }
 
   if (!card) {
     const stillDue = allDue.length;
@@ -127,10 +233,21 @@ export default function Flashcards({ state, update, today, challenges }) {
             À revoir aujourd’hui <b>{stillDue}</b>
           </li>
         </ul>
-        {stillDue > 0 ? (
+        {stillDue > 0 && (
           <button className="btn primary" onClick={startMore}>
             Continuer ({Math.min(stillDue, limit)} de plus)
           </button>
+        )}
+        {deck.length > 0 ? (
+          <>
+            <button className={stillDue > 0 ? 'btn subtle' : 'btn primary'} onClick={startFree}>
+              Pratique libre — sans limite
+            </button>
+            <p className="tiny-note muted">
+              Les cartes les plus fragiles d’abord, en boucle. Une bonne réponse ici n’allonge pas
+              l’intervalle de révision&nbsp;: seul le programme du jour fait avancer le calendrier.
+            </p>
+          </>
         ) : (
           <p className="muted small">
             Reviens demain — les cartes réapparaissent à intervalles croissants. Faire le défi du
@@ -148,9 +265,15 @@ export default function Flashcards({ state, update, today, challenges }) {
   return (
     <>
       <div className="review-head">
-        <span>
-          {queue.length} restante{queue.length > 1 ? 's' : ''}
-        </span>
+        {phase === 'free' ? (
+          <span className="phase-chip">
+            Pratique libre · {freeDone} réponse{freeDone > 1 ? 's' : ''}
+          </span>
+        ) : (
+          <span>
+            {queue.length} restante{queue.length > 1 ? 's' : ''}
+          </span>
+        )}
         {LABELS[question.type] && <span className="ex-label">{LABELS[question.type]}</span>}
       </div>
 
@@ -204,13 +327,20 @@ export default function Flashcards({ state, update, today, challenges }) {
                 {!correct && <span>{card.fr} = {card.en}</span>}
                 {correct && question.type !== TYPES.meaning && <span> {card.en}</span>}
               </div>
+              {question.translation && <p className="sheet-en">{question.translation}</p>}
+              {question.source === 'bank' && (
+                <p className="tiny-note muted">phrase du corpus Tatoeba (CC-BY 2.0 FR)</p>
+              )}
               {card.fix && (
                 <div className="fc-fix">
                   <b>À corriger&nbsp;:</b> {card.fix}
                 </div>
               )}
               {card.note && <div className="fc-note">{card.note}</div>}
-              <button className="btn primary" onClick={() => grade(correct ? 'good' : 'again')}>
+              <button
+                className="btn primary"
+                onClick={() => advance(correct ? 'good' : 'again', correct)}
+              >
                 Continuer
               </button>
             </>
@@ -255,7 +385,10 @@ export default function Flashcards({ state, update, today, challenges }) {
                 Les accents et la casse ne comptent pas ici — seule l’orthographe du mot compte.
               </p>
               {card.note && <div className="fc-note">{card.note}</div>}
-              <button className="btn primary" onClick={() => grade(picked === 1 ? 'good' : 'again')}>
+              <button
+                className="btn primary"
+                onClick={() => advance(picked === 1 ? 'good' : 'again', picked === 1)}
+              >
                 Continuer
               </button>
             </>
@@ -303,14 +436,27 @@ export default function Flashcards({ state, update, today, challenges }) {
             )}
           </div>
 
-          {revealed && (
+          {revealed && phase === 'review' && (
             <div className="ratings">
               {RATINGS.map((r) => (
-                <button key={r.id} className={`btn ${r.cls}`} onClick={() => grade(r.id)}>
+                <button key={r.id} className={`btn ${r.cls}`} onClick={() => advance(r.id, r.id !== 'again')}>
                   {r.label}
                   {r.hint && <span className="rate-hint">{r.hint}</span>}
                 </button>
               ))}
+            </div>
+          )}
+
+          {/* Free practice doesn't need four grades: nothing here schedules, so the
+              only thing worth recording is whether you actually knew it. */}
+          {revealed && phase === 'free' && (
+            <div className="ratings two">
+              <button className="btn bad" onClick={() => advance('again', false)}>
+                Je ne savais pas
+              </button>
+              <button className="btn good" onClick={() => advance('good', true)}>
+                Je savais
+              </button>
             </div>
           )}
         </>

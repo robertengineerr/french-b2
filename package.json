@@ -11,7 +11,8 @@
     "check:content": "node scripts/check-content.mjs",
     "simulate": "node scripts/simulate.mjs",
     "icons": "python3 scripts/make-icons.py",
-    "check:lookup": "node scripts/check-lookup.mjs"
+    "check:lookup": "node scripts/check-lookup.mjs",
+    "import:sentences": "node scripts/import-sentences.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

@@ -992,6 +992,35 @@ body {
   padding: 11px 4px;
 }
 
+/* Free practice grades on two buttons, not four — nothing here schedules, so the
+   only question worth asking is whether you knew it. */
+.ratings.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.ratings.two .btn {
+  font-size: 15px;
+  padding: 14px 6px;
+}
+
+.phase-chip {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tiny-note {
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 8px 0 0;
+}
+
 /* --------------------------------------------------------------- stats */
 
 .level-row {

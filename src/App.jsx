@@ -10,13 +10,13 @@ import {
   selectChallenge,
 } from './engine';
 import Today from './components/Today';
-import Flashcards from './components/Flashcards';
+import Practice from './components/Practice';
 import Stats from './components/Stats';
 import Settings from './components/Settings';
 
 const TABS = [
   { id: 'today', label: 'Aujourd’hui', icon: '◎' },
-  { id: 'cards', label: 'Cartes', icon: '▤' },
+  { id: 'practice', label: 'Pratique', icon: '▤' },
   { id: 'stats', label: 'Stats', icon: '▮' },
   { id: 'settings', label: 'Réglages', icon: '⚙' },
 ];
@@ -24,6 +24,7 @@ const TABS = [
 export default function App() {
   const [state, setState] = useState(loadState);
   const [challenges, setChallenges] = useState(null);
+  const [bank, setBank] = useState(null);
   const [loadError, setLoadError] = useState(null);
   const [tab, setTab] = useState('today');
   const today = dayKey();
@@ -56,6 +57,22 @@ export default function App() {
         if (!cancelled) setLoadError(e.message);
       }
     })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // The sentence bank is optional and much larger than a content pack, so it's
+  // fetched separately and its absence is not an error — practice just falls back
+  // to the reading passages for gap-fills.
+  useEffect(() => {
+    let cancelled = false;
+    fetch('./content/sentences.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((b) => {
+        if (!cancelled && b && b.byWord) setBank(b);
+      })
+      .catch(() => {});
     return () => {
       cancelled = true;
     };
@@ -124,11 +141,17 @@ export default function App() {
             dueCount={due.length}
             exhausted={exhausted}
             today={today}
-            goToCards={() => setTab('cards')}
+            goToCards={() => setTab('practice')}
           />
         )}
-        {challenges && tab === 'cards' && (
-          <Flashcards state={state} update={update} today={today} challenges={challenges} />
+        {challenges && tab === 'practice' && (
+          <Practice
+            state={state}
+            update={update}
+            today={today}
+            challenges={challenges}
+            sentenceBank={bank}
+          />
         )}
         {challenges && tab === 'stats' && (
           <Stats state={state} stats={stats} challenges={challenges} today={today} />
@@ -150,7 +173,7 @@ export default function App() {
               {t.icon}
             </span>
             <span className="tab-label">{t.label}</span>
-            {t.id === 'cards' && due.length > 0 && <span className="badge">{due.length}</span>}
+            {t.id === 'practice' && due.length > 0 && <span className="badge">{due.length}</span>}
             {t.id === 'today' && !stats.doneToday && <span className="dot" aria-hidden="true" />}
           </button>
         ))}

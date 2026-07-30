@@ -129,7 +129,7 @@ export function freshState(now = new Date()) {
     days: {}, // dayKey -> completion record
     served: {}, // dayKey -> challengeId, locked in once shown
     streak: { current: 0, longest: 0, last: null },
-    totals: { listenSeconds: 0, quizRight: 0, quizTotal: 0, sessions: 0 },
+    totals: { listenSeconds: 0, quizRight: 0, quizTotal: 0, sessions: 0, practiceAnswered: 0, practiceRight: 0 },
   };
 }
 
@@ -422,6 +422,65 @@ export function lockServed(state, challengeId, today = dayKey()) {
   return { ...state, served: { ...state.served, [today]: challengeId } };
 }
 
+// ------------------------------------------------------- free practice
+
+// Practice never runs out. Once the due queue is empty, cards are drawn from the
+// whole deck weakest-first, so extra drilling lands on the words you actually
+// keep dropping rather than the ones you already own.
+//
+// `exclude` lets the caller skip what it has already served this session.
+export function practiceCards(state, today = dayKey(), limit = 20, exclude = []) {
+  const skip = new Set(exclude);
+  const rand = mulberry32(hashString('practice' + today + exclude.length));
+  const weakness = (c) => {
+    let w = 0;
+    w += c.lapses * 3; // forgotten often → drill it
+    w -= Math.min(c.streak, 6) * 2; // already solid → leave it alone
+    w -= Math.min(c.interval, 60) / 12; // long interval means it's settled
+    if (c.reps === 0) w += 4; // never actually tested
+    if (c.fix) w += 2; // a correction is worth re-reading
+    const overdue = daysBetween(c.due, today);
+    if (overdue > 0) w += Math.min(overdue, 10) * 0.5;
+    return w + rand() * 2.5; // keep the order from feeling fixed
+  };
+  return Object.values(state.cards)
+    .filter((c) => !skip.has(c.id))
+    .sort((a, b) => weakness(b) - weakness(a))
+    .slice(0, limit);
+}
+
+// Grading in free practice deliberately does NOT extend intervals. Getting a card
+// right on your fifth extra drill of the day is not evidence you'll remember it in
+// three weeks, and letting practice push intervals out would quietly wreck the
+// schedule. A miss, though, is real evidence — so it pulls the card back to
+// tomorrow and counts as a lapse.
+export function practiceGrade(state, id, wasCorrect, today = dayKey()) {
+  const card = state.cards[id];
+  if (!card) return state;
+  const c = { ...card, practiceReps: (card.practiceReps || 0) + 1 };
+  if (!wasCorrect) {
+    c.lapses += 1;
+    c.streak = 0;
+    c.ease = Math.max(1.3, c.ease - 0.15);
+    // Only ever pull the due date closer, never push it out.
+    const tomorrow = addDays(today, 1);
+    if (daysBetween(tomorrow, c.due) > 0) {
+      c.due = tomorrow;
+      c.interval = 1;
+    }
+    c.dueTime = null;
+  }
+  return {
+    ...state,
+    cards: { ...state.cards, [id]: c },
+    totals: {
+      ...state.totals,
+      practiceAnswered: (state.totals.practiceAnswered || 0) + 1,
+      practiceRight: (state.totals.practiceRight || 0) + (wasCorrect ? 1 : 0),
+    },
+  };
+}
+
 // ------------------------------------------------------------------- stats
 
 export function deriveStats(state, today = dayKey()) {
@@ -468,6 +527,10 @@ export function deriveStats(state, today = dayKey()) {
     perWeek,
     etaWeeks,
     dayKeys,
+    practiceAnswered: state.totals.practiceAnswered || 0,
+    practiceAccuracy: state.totals.practiceAnswered
+      ? (state.totals.practiceRight || 0) / state.totals.practiceAnswered
+      : null,
   };
 }
 

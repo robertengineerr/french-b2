@@ -49,8 +49,67 @@ Adaptation is real, it just comes from selection rather than generation:
   whether they're due, whether their tags match the day's topic, and whether they're
   leeches you keep forgetting.
 
-Your starting deck is built from your own vocabulary lists — the CSV plus the handwritten
-notes. Where a note had an error, the card shows the correction and gets scheduled first:
+## Practice runs as long as you want it to
+
+The **Pratique** tab has two phases, and the difference is deliberate.
+
+**Review** is the cards spaced repetition says are due today. These grade on four buttons
+and they move the schedule.
+
+**Free practice** is everything else, and it doesn't run out. When the due queue empties, the
+tab offers *Pratique libre — sans limite*: cards drawn weakest-first from the whole deck,
+refilling before the queue empties so there's never a "come back tomorrow" wall.
+Weakest-first means ranked by lapses, current streak, interval, whether the card has ever
+actually been tested, and how overdue it is — so extra drilling lands on the words you keep
+dropping rather than the ones you already own.
+
+Free practice grades on two buttons — *je savais* / *je ne savais pas* — because **a correct
+answer there deliberately does not extend the interval.** Getting a card right on your fifth
+drill of the same afternoon is not evidence you'll remember it in three weeks, and letting
+practice push intervals out would quietly wreck the schedule that makes the whole thing
+work. A miss, though, is real evidence: it counts as a lapse, knocks the ease down, and pulls
+the card back to tomorrow. So you can drill as long as you like, and the only thing that can
+happen to your schedule is that it gets more honest.
+
+## Where the unlimited practice content comes from
+
+Gap-fill sentences come from two places. First the reading passages you've already worked
+through — a real sentence you've read is the better test. Those only cover about a third of
+the deck, though, because a word has to actually appear in one of the 30 texts.
+
+The rest comes from the **[Tatoeba corpus](https://tatoeba.org/en/downloads)** — a community
+collection of sentences with human translations, released CC-BY 2.0 FR (some older sentences
+are CC0). It's the one large FR→EN sentence set that is both freely licensed and written by
+people rather than machine-translated. `scripts/import-sentences.mjs` downloads the FR-EN
+pairs (via the [Anki-format export](https://www.manythings.org/anki/), which is the same data
+already joined into pairs), then filters hard:
+
+- **only sentences containing a word this app can teach** — the seed deck, the built-in
+  lexicon, and every content pack's new words. That's what keeps the file a few hundred KB
+  instead of a few hundred MB, and it means every sentence in the bank is useful rather than
+  merely French.
+- 25–130 characters, properly capitalised and punctuated, no digits, no truncated quotes.
+- at most four target words per sentence — five makes the gap guessable from the rest.
+- up to three per word, de-duplicated, scored to prefer phone-sized sentences with real
+  clause structure over Tatoeba's placeholder cast of Toms and Marys.
+
+The output is `public/content/sentences.json`: one shared sentence array plus a per-word
+index into it, so a sentence serving three words is stored once. It's optional — if the file
+isn't there, practice just falls back to the passages.
+
+The corpus hosts aren't reachable from every network, and the bank is a shared build input
+rather than something each person should generate differently, so the real run happens on a
+runner: **Actions → Rebuild sentence bank → Run workflow**. It commits the result and
+dispatches a deploy. It also runs quarterly, so a new content pack's vocabulary picks up
+sentences without anyone having to remember.
+
+Sentences from the bank are labelled as such in the app, with the attribution the licence
+asks for.
+
+## Your starting deck
+
+Built from your own vocabulary lists — the CSV plus the handwritten notes. Where a note had
+an error, the card shows the correction and gets scheduled first:
 
 | Your note | Correction |
 |---|---|
@@ -69,6 +128,7 @@ npm run build          # -> dist/
 npm run check:content  # validate the content packs
 npm run simulate       # 60-day simulation of the adaptive loop
 npm run check:lookup   # tap-to-translate coverage over the reading content
+npm run import:sentences  # rebuild the gap-fill sentence bank (needs network)
 npm run icons          # regenerate the app icons
 ```
 
@@ -143,12 +203,13 @@ src/
   lib/exercises.js  the seven review shapes, cloze mining, forgiving typed answers
   lib/forms.js      shared "word without its article" helper
   lib/ics.js        calendar reminder generation
-  components/       Today, Reading, Player, Flashcards, Stats, Settings
+  components/       Today, Reading, Player, Practice, Stats, Settings
 scripts/
-  check-content.mjs content validation
-  check-lookup.mjs  tap-to-translate coverage + which words to add next
-  simulate.mjs      60-day adaptive-loop simulation
-  make-icons.py     PNG icon generation, no dependencies
+  check-content.mjs    content validation
+  check-lookup.mjs     tap-to-translate coverage + which words to add next
+  import-sentences.mjs builds the Tatoeba gap-fill sentence bank
+  simulate.mjs         60-day adaptive-loop simulation
+  make-icons.py        PNG icon generation, no dependencies
 ```
 
 ## How the derived features work

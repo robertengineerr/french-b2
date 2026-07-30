@@ -27,10 +27,17 @@ function hash(s) {
   return h >>> 0;
 }
 
-// Indexes one usable sentence per card from the reading passages. A gap filled
-// from text you've actually read is a far better test than an invented sentence,
-// and it costs no extra content.
-export function buildClozeIndex(challenges, cards) {
+// Indexes usable gap-fill sentences per card, from two sources in priority order:
+//
+//   1. The reading passages you've already worked through. A gap filled from text
+//      you actually read is the better test, and it costs no extra content.
+//   2. The imported sentence bank (Tatoeba), which is what makes practice
+//      effectively unlimited — the passages only cover about a third of the deck,
+//      the bank covers most of it, with several sentences per word so a repeat
+//      isn't the identical question.
+//
+// Each entry holds a list of variants; the caller picks one by rep count.
+export function buildClozeIndex(challenges, cards, bank) {
   const sentences = [];
   (challenges || []).forEach((c) => {
     (c.reading?.paragraphs || []).forEach((p) => {
@@ -48,22 +55,45 @@ export function buildClozeIndex(challenges, cards) {
     // Multi-word and grammar-pattern cards don't blank cleanly.
     if (!target || target.includes(' ') || target.includes('+')) return;
     const re = inflectedPattern(target);
+    const variants = [];
+
     for (const s of sentences) {
       const m = re.exec(s);
       if (m) {
-        index.set(card.id, { sentence: s, start: m.index, end: m.index + m[0].length, form: m[0] });
-        break;
+        variants.push(cut(s, m, 'reading'));
+        break; // one from the passages is enough; the bank supplies the variety
       }
     }
+
+    for (const s of bankSentences(bank, target)) {
+      const m = re.exec(s.fr);
+      if (m) variants.push({ ...cut(s.fr, m, 'bank'), en: s.en });
+      if (variants.length >= 4) break;
+    }
+
+    if (variants.length) index.set(card.id, { variants });
   });
   return index;
+}
+
+function cut(sentence, m, source) {
+  return { sentence, start: m.index, end: m.index + m[0].length, form: m[0], source };
+}
+
+// The bank is keyed by lemma at import time, because scanning thousands of
+// sentences per card in the browser would cost more than the feature is worth.
+function bankSentences(bank, target) {
+  if (!bank || !bank.byWord) return [];
+  const ids = bank.byWord[target.toLowerCase()];
+  if (!ids) return [];
+  return ids.map((i) => bank.sentences[i]).filter(Boolean).map(([fr, en]) => ({ fr, en }));
 }
 
 // Passages use inflected forms, cards store lemmas — "dépenser" on the card,
 // "dépense" in the text. Matching the lemma literally found barely half the
 // candidates, so allow the endings that actually occur. Over-matching is
 // harmless here: a near-miss still produces a usable gap in a real sentence.
-function inflectedPattern(target) {
+export function inflectedPattern(target) {
   const t = escapeRe(target);
   let body = `${t}s?`;
   if (target.length > 3) {
@@ -195,8 +225,11 @@ export function buildQuestion(card, ctx) {
   }
 
   if (type === TYPES.cloze) {
-    const c = cloze.get(card.id);
-    if (!c) return buildQuestion(card, { ...ctx, forceType: TYPES.reveal });
+    const entry = cloze.get(card.id);
+    if (!entry) return buildQuestion(card, { ...ctx, forceType: TYPES.reveal });
+    // Rotate through the variants so the same card doesn't always blank the same
+    // sentence. Deterministic in the rep count, like the shape choice itself.
+    const c = entry.variants[(card.reps + hash(card.id)) % entry.variants.length];
     // Only single-word distractors here — "cher / chère" or "au moindre prix"
     // dropped into a gap reads as a formatting bug rather than a wrong answer.
     const singleWord = pool.filter((x) => {
@@ -208,10 +241,18 @@ export function buildQuestion(card, ctx) {
     const { options, answer } = place(c.form, others);
     return {
       type,
-      prompt: c.sentence.slice(0, c.start) + ' _____ ' + c.sentence.slice(c.end),
+      // The gap is padded with em spaces so it reads as a blank rather than an
+      // underscore glued to the next word; the sentence's own spaces around the
+      // removed word have to come off, or the padding doubles up.
+      prompt:
+        c.sentence.slice(0, c.start).replace(/\s+$/, '') +
+        ' _____ ' +
+        c.sentence.slice(c.end).replace(/^\s+/, ''),
       options,
       answer,
       hint: card.en,
+      source: c.source,
+      translation: c.en,
     };
   }
 
