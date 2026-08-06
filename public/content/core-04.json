@@ -1,0 +1,199 @@
+{
+  "challenges": [
+    {
+      "id": "candidature-ratee",
+      "title": "Une candidature ratée",
+      "subtitle": "Job-hunting, failing, and trying again — with a friend's help.",
+      "difficulty": 3,
+      "topics": ["travail", "carrière"],
+      "newWords": [
+        { "fr": "postuler", "en": "to apply (for a job)", "note": "postuler à un poste / pour un emploi." },
+        { "fr": "échouer", "en": "to fail", "note": "échouer à un examen, échouer à un entretien." },
+        { "fr": "prospérer", "en": "to prosper, to thrive" },
+        { "fr": "être d’une grande aide", "en": "to be a great help", "note": "Invariable: il/elle m’a été d’une grande aide." },
+        { "fr": "utile", "en": "useful", "note": "Same form for both genders. Opposite: inutile." },
+        { "fr": "de A à Z", "en": "from A to Z (thoroughly, start to finish)" },
+        { "fr": "la plupart de / des", "en": "most of, the majority of", "note": "Followed by a plural noun and a plural verb: la plupart des gens SONT d’accord." }
+      ],
+      "reading": {
+        "kind": "article",
+        "paragraphs": [
+          "Depuis six mois, je poste ma candidature partout, sans grand succès. La semaine dernière, j’ai postulé pour un poste dans une entreprise qui a l’air de bien prospérer, avec des employés visiblement contents. J’étais convaincu que mon profil était utile, mais l’entretien s’est mal passé : trop de questions techniques auxquelles je n’ai pas su répondre.",
+          "Résultat : j’ai échoué, encore une fois. Heureusement, mon ami Karim, qui travaille dans les ressources humaines, m’a été d’une grande aide. Il m’a expliqué le processus de recrutement de A à Z, des tests en ligne jusqu’à l’entretien final, et m’a montré ce que la plupart des recruteurs attendent vraiment.",
+          "Grâce à ses conseils, ma prochaine candidature sera plus solide. Karim dit que la plupart des candidats échouent au moins une fois avant de réussir, alors je ne me décourage pas. Après tout, une entreprise qui prospère cherche des gens motivés, pas seulement des CV parfaits."
+        ],
+        "glossary": [
+          { "fr": "la candidature", "en": "the job application" },
+          { "fr": "le recrutement", "en": "recruitment, the hiring process" },
+          { "fr": "se décourager", "en": "to get discouraged" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Karim", "text": "Alors, cette candidature, ça donne quoi ?" },
+          { "speaker": "Robert", "text": "J’ai échoué à l’entretien. Encore." },
+          { "speaker": "Karim", "text": "Ne t’inquiète pas, la plupart des gens échouent plusieurs fois avant de réussir." },
+          { "speaker": "Robert", "text": "Tu crois vraiment que je peux prospérer dans ce domaine ?" },
+          { "speaker": "Karim", "text": "Bien sûr. Tu es utile partout où tu vas." },
+          { "speaker": "Robert", "text": "Tu es d’une grande aide, tu sais." },
+          { "speaker": "Karim", "text": "Postule encore. Explique le projet de A à Z, ils adorent ça." },
+          { "speaker": "Robert", "text": "D’accord. Je vais réessayer la semaine prochaine." },
+          { "speaker": "Karim", "text": "Et cette fois, prépare bien tes réponses techniques." },
+          { "speaker": "Robert", "text": "Promis. Merci pour tes conseils." }
+        ]
+      },
+      "grammar": {
+        "point": "la plupart de / des + nom",
+        "explain": "« La plupart » means \"most\" or \"the majority.\" It's always followed by « de » plus a plural noun (la plupart des gens) or a mass noun (la plupart du temps) — and the verb that follows agrees with that plural noun, not with « plupart » itself, even though « plupart » looks singular.",
+        "examples": [
+          "La plupart des candidats échouent une fois.",
+          "La plupart du temps, je travaille de chez moi.",
+          "La plupart d’entre nous ont déjà raté un entretien."
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi le premier entretien du narrateur s’est-il mal passé ?",
+          "options": [
+            "Il est arrivé en retard.",
+            "Il n’a pas su répondre aux questions techniques.",
+            "Il n’avait pas de CV.",
+            "L’entreprise a fermé."
+          ],
+          "answer": 1,
+          "why": "« trop de questions techniques auxquelles je n’ai pas su répondre »"
+        },
+        {
+          "type": "tf",
+          "q": "Karim travaille dans les ressources humaines.",
+          "answer": true,
+          "why": "« mon ami Karim, qui travaille dans les ressources humaines »"
+        },
+        {
+          "type": "gap",
+          "q": "___ des candidats échouent au moins une fois avant de réussir.",
+          "options": ["La plupart", "Beaucoup de", "Peu", "Aucun"],
+          "answer": 0,
+          "why": "Le texte dit exactement : « la plupart des candidats échouent au moins une fois »."
+        },
+        {
+          "type": "mcq",
+          "q": "Que va faire le narrateur pour sa prochaine candidature ?",
+          "options": [
+            "Abandonner sa recherche",
+            "Postuler uniquement ailleurs",
+            "Mieux se préparer grâce aux conseils de Karim",
+            "Changer complètement de métier"
+          ],
+          "answer": 2,
+          "why": "« Grâce à ses conseils, ma prochaine candidature sera plus solide. »"
+        },
+        {
+          "type": "open",
+          "q": "Décris une fois où tu as échoué à quelque chose (entretien, examen…) et explique ce que tu as appris.",
+          "model": "J’ai échoué à mon premier entretien parce que j’étais trop nerveux. Depuis, je me prépare à l’avance et je pratique mes réponses. La plupart du temps, ça se passe mieux maintenant."
+        }
+      ]
+    },
+    {
+      "id": "week-end-campagne",
+      "title": "Un week-end à la campagne",
+      "subtitle": "Slowing down, tracking a fox, and the it's-vs-it-is trap.",
+      "difficulty": 3,
+      "topics": ["nature", "quotidien", "grammaire"],
+      "newWords": [
+        { "fr": "traquer", "en": "to track down, to hunt", "note": "Works literally (traquer un animal) and figuratively (traquer un bug, traquer une erreur)." },
+        { "fr": "lent(e)", "en": "slow" },
+        { "fr": "humain(e)", "en": "human", "note": "un humain = a human (noun); humain(e) = human (adj)." },
+        { "fr": "lequel / laquelle", "en": "which one — relative & interrogative pronoun", "note": "Agrees with the noun: la chambre dans laquelle je dors ; le stylo avec lequel j’écris." },
+        { "fr": "c’est / il est", "en": "identifying vs. describing", "note": "« il est » + adjective/profession alone describes: il est fatigué, il est ingénieur. « c’est » + article/noun identifies or points at a whole idea: c’est un ami fatigué, c’est difficile." },
+        { "fr": "non plus", "en": "neither, not … either", "note": "Moi non plus = me neither." },
+        { "fr": "se reposer", "en": "to rest" },
+        { "fr": "avoine", "en": "oats", "note": "des flocons d’avoine = oat flakes / oatmeal." }
+      ],
+      "reading": {
+        "kind": "récit",
+        "paragraphs": [
+          "Le week-end dernier, j’ai enfin quitté la ville pour me reposer à la campagne, chez des amis. Après une semaine où je passais mon temps à traquer des anomalies sur le réseau électrique, j’avais besoin d’un rythme plus lent. Là-bas, même les vaches semblaient plus calmes qu’un humain fatigué comme moi.",
+          "Le matin, on nous a servi de l’avoine avec du miel, un vrai petit-déjeuner de campagne. Mon ami Karim, avec lequel je partage la chambre d’amis, m’a proposé une promenade pour traquer les traces d’un renard aperçu la veille. Moi non plus, je n’avais jamais vraiment observé la nature d’aussi près.",
+          "C’est un mode de vie qui me plaît, mais il est difficile de l’imaginer toute l’année. Le calme est humain, nécessaire même, mais mon métier reste en ville. La question à laquelle je pense encore : est-ce que je pourrais vraiment ralentir, ou est-ce que je suis fait pour un rythme plus rapide ?"
+        ],
+        "glossary": [
+          { "fr": "une anomalie", "en": "an anomaly, a glitch" },
+          { "fr": "un renard", "en": "a fox" },
+          { "fr": "ralentir", "en": "to slow down" }
+        ]
+      },
+      "listening": {
+        "kind": "dialogue",
+        "lines": [
+          { "speaker": "Robert", "text": "J’ai besoin de me reposer, cette semaine était horrible." },
+          { "speaker": "Karim", "text": "Viens à la campagne ce week-end, le rythme est beaucoup plus lent." },
+          { "speaker": "Robert", "text": "Avec plaisir. Je traque des anomalies toute la journée, je suis épuisé." },
+          { "speaker": "Karim", "text": "Là-bas, il n’y a que des vaches et de l’avoine au petit-déjeuner." },
+          { "speaker": "Robert", "text": "Ça me va très bien. Moi non plus, je n’ai jamais vu de renard de près." },
+          { "speaker": "Karim", "text": "On pourra en traquer un demain matin, si tu veux." },
+          { "speaker": "Robert", "text": "La chambre dans laquelle je vais dormir, c’est celle du fond ?" },
+          { "speaker": "Karim", "text": "Oui, celle avec laquelle tu as une vue sur le jardin." },
+          { "speaker": "Robert", "text": "Parfait. C’est exactement ce dont un humain fatigué a besoin." },
+          { "speaker": "Karim", "text": "Il est temps de décrocher un peu, tu le mérites." }
+        ]
+      },
+      "grammar": {
+        "point": "c’est vs. il est / elle est",
+        "explain": "Use « il/elle est » + an adjective alone, or + a profession/nationality with no article, for a plain description: il est fatigué, elle est ingénieure. Use « c’est » + article/possessive + noun (optionally plus an adjective) to identify something, or after a full stop to refer back to a whole idea: c’est un ami fatigué, c’est difficile. The classic trap is « il est un ingénieur » — that's wrong; say either « il est ingénieur » or « c’est un ingénieur ».",
+        "examples": [
+          "Il est fatigué. / C’est un ami fatigué.",
+          "Elle est ingénieure. / C’est une ingénieure brillante.",
+          "C’est difficile de ralentir. (refers to the whole idea, not one noun)"
+        ]
+      },
+      "quiz": [
+        {
+          "type": "mcq",
+          "q": "Pourquoi Robert a-t-il besoin de se reposer ?",
+          "options": [
+            "Il a fait un long voyage.",
+            "Il traque des anomalies toute la semaine au travail.",
+            "Il est malade.",
+            "Il a raté un examen."
+          ],
+          "answer": 1,
+          "why": "« Je traque des anomalies toute la journée, je suis épuisé. »"
+        },
+        {
+          "type": "tf",
+          "q": "On sert de l’avoine au petit-déjeuner à la campagne.",
+          "answer": true,
+          "why": "« on nous a servi de l’avoine avec du miel »"
+        },
+        {
+          "type": "gap",
+          "q": "___ un mode de vie qui me plaît, mais ___ difficile de l’imaginer toute l’année.",
+          "options": ["C’est / il est", "Il est / c’est", "C’est / c’est", "Il est / il est"],
+          "answer": 0,
+          "why": "Le texte dit : « C’est un mode de vie qui me plaît, mais il est difficile de l’imaginer… »"
+        },
+        {
+          "type": "mcq",
+          "q": "Que propose Karim de faire le lendemain matin ?",
+          "options": [
+            "Aller en ville",
+            "Traquer les traces d’un renard",
+            "Retourner au travail",
+            "Regarder la télévision"
+          ],
+          "answer": 1,
+          "why": "« m’a proposé une promenade pour traquer les traces d’un renard »"
+        },
+        {
+          "type": "open",
+          "q": "Toi, tu préfères un rythme de vie lent ou rapide ? Explique pourquoi en 2-3 phrases.",
+          "model": "Je préfère un rythme plutôt lent le week-end pour me reposer, même si mon travail est rapide en semaine. C’est important de trouver un équilibre entre les deux."
+        }
+      ]
+    }
+  ]
+}
